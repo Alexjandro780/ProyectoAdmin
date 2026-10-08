@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>Programación</title>
+        <link rel="stylesheet" href="styles.css">
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="stylesmenu.css">
+    <!-- Script del menú con atributo defer para cargar después del HTML -->
+    <script src="MenuScript.js" defer></script>
+    </head>
+    <body>
+        <button id="menuToggle" class="menu-toggle">☰</button>
+    
+        <div id="sidebar" class="sidebar">
+            <!-- Encabezado del menú con submenú -->
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Inicio</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+              
+            <div class="submenu active">
+                <div class="submenu-item"><a href="Menu Principal.html">Menu Principal</a></div>
+            </div>
+    
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Acerca Del Plantel</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="index.html">¿Quienes Somos?</a></div>
+                <div class="submenu-item"><a href="PersonalCecytez.html">Nuestro Equipo</a></div>
+                <div class="submenu-item"><a href="Instalaciones.html">Instalaciones</a></div>
+                <div class="submenu-item"><a href="Ubicacion.html">Ubicacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="vision,-mision">
+                <div class="menu-item">
+                    <span>Visión, Misión</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Vision.html">Visión, Misión</a></div>
+                <div class="submenu-item"><a href="Objetivos.html">Objetivos</a></div>
+                <div class="submenu-item"><a href="Politica.html">Política De Calidad</a></div>
+            </div>
+            
+            <!-- Elemento con submenú (Sales) -->
+            <div class="menu-item-toggle active " data-page="oferta-educativa">
+                <div class="menu-header">
+                    <span>Oferta Educativa</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Sales (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="MarcoCurricular.html">Marco Curricular</a></div>
+                <div class="submenu-item"><a href="Carreras.html">Procesos De Gestion Administrativa</a></div>
+                <div class="submenu-item"><a href="Enfermeria.html">Enfermería General</a></div>
+                <div class="submenu-item"><a href="Electricidad.html">Electricidad</a></div>
+                <div class="submenu-item"><a href="Programacion.html">Programacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="programas">
+                <div class="menu-item">
+                    <span>Programas</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Programas.html">ConstruyeT</a></div>
+                <div class="submenu-item"><a href="Sustentabilidad.html">Sustentabilidad</a></div>
+                <div class="submenu-item"><a href="EducacionDual.html">Educacion Dual</a></div>
+                <div class="submenu-item"><a href="ServicioSocial.html">Servicio Social</a></div>
+            </div>
+    
+            <!-- Elemento con submenú (Messages) -->
+            <div class="menu-item-toggle" data-page="otros">
+                <div class="menu-item">
+                    <span>Galeria</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="GaleriaMax.html">Galeria ConstruyeT</a></div>
+                <div class="submenu-item"><a href="GaleriaAcademica.html">Galeria Academica</a></div>
+                <div class="submenu-item"><a href="GaleriaDeportiva.html">Galeria Deportiva</a></div>
+            </div>
+        </div>
+
+<div id="content" class="content">
+    <h3><center>Mapa De Competencias Profesionales De La Carrera De Tecnico En Programacion</center></h3>
+        <br>
+        <div class="modulo">
+            <div class="modulo-num"
+            style="background-color: #1a4e91;">Modulo I</div>
+            <div class="modulo-info">
+                <h3>Desarrolla software de sistemas informaticos</h3>
+                <p>Submodulo I - Diseña software de sistemas informaticos</p>
+                <p>Submodulo II - Codifica software de sistemas informaticos</p>
+                <p>Submodulo III- Implementa software de sistemas informaticos</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num"
+            style="background-color: #1a8c4b">Modulo II</div>
+            <div class="modulo-info">
+                <h3>Desarrolla sofware con herramientas orientadas a la productividad</h3>
+                <p>Submodulo I - Emplea frameworks para el desarrollo de software</p>
+                <p>Submodulo II - Aplica metodologias agiles para el desarrollo de software</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num"
+            style="background-color: #c45f1a">Modulo III</div>
+            <div class="modulo-info">
+                <h3>Administra bases de datos en un sistema de informacion</h3>
+                <p>Submodulo I - Implementa bases de datos relacionales en un sistema de informacion</p>
+                <p>Submodulo II - Implementa bases de datos no relacionales en un sistema de informacion</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num"
+            style="background-color: #a51826">Modulo IV</div>
+            <div class="modulo-info">
+                <h3>Desarrolla aplicaciones web en un sistema de informacion</h3>
+                <p>Submodulo I - Construye aplicaciones web</p>
+                <p>Submodulo II - Implementa aplicaciones web</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num"
+            style="background-color: #2d18a5">Modulo V</div>
+            <div class="modulo-info">
+                <h3>Desarrolla aplicaciones moviles multiplataforma</h3>
+                <p>Submodulo I - Diseña aplicaciones moviles multiplataforma</p>
+                <p>Submodulo II - Implementa aplicaciones moviles multiplataforma</p>
+            </div>
+        </div>
+    </body>
+</html>

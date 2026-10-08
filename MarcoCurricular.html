@@ -1,0 +1,341 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>Marco Curricular</title>
+        <link rel="stylesheet" href="styles.css">
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="stylesmenu.css">
+    <!-- Script del menú con atributo defer para cargar después del HTML -->
+    <script src="MenuScript.js" defer></script>
+    </head>
+    <body>
+        <button id="menuToggle" class="menu-toggle">☰</button>
+    
+        <div id="sidebar" class="sidebar">
+            <!-- Encabezado del menú con submenú -->
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Inicio</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="Menu Principal.html">Menu Principal</a></div>
+            </div>
+    
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Acerca Del Plantel</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="index.html">¿Quienes Somos?</a></div>
+                <div class="submenu-item"><a href="PersonalCecytez.html">Nuestro Equipo</a></div>
+                <div class="submenu-item"><a href="Instalaciones.html">Instalaciones</a></div>
+                <div class="submenu-item"><a href="Ubicacion.html">Ubicacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="vision,-mision">
+                <div class="menu-item">
+                    <span>Visión, Misión</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Vision.html">Visión, Misión</a></div>
+                <div class="submenu-item"><a href="Objetivos.html">Objetivos</a></div>
+                <div class="submenu-item"><a href="Politica.html">Política De Calidad</a></div>
+            </div>
+            
+            <!-- Elemento con submenú (Sales) -->
+            <div class="menu-item-toggle active " data-page="oferta-educativa">
+                <div class="menu-header">
+                    <span>Oferta Educativa</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Sales (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="MarcoCurricular.html">Marco Curricular</a></div>
+                <div class="submenu-item"><a href="Carreras.html">Procesos De Gestion Administrativa</a></div>
+                <div class="submenu-item"><a href="Enfermeria.html">Enfermería General</a></div>
+                <div class="submenu-item"><a href="Electricidad.html">Electricidad</a></div>
+                <div class="submenu-item"><a href="Programacion.html">Programacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="programas">
+                <div class="menu-item">
+                    <span>Programas</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Programas.html">ConstruyeT</a></div>
+                <div class="submenu-item"><a href="Sustentabilidad.html">Sustentabilidad</a></div>
+                <div class="submenu-item"><a href="EducacionDual.html">Educacion Dual</a></div>
+                <div class="submenu-item"><a href="ServicioSocial.html">Servicio Social</a></div>
+            </div>
+    
+            <!-- Elemento con submenú (Messages) -->
+            <div class="menu-item-toggle" data-page="otros">
+                <div class="menu-item">
+                    <span>Galeria</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="GaleriaMax.html">Galeria ConstruyeT</a></div>
+                <div class="submenu-item"><a href="GaleriaAcademica.html">Galeria Academica</a></div>
+                <div class="submenu-item"><a href="GaleriaDeportiva.html">Galeria Deportiva</a></div>
+            </div>
+        </div>
+
+<div id="content" class="content">
+        <h1>Marco Curricular Común de la Educación Media Superior</h1>
+        <table border="1">
+            <tr>
+                <th>Recursos, areas o <br> competencias <br> laborales</th>
+                <th>1er Semestre</th>
+                <th>Hrs. <br> UAC</th>
+                <th>C</th>
+                <th>2do Semestre</th>
+                <th>Hrs. <br> UAC</th>
+                <th>C</th>
+                <th>3er Semestre</th>
+                <th>Hrs. <br> UAC</th>
+                <th>C</th>
+                <th>4to Semestre</th>
+                <th>Hrs. <br> UAC</th>
+                <th>C</th>
+                <th>5to Semestre</th>
+                <th>Hrs. <br> UAC</th>
+                <th>C</th>
+                <th>6to Semestre</th>
+                <th>Hrs. <br> UAC</th>
+                <th>C</th>
+            </tr>
+            <tr>
+                <td rowspan="2">Lengua y <br>Comunicacion</td>
+                <td class="verde">Lengua y Comunicacion I</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Lengua y Comunicacion II</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Lengua y Comunicacion III</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="verde">Ingles I</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Ingles II</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Ingles III</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Ingles IV</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verdoso">Ingles V</td>
+                <td class="verdoso">3/60</td>
+                <td class="verdoso">6</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pensamiento Matematico</td>
+                <td class="verde">Pensamiento Matematico I</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">Pensamiento Matematico II</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">Pensamiento Matematico III</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verdoso">Temas Selectos de Matematicas I</td>
+                <td class="verdoso">4/80</td>
+                <td class="verdoso">8</td>
+                <td class="verdoso">Temas Selectos de Matematicas II</td>
+                <td class="verdoso">5/100</td>
+                <td class="verdoso">10</td>
+                <td class="verdoso">Temas Selectos de Matematicas III</td>
+                <td class="verdoso">5/100</td>
+                <td class="verdoso">10</td>
+            </tr>
+            <tr>
+                <td>Conciencia Historica</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="verde">Conciencia Historica I: Perpesctivas del Mexico Antiguo en Contextos Globales</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Conciencia Historica II: Mexico Durante El Expansionismo Capitalista</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Conciencia Historica III: La Realidad Actual En Perpesctiva Historica</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+            </tr>
+            <tr>
+                <td>Cultura Digital</td>
+                <td class="verde">Cultura Digital I</td>
+                <td class="verde">3/60</td>
+                <td class="verde">6</td>
+                <td class="verde">Cultura Digital II</td>
+                <td class="verde">2/40</td>
+                <td class="verde">4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Ciencias Naturales, Expreimentales y Tecnologicas</td>
+                <td class="verde">La Materia y Sus Interacciones</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">Conservacion de la Energia y Sus Interacciones Con La Materia</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">Ecosistemas: Interacciones, Energia y Dinamica</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">Reacciones Quimicas: Conservacion de la Materia en la Formacion de Nuevas Sustancias</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">La Energia en los Procesos de la Vida Diaria</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td class="verde">Organismos: Estructuras y Procesos. Herencia y Evolucion Biologica</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+            </tr>
+            <tr>
+                <td>Humanidades</td>
+                <td class="verde">Humanidades I</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="verde">Humanidades II</td>
+                <td class="verde">4/80</td>
+                <td class="verde">8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="verde">Humanidades III</td>
+                <td class="verde">5/100</td>
+                <td class="verde">10</td>
+            </tr>
+            <tr>
+                <td>Ciencias Sociales</td>
+                <td class="verde">Ciencias Sociales I</td>
+                <td class="verde">2/40</td>
+                <td class="verde">4</td>
+                <td class="verde">Ciencias Sociales II</td>
+                <td class="verde">2/40</td>
+                <td class="verde">4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="verde">Ciencias Sociales III</td>
+                <td class="verde">2/40</td>
+                <td class="verde">4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Recurso o Area a Elegir</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="verdoso">UAC Fundamental Extendida a Elegir</td>
+                <td class="verdoso">3/60</td>
+                <td class="verdoso">6</td>
+                <td class="verdoso">UAC Fundamental Extendida a Elegir</td>
+                <td class="verdoso">3/60</td>
+                <td class="verdoso">6</td>
+            </tr>
+            <tr>
+                <td>Competencias Laborales Basicas Y Extendidas</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="naranja">Modulo I</td>
+                <td class="naranja">17/340</td>
+                <td class="naranja">34</td>
+                <td class="naranja">Modulo II</td>
+                <td class="naranja">17/340</td>
+                <td class="naranja">34</td>
+                <td class="naranja">Modulo III</td>
+                <td class="naranja">17/340</td>
+                <td class="naranja">34</td>
+                <td class="naranja">Modulo IV</td>
+                <td class="naranja">12/240</td>
+                <td class="naranja">24</td>
+                <td class="naranja">Modulo V</td>
+                <td class="naranja">12/240</td>
+                <td class="naranja">24</td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>Electricidad</title>
+        <link rel="stylesheet" href="styles.css">
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="stylesmenu.css">
+    <!-- Script del menú con atributo defer para cargar después del HTML -->
+    <script src="MenuScript.js" defer></script>
+    </head>
+    <body>
+        <button id="menuToggle" class="menu-toggle">☰</button>
+    
+        <div id="sidebar" class="sidebar">
+            <!-- Encabezado del menú con submenú -->
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Inicio</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="Menu Principal.html">Menu Principal</a></div>
+            </div>
+    
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Acerca Del Plantel</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="index.html">¿Quienes Somos?</a></div>
+                <div class="submenu-item"><a href="PersonalCecytez.html">Nuestro Equipo</a></div>
+                <div class="submenu-item"><a href="Instalaciones.html">Instalaciones</a></div>
+                <div class="submenu-item"><a href="Ubicacion.html">Ubicacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="vision,-mision">
+                <div class="menu-item">
+                    <span>Visión, Misión</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Vision.html">Visión, Misión</a></div>
+                <div class="submenu-item"><a href="Objetivos.html">Objetivos</a></div>
+                <div class="submenu-item"><a href="Politica.html">Política De Calidad</a></div>
+            </div>
+            
+            <!-- Elemento con submenú (Sales) -->
+            <div class="menu-item-toggle active " data-page="oferta-educativa">
+                <div class="menu-header">
+                    <span>Oferta Educativa</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Sales (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="MarcoCurricular.html">Marco Curricular</a></div>
+                <div class="submenu-item"><a href="Carreras.html">Procesos De Gestion Administrativa</a></div>
+                <div class="submenu-item"><a href="Enfermeria.html">Enfermería General</a></div>
+                <div class="submenu-item"><a href="Electricidad.html">Electricidad</a></div>
+                <div class="submenu-item"><a href="Programacion.html">Programacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="programas">
+                <div class="menu-item">
+                    <span>Programas</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Programas.html">ConstruyeT</a></div>
+                <div class="submenu-item"><a href="Sustentabilidad.html">Sustentabilidad</a></div>
+                <div class="submenu-item"><a href="EducacionDual.html">Educacion Dual</a></div>
+                <div class="submenu-item"><a href="ServicioSocial.html">Servicio Social</a></div>
+            </div>
+    
+            <!-- Elemento con submenú (Messages) -->
+            <div class="menu-item-toggle" data-page="otros">
+                <div class="menu-item">
+                    <span>Galeria</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="GaleriaMax.html">Galeria ConstruyeT</a></div>
+                <div class="submenu-item"><a href="GaleriaAcademica.html">Galeria Academica</a></div>
+                <div class="submenu-item"><a href="GaleriaDeportiva.html">Galeria Deportiva</a></div>
+            </div>
+        </div>
+
+<div id="content" class="content">
+        <div id="menu-container"></div>
+        <h3><center>Mapa De Competencias Profesionales De La Carrera En Técnico De Electricidad</center></h3>
+        <br>
+        <div class="modulo">
+            <div class="modulo-num" style="background-color: #1a4e91;">Módulo I</div>
+            <div class="modulo-info">
+                <h3>Desarrolla instalaciones eléctricas residenciales y comerciales</h3>
+                <p>Submódulo I - Diseña instalaciones eléctricas</p>
+                <p>Submódulo II - Realiza instalaciones eléctricas</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num" style="background-color: #1a8c4b">Módulo II</div>
+            <div class="modulo-info">
+                <h3>Mantiene los motores y generadores de CA y CC</h3>
+                <p>Submódulo I - Mantiene los motores de CA y CC</p>
+                <p>Submódulo II - Mantiene los generadores de CA y CC</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num" style="background-color: #c45f1a">Módulo III</div>
+            <div class="modulo-info">
+                <h3>Mantiene en operación los circuitos de control electromagnético y electrónico</h3>
+                <p>Submódulo I - Mantiene en operación circuitos de control electromagnético</p>
+                <p>Submódulo II - Mantiene en operación circuitos de control electrónico</p>
+                <p>Submódulo III - Programa y conecta Controladores Lógicos Programables (PLC's)</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num" style="background-color: #a51826">Módulo IV</div>
+            <div class="modulo-info">
+                <h3>Diseña y mantiene los sistemas de iluminación y energía renovable</h3>
+                <p>Submódulo I - Diseña y mantiene los sistemas de iluminación</p>
+                <p>Submódulo II - Realiza mantenimiento a las instalaciones eléctricas residenciales, comerciales e industriales</p>
+                <p>Submódulo III - Implementa y mantiene los sistemas de energía renovable</p>
+            </div>
+        </div>
+        <div class="modulo">
+            <div class="modulo-num" style="background-color: #2d18a5">Módulo V</div>
+            <div class="modulo-info">
+                <h3>Mantiene instalaciones eléctricas de media y baja tensión</h3>
+                <p>Submódulo I - Realiza mantenimiento en el sistema de distribución de energía eléctrica</p>
+                <p>Submódulo II - Realiza mantenimiento en subestaciones eléctricas</p>
+            </div>
+        </div>
+        
+        </div>
+    </body>
+</html>

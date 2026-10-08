@@ -1,0 +1,612 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sustentabilidad</title>
+        <!-- Enlace a tus estilos CSS existentes -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="stylesmenu.css">
+    <!-- Script del menú con atributo defer para cargar después del HTML -->
+    <script src="MenuScript.js" defer></script>
+
+    <style>
+        :root {
+            --primary-color: #2c8e43;
+            --secondary-color: #1e5f2f;
+            --accent-color: #f7b733;
+            --light-color: #f0f9f1;
+            --dark-color: #1a1a1a;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .hero-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+        
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 80%;
+        }
+        
+        .hero-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .section {
+            background-color: white;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .initiatives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .initiative-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .initiative-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .initiative-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            display: block;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 200px;
+            margin: 1rem;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .testimonial {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            margin-top: 3rem;
+        }
+        
+       /* .testimonial::before {
+            content: """
+            position: absolute;
+            top:-20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            line-height: 1;
+       }*/
+        
+        .testimonial p {
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+            color: var(--secondary-color);
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta h2 {
+            color: white;
+            border-bottom: none;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #fcca54;
+            transform: translateY(-3px);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+            text-align: left;
+            padding: 0 1rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            text-decoration: none;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .stat-item {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <!-- Botón y Menú lateral -->
+        <button id="menuToggle" class="menu-toggle">☰</button>
+    
+        <div id="sidebar" class="sidebar">
+            <!-- Encabezado del menú con submenú -->
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Inicio</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="Menu Principal.html">Menu Principal</a></div>
+            </div>
+    
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Acerca Del Plantel</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="index.html">¿Quienes Somos?</a></div>
+                <div class="submenu-item"><a href="PersonalCecytez.html">Nuestro Equipo</a></div>
+                <div class="submenu-item"><a href="Instalaciones.html">Instalaciones</a></div>
+                <div class="submenu-item"><a href="Ubicacion.html">Ubicacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="vision,-mision">
+                <div class="menu-item">
+                    <span>Visión, Misión</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Vision.html">Visión, Misión</a></div>
+                <div class="submenu-item"><a href="Objetivos.html">Objetivos</a></div>
+                <div class="submenu-item"><a href="Politica.html">Política De Calidad</a></div>
+            </div>
+            
+            <!-- Elemento con submenú (Sales) -->
+            <div class="menu-item-toggle active " data-page="oferta-educativa">
+                <div class="menu-header">
+                    <span>Oferta Educativa</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Sales (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="MarcoCurricular.html">Marco Curricular</a></div>
+                <div class="submenu-item"><a href="Carreras.html">Procesos De Gestion Administrativa</a></div>
+                <div class="submenu-item"><a href="Enfermeria.html">Enfermeria General</a></div>
+                <div class="submenu-item"><a href="Electricidad.html">Electricidad</a></div>
+                <div class="submenu-item"><a href="Programacion.html">Programacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="programas">
+                <div class="menu-item">
+                    <span>Programas</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Programas.html">ConstruyeT</a></div>
+                <div class="submenu-item"><a href="Sustentabilidad.html">Sustentabilidad</a></div>
+                <div class="submenu-item"><a href="EducacionDual.html">Educacion Dual</a></div>
+                <div class="submenu-item"><a href="ServicioSocial.html">Servicio Social</a></div>
+            </div>
+    
+            <!-- Elemento con submenú (Messages) -->
+            <div class="menu-item-toggle" data-page="otros">
+                <div class="menu-item">
+                    <span>Galeria</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="GaleriaMax.html">Galeria ConstruyeT</a></div>
+                <div class="submenu-item"><a href="GaleriaAcademica.html">Galeria Academica</a></div>
+                <div class="submenu-item"><a href="GaleriaDeportiva.html">Galeria Deportiva</a></div>
+            </div>
+        </div>
+
+<div id="content" class="content">
+
+    <div class="container">
+        <div class="hero-container">
+            <img src="Huerto.jpg" alt="Estudiantes de CECyTEZ participando en actividades de sustentabilidad" class="hero-image">
+            <div class="hero-text">
+                <h2>Musica Prehispanica</h2>
+                <p>Integrando educación ambiental y prácticas sostenibles en toda la comunidad escolar</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>Nuestro Programa</h2>
+            <p>El Colegio de Estudios Científicos y Tecnológicos de Zacatecas (CECyTEZ), como parte del subsistema CECyTE nacional, implementa un programa integral de sustentabilidad orientado a integrar la educación ambiental y prácticas sostenibles en toda la comunidad escolar.</p>
+            
+            <p>Los objetivos generales, alineados con el Programa de Educación para el Desarrollo Sustentable (PEDS) adoptado en el subsistema, son formar ciudadanos críticos y proactivos que valoren su entorno social y natural. Esto implica promover conciencia ecológica, responsabilidad social y uso racional de recursos, tanto en el currículo como en la gestión cotidiana de los planteles.</p>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Planteles participantes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">+15</div>
+                    <div class="stat-label">Iniciativas sustentables activas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">+5,000</div>
+                    <div class="stat-label">Estudiantes involucrados</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Iniciativas Implementadas</h2>
+            <p>Nuestras acciones concretas en los planteles de CECyTEZ abarcan múltiples áreas estratégicas para crear un entorno educativo sostenible:</p>
+            
+            <div class="initiatives">
+                <div class="initiative-card">
+                    <span class="icon">♻️</span>
+                    <h3>Manejo de Residuos y Reciclaje</h3>
+                    <p>Implementamos campañas de separación de basura (papel, PET, electrónicos) y programas escolares de reciclaje. Participamos activamente en la campaña nacional "Limpiemos Nuestro México", organizando recolección de basura en calles y parques cercanos a nuestros planteles.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <span class="icon">⚡</span>
+                    <h3>Eficiencia Energética</h3>
+                    <p>Impulsamos el ahorro de energía mediante la renovación de iluminación (LED) y proyectos de energía limpia. Estamos gestionando apoyos para la instalación de paneles solares en planteles con el objetivo de reducir costos de electricidad y fomentar la sustentabilidad educativa.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <span class="icon">💧</span>
+                    <h3>Cuidado del Agua</h3>
+                    <p>Hemos instalado bebederos y difundimos campañas de ahorro de agua entre alumnos y personal. Además, reorganizamos espacios verdes de manera que requieran menor riego, promoviendo un uso responsable de este recurso vital.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <span class="icon">🌳</span>
+                    <h3>Áreas Verdes y Reforestación</h3>
+                    <p>Fomentamos la creación y mantenimiento de espacios verdes en los planteles. Organizamos siembras de árboles de ornato y frutales en el campus y zonas aledañas, buscando reforestar hasta el 50% de áreas escolares.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <span class="icon">🧠</span>
+                    <h3>Educación y Cultura Ambiental</h3>
+                    <p>Integramos la sustentabilidad en el currículo y en actividades extracurriculares. Ofrecemos talleres, pláticas y ferias ecológicas para estudiantes y docentes, formando "brigadas verdes" estudiantiles que participan en la Red Juvenil para la Sustentabilidad.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <span class="icon">🌱</span>
+                    <h3>Huertos Escolares</h3>
+                    <p>Desarrollamos huertos escolares (jardines comestibles) para integrar prácticas agrícolas básicas y enseñar sobre alimentación sostenible, permitiendo a los estudiantes conectar con la naturaleza y comprender ciclos productivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Proyectos Estudiantiles Destacados</h2>
+            <p>Los estudiantes de CECyTEZ participan activamente en concursos y proyectos tecnológicos de alcance estatal y nacional con enfoque ambiental. Uno de los escenarios más notables es el Concurso Nacional de Creatividad e Innovación Tecnológica de los Cecyte, cuya XXIII edición en 2024 se llevó a cabo en Zacatecas.</p>
+            
+            <!--<div class="testimonial">
+                <p>Participar en el proyecto de sustentabilidad de nuestro plantel me ha permitido no solo aplicar mis conocimientos de ciencias, sino también convertirme en un agente de cambio en mi comunidad. Hemos logrado reducir significativamente el consumo de energía y agua, además de implementar un sistema eficiente de reciclaje que toda la escuela sigue.</p>
+                <p class="testimonial-author">- Estudiante de CECyTEZ Plantel Fresnillo</p>
+            </div>-->
+            
+            <h3>Algunos proyectos innovadores incluyen:</h3>
+            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li>Sistemas de recolección y aprovechamiento de agua de lluvia</li>
+                <li>Jardines botánicos escolares con especies nativas</li>
+                <li>Propuestas de reciclaje de residuos orgánicos en gastronomía</li>
+                <li>Desarrollo de prototipos de energía renovable</li>
+                <li>Sistemas de monitoreo ambiental con tecnología desarrollada por estudiantes</li>
+            </ul>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Huerto.jpg" alt="Estudiantes trabajando en huerto escolar" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="Sustentabilidad.jpg" alt="Proyecto de paneles solares" class="gallery-img">
+                </div>
+               <!---- <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Brigada verde en acción" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/300" alt="Concurso de innovación sustentable" class="gallery-img">
+                </div>-->
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Certificaciones y Reconocimientos</h2>
+            <p>A nivel nacional, varios subsistemas CECyTE han recibido premios ambientales por sus iniciativas sustentables. En Zacatecas, aunque aún no contamos con un reconocimiento ecológico específico, CECyTEZ ha conseguido logros importantes en otras áreas:</p>
+            
+            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li>En 2023 el plantel Lázaro Cárdenas obtuvo la primera certificación como Escuela Promotora de la Salud a nivel media superior en Zacatecas</li>
+                <li>Participación activa en programas federales de sustentabilidad</li>
+                <li>Reconocimientos por proyectos estudiantiles en concursos nacionales</li>
+            </ul>
+            
+            <p>Actualmente, la dirección general del Colegio ha instado a todos los planteles a cumplir los estándares ambientales inscritos en los convenios con dependencias (como la Secretaría del Agua y Medio Ambiente de Zacatecas) y a perseguir reconocimientos por su cumplimiento.</p>
+        </section>
+
+        <section class="section">
+            <h2>Participación en Campañas Nacionales</h2>
+            <p>CECyTEZ se suma a campañas impulsadas por el gobierno federal y estatal para reforzar su programa de sustentabilidad:</p>
+            
+            <div class="initiatives">
+                <div class="initiative-card">
+                    <h3>"Limpiemos Nuestro México"</h3>
+                    <p>Participamos activamente en esta campaña organizada anualmente por SEMARNAT, llevando brigadas estudiantiles a limpiar áreas públicas de nuestras comunidades.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <h3>"Está en tus manos: la basura a su lugar"</h3>
+                    <p>Nos unimos a esta iniciativa federal para promover la correcta disposición de residuos y concientizar sobre la importancia de mantener limpios nuestros espacios.</p>
+                </div>
+                
+                <div class="initiative-card">
+                    <h3>"Jornadas por el Agua"</h3>
+                    <p>Aprovechamos esta convocatoria para reforzar nuestras acciones de conservación del agua, educando a nuestra comunidad sobre su importancia y correcto aprovechamiento.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

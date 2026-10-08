@@ -1,0 +1,794 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+        <title>Galeria</title>
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="stylesmenu.css">
+    <!-- Script del menú con atributo defer para cargar después del HTML -->
+    <script src="MenuScript.js" defer></script>
+
+    <style>
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+
+        p.description {
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+
+        /* Controles de filtro */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 30px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Estilos para videos */
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(52, 152, 219, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+        
+        .play-button:hover {
+            background-color: rgba(41, 128, 185, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .item-type {
+            margin-left: 10px;
+            background-color: rgba(231, 76, 60, 0.8);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        /* Contenedor de la galería */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Grid de la galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        /* Artículo de la galería */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            height: 0;
+            padding-bottom: 100%; /* Hace que todos los elementos sean cuadrados */
+            background-color: #fff;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contenedor de la imagen */
+        .img-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Imagen */
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay con información */
+        .item-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+            color: white;
+            transition: bottom 0.5s ease;
+        }
+
+        .gallery-item:hover .item-overlay {
+            bottom: 0;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .item-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Vista previa de la imagen */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 40px;
+        }
+
+        .lightbox.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-video {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-iframe-container {
+            width: 80vw;
+            height: 45vw;
+            max-width: 1000px;
+            max-height: 80vh;
+        }
+        
+        .lightbox-iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-lightbox:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-btn {
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .lightbox-btn:hover {
+            background-color: rgba(52, 152, 219, 0.7);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Media queries para responsividad */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+            
+            .lightbox-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .item-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    </head>
+    <body>
+        <button id="menuToggle" class="menu-toggle">☰</button>
+    
+        <div id="sidebar" class="sidebar">
+            <!-- Encabezado del menú con submenú -->
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Inicio</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="Menu Principal.html">Menu Principal</a></div>
+            </div>
+    
+            <div class="menu-item-toggle active" data-page="acerca-del-plantel">
+                <div class="menu-header">
+                    <span>Acerca Del Plantel</span>
+                    <span class="arrow">▼</span>
+                </div>
+            </div>
+            
+            <!-- Submenú del Dashboard (visible por defecto) -->
+            <div class="submenu active">
+                <div class="submenu-item"><a href="index.html">¿Quienes Somos?</a></div>
+                <div class="submenu-item"><a href="PersonalCecytez.html">Nuestro Equipo</a></div>
+                <div class="submenu-item"><a href="Instalaciones.html">Instalaciones</a></div>
+                <div class="submenu-item"><a href="Ubicacion.html">Ubicacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="vision,-mision">
+                <div class="menu-item">
+                    <span>Visión, Misión</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Vision.html">Visión, Misión</a></div>
+                <div class="submenu-item"><a href="Objetivos.html">Objetivos</a></div>
+                <div class="submenu-item"><a href="Politica.html">Política De Calidad</a></div>
+            </div>
+            
+            <!-- Elemento con submenú (Sales) -->
+            <div class="menu-item-toggle active " data-page="oferta-educativa">
+                <div class="menu-header">
+                    <span>Oferta Educativa</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Sales (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="MarcoCurricular.html">Marco Curricular</a></div>
+                <div class="submenu-item"><a href="Carreras.html">Procesos De Gestion Administrativa</a></div>
+                <div class="submenu-item"><a href="Enfermeria.html">Enfermería General</a></div>
+                <div class="submenu-item"><a href="Electricidad.html">Electricidad</a></div>
+                <div class="submenu-item"><a href="Programacion.html">Programacion</a></div>
+            </div>
+    
+            <div class="menu-item-toggle" data-page="programas">
+                <div class="menu-item">
+                    <span>Programas</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="Programas.html">ConstruyeT</a></div>
+                <div class="submenu-item"><a href="Sustentabilidad.html">Sustentabilidad</a></div>
+                <div class="submenu-item"><a href="EducacionDual.html">Educacion Dual</a></div>
+                <div class="submenu-item"><a href="ServicioSocial.html">Servicio Social</a></div>
+            </div>
+    
+            <!-- Elemento con submenú (Messages) -->
+            <div class="menu-item-toggle" data-page="otros">
+                <div class="menu-item">
+                    <span>Galeria</span>
+                    <span class="arrow">▶</span>
+                </div>
+            </div>
+            
+            <!-- Submenú de Messages (oculto por defecto) -->
+            <div class="submenu">
+                <div class="submenu-item"><a href="GaleriaMax.html">Galeria ConstruyeT</a></div>
+                <div class="submenu-item"><a href="GaleriaAcademica.html">Galeria Academica</a></div>
+                <div class="submenu-item"><a href="GaleriaDeportiva.html">Galeria Deportiva</a></div>
+            </div>
+        </div>
+
+<div id="content" class="content">
+<header>
+        <h1>Galería Academica</h1>
+        <p class="description">Una galería llena de imagenes de eventos academicos donde nuestros alumnos han participado y ganado premios.</p>
+    </header>
+
+    <div class="gallery-container">
+        <!-- Controles de filtro -->
+        <div class="gallery-controls">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="Academico">Festival Academico</button>
+            <button class="filter-btn" data-filter="Innovacion">Concurso de Innovacion</button>
+        </div>
+
+        <!-- Grid de la galería -->
+        <div class="gallery-grid">
+            <!-- Imágenes de la galería -->
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival20232.jpg" alt="" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Participantes en el Festival Academico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Innovacion" data-type="image">
+                <div class="img-container">
+                    <img src="Innovacion2.jpg" alt="Edificio moderno" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Concurso de Creatividad Cientifica e Innovacion</h3>
+                        <span class="item-category">Participantes en el Concurso de Creatividad Cientifica e Innovacion</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Innovacion" data-type="image">
+                <div class="img-container">
+                    <img src="Innovacion6.jpg" alt="Persona caminando" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Concurso de Creatividad Cientifica e Innovacion</h3>
+                        <span class="item-category">Alumnos de Procesos de Gestion Exponen Su Prototipo De Investigación</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival5.jpg" alt="Playa tropical" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Ganador En La Etapa Nacional del Festival Academico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival1.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Ganadores En La Etapa Estatal del Festival Academico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival2.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Comite de Zacatecas Listos Para El Festival Academico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival3.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Rumbo a Valladolid a Participar en el Festival Academico</span> 
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Innovacion" data-type="image">
+                <div class="img-container">
+                    <img src="Innovacion5.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Concurso de Creatividad Cientifica e Innovacion</h3>
+                        <span class="item-category">Alumnos de Programacion Exponen Su Prototipo Informatico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Innovacion" data-type="image">
+                <div class="img-container">
+                    <img src="Innovacion4.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Concurso de Creatividad Cientifica e Innovacion</h3>
+                        <span class="item-category">Participantes en el Concurso de Creatividad Cientifica e Innovacion</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival20233.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Participantes en el Festival Academico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Innovacion" data-type="image">
+                <div class="img-container">
+                    <img src="Innovacion3.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Concurso de Creatividad Cientifica e Innovacion</h3>
+                        <span class="item-category">Alumnos de Electricidad Exponen Su Prototipo Tecnologico</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-item" data-category="Academico" data-type="image">
+                <div class="img-container">
+                    <img src="Festival20234.jpg" alt="Templo antiguo" class="gallery-img">
+                    <div class="item-overlay">
+                        <h3 class="item-title">Festival Academico</h3>
+                        <span class="item-category">Participantes en el Festival Academico</span>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </div>
+
+    <!-- Lightbox para vista previa -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <!-- Para imágenes -->
+            <img src="" alt="" class="lightbox-img">
+            
+            <!-- Para videos locales -->
+            <video class="lightbox-video" controls style="display: none;">
+                <source src="" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            
+            <!-- Para videos de YouTube/Vimeo -->
+            <div class="lightbox-iframe-container" style="display: none;">
+                <iframe class="lightbox-iframe" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="lightbox-caption"></div>
+        </div>
+        <div class="close-lightbox">×</div>
+        <div class="lightbox-nav">
+            <div class="lightbox-btn prev-btn">&#10094;</div>
+            <div class="lightbox-btn next-btn">&#10095;</div>
+        </div>
+    </div>
+
+    <script>
+        // Filtrado de la galería
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Actualizar botón activo
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Obtener categoría a filtrar
+                const filterValue = button.getAttribute('data-filter');
+
+                // Mostrar/ocultar elementos según filtro
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Funcionalidad del lightbox
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = document.querySelector('.lightbox-img');
+        const lightboxVideo = document.querySelector('.lightbox-video');
+        const lightboxIframeContainer = document.querySelector('.lightbox-iframe-container');
+        const lightboxIframe = document.querySelector('.lightbox-iframe');
+        const lightboxCaption = document.querySelector('.lightbox-caption');
+        const closeLightbox = document.querySelector('.close-lightbox');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex;
+
+        // Abrir lightbox al hacer clic en un elemento de la galería
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const itemType = item.getAttribute('data-type');
+                const title = item.querySelector('.item-title').textContent;
+                
+                // Ocultar todos los elementos de lightbox primero
+                lightboxImg.style.display = 'none';
+                lightboxVideo.style.display = 'none';
+                lightboxIframeContainer.style.display = 'none';
+                
+                // Mostrar el elemento apropiado según el tipo
+                if (itemType === 'image') {
+                    const img = item.querySelector('.gallery-img');
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxImg.style.display = 'block';
+                } 
+                else if (itemType === 'video') {
+                    const videoSource = item.getAttribute('data-video-src');
+                    
+                    if (videoSource === 'video-local') {
+                        // Para videos locales
+                        lightboxVideo.querySelector('source').src = 'Videos/PasarelaCecytez2024.mp4'; // Reemplazar con la ruta real
+                        lightboxVideo.load(); // Importante para que cargue la nueva fuente
+                        lightboxVideo.style.display = 'block';
+                    } 
+                    else if (videoSource === 'video-local-2') {
+                        // Para videos locales
+                        lightboxVideo.querySelector('source').src = 'Videos/Estudiante2.mp4'; // Reemplazar con la ruta real
+                        lightboxVideo.load(); // Importante para que cargue la nueva fuente
+                        lightboxVideo.style.display = 'block';
+                    }
+                }
+                
+                lightboxCaption.textContent = title;
+                currentIndex = index;
+                
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevenir scroll
+            });
+        });
+
+        // Cerrar lightbox
+        closeLightbox.addEventListener('click', () => {
+            closeMediaLightbox();
+        });
+
+        // También cerrar al hacer clic fuera del contenido
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeMediaLightbox();
+            }
+        });
+
+        // Función para cerrar el lightbox y detener medios
+        function closeMediaLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+            
+            // Detener videos
+            lightboxVideo.pause();
+            
+            // Detener iframes (YouTube/Vimeo)
+            lightboxIframe.src = '';
+        }
+
+        // Navegación del lightbox
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateLightbox();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            updateLightbox();
+        });
+
+        // Actualizar contenido del lightbox
+        function updateLightbox() {
+            closeMediaLightbox(); // Cerrar contenido multimedia actual
+            
+            const item = galleryItems[currentIndex];
+            const itemType = item.getAttribute('data-type');
+            const title = item.querySelector('.item-title').textContent;
+            
+            // Ocultar todos los elementos de lightbox primero
+            lightboxImg.style.display = 'none';
+            lightboxVideo.style.display = 'none';
+            lightboxIframeContainer.style.display = 'none';
+            
+            // Mostrar el elemento apropiado según el tipo
+            if (itemType === 'image') {
+                const img = item.querySelector('.gallery-img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxImg.style.display = 'block';
+            } 
+            else if (itemType === 'video') {
+                const videoSource = item.getAttribute('data-video-src');
+                
+                if (videoSource === 'video-local') {
+                // Para videos locales
+                const videoPath = item.getAttribute('data-video-path');
+                lightboxVideo.querySelector('source').src = videoPath;
+                lightboxVideo.load(); // Importante para que cargue la nueva fuente
+                lightboxVideo.style.display = 'block';
+}else if(videoSource === 'video-local-2'){
+                // Para videos locales
+                const videoPath = item.getAttribute('data-video-path');
+                lightboxVideo.querySelector('source').src = videoPath;
+                lightboxVideo.load(); // Importante para que cargue la nueva fuente
+                lightboxVideo.style.display = 'block';
+}
+                
+            }
+            
+            lightboxCaption.textContent = title;
+            
+            // Reabrir el lightbox si se cerró durante la navegación
+            if (!lightbox.classList.contains('active')) {
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            } else if (e.key === 'Escape') {
+                closeMediaLightbox();
+            }
+        });
+    </script>
+    </div>
+    </body>
+</html>
