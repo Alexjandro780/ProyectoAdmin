@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Carpintería a tu medida — Solicita tu cotización</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="styles.css">
+    <!-- Enlace al CSS del menú -->
+  <link rel="stylesheet" href="stylesmenu.css">
+    <!-- Script del menú con atributo defer para cargar después del HTML -->
+  <script src="MenuScript.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+            body {
+              font-family: 'Merriweather', serif;
+              background: #f9f9f9;
+              margin: 0;
+              padding: 0;
+            }
+        
+            .borde-colorido {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 5px;
+              padding: 10px;
+              background: white;
+            }
+        
+            .borde-colorido span {
+              width: 25px;
+              height: 25px;
+              border-radius: 50%;
+              display: inline-block;
+            }
+        
+            /* Colores vivos para los círculos */
+            .rojo { background: #f94144; }
+            .naranja { background: #f8961e; }
+            .amarillo { background: #f9c74f; }
+            .verde { background: #43aa8b; }
+            .azul { background: #577590; }
+            .morado { background: #9d4edd; }
+        
+            .titulo {
+              text-align: center;
+              font-size: 50px;
+              font-weight: bold;
+              margin: 20px;
+            }
+        
+            .titulo span {
+              color: black;
+            }
+        
+            .titulo .c1 { color: #43aa8b; }
+            .titulo .c2 { color: #9d4edd; }
+            .titulo .c3 { color: #f9c74f; }
+            .titulo .c4 { color: #f8961e; }
+            .titulo .c5 { color: #577590; }
+        
+            .contenedor {
+              display: flex;
+              justify-content: center;
+              gap: 50px;
+              padding: 20px;
+              flex-wrap: wrap;
+            }
+        
+            .bloque {
+              width: 200px;
+              text-align: center;
+            }
+        
+            .bloque img {
+              width: 80px;
+              height: 80px;
+            }
+        
+            .bloque h3 {
+              font-size: 20px;
+              margin-top: 10px;
+              color: #333;
+            }
+        
+            .bloque p {
+              font-size: 14px;
+              color: #555;
+            }
+:root{
+  --bg:#E9ECE6; --card:#FBFBF8; --ink:#1E2421; --muted:#5B655F; --line:#CBD1C8;
+  --pine:#1F3A33; --pine-ink:#F2F4EE; --brass:#B8862F; --brass-soft:#F1E3C4; --err:#A3321F;
+  --head:"Archivo","Arial Narrow",Arial,sans-serif; --body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141917; --card:#1D2421; --ink:#E8ECE6; --muted:#9AA69F; --line:#323C37;
+  --pine:#2F5A4E; --pine-ink:#F2F4EE; --brass:#D6A84E; --brass-soft:#3A2F17; --err:#E87A66;}}
+:root[data-theme="dark"]{
+  --bg:#141917; --card:#1D2421; --ink:#E8ECE6; --muted:#9AA69F; --line:#323C37;
+  --pine:#2F5A4E; --pine-ink:#F2F4EE; --brass:#D6A84E; --brass-soft:#3A2F17; --err:#E87A66;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--body)}
+.hero{
+  background:
+    repeating-linear-gradient(92deg,rgba(0,0,0,.0) 0 7px,rgba(0,0,0,.10) 7px 8px,rgba(255,255,255,.03) 8px 15px),
+    repeating-linear-gradient(88deg,rgba(0,0,0,.0) 0 31px,rgba(0,0,0,.14) 31px 33px),
+    linear-gradient(120deg,#244A40,#1A3029 60%,#22443A);
+  color:var(--pine-ink); padding:3.5rem 1.25rem 7rem;
+}
+.wrap{max-width:60rem;margin:0 auto}
+.brand{font:800 1rem var(--head);letter-spacing:.02em;display:flex;align-items:center;gap:.6rem}
+.brand i{width:1.6rem;height:1.6rem;border:3px solid var(--brass);border-radius:3px;display:inline-block;transform:rotate(45deg) scale(.8)}
+h1{font:900 clamp(2.6rem,9vw,5.4rem)/.95 var(--head);letter-spacing:-.02em;margin:2.5rem 0 1.2rem;max-width:13ch}
+.hero p{max-width:34rem;font-size:1.1rem;margin:0;color:#D5DDD6}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;margin:2rem 0 0;padding:0;list-style:none;font-weight:500}
+.facts li::before{content:"";display:inline-block;width:.55rem;height:.55rem;background:var(--brass);margin-right:.55rem}
+main{margin:-4.5rem auto 3rem;padding:0 1rem;max-width:60rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;position:relative;padding:3.4rem 1.25rem 1.75rem;box-shadow:0 18px 40px -22px rgba(0,0,0,.45)}
+/* cinta métrica */
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:1.6rem;border-radius:6px 6px 0 0;
+  background:
+    repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 40px) 0 100%/100% 100% no-repeat,
+    repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 8px) 0 100%/100% 35% no-repeat,
+    var(--brass);
+  opacity:.9}
+fieldset{border:0;padding:0;margin:0 0 2rem}
+legend{font:800 1.35rem var(--head);padding:0;margin-bottom:.9rem;letter-spacing:-.01em}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.card{padding:3.4rem 2.5rem 2.5rem}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+label,.lab{display:block;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
+.hint{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:4px;padding:.7rem .8rem;min-height:2.9rem}
+textarea{min-height:7.5rem;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.chip input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--err)}
+.err{color:var(--err);font-size:.85rem;margin:.3rem 0 0;min-height:0}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;min-height:0;cursor:pointer}
+.chip span{display:block;padding:.6rem 1rem;border:1.5px solid var(--line);border-radius:999px;background:var(--bg);font-weight:500;font-size:.95rem;transition:background .15s,color .15s,border-color .15s}
+.chip input:checked+span{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-weight:500}
+.check input{width:1.3rem;height:1.3rem;min-height:0;margin-top:.15rem;accent-color:var(--pine)}
+.btn{font:800 1.1rem var(--head);background:var(--brass);color:#1E2421;border:0;border-radius:4px;padding:1rem 1.6rem;cursor:pointer;width:100%;min-height:3.2rem}
+.btn:hover{filter:brightness(1.07)}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-top:.7rem}
+.small{color:var(--muted);font-size:.85rem;margin:.9rem 0 0;text-align:center}
+@media(min-width:640px){.btn{width:auto}.btn.alt{margin-top:0;margin-left:.6rem}.small{text-align:left}}
+.carp{display:flex;gap:1rem;align-items:center;background:var(--brass-soft);border:1.5px solid var(--brass);border-radius:6px;padding:1rem 1.1rem;margin-top:1.4rem}
+.avatar{flex:none;width:3.4rem;height:3.4rem;border-radius:50%;background:var(--pine);color:var(--pine-ink);display:grid;place-items:center;font:800 1.2rem var(--head)}
+.carp .cl{font-size:.85rem;color:var(--muted)}
+.carp .cn{font:800 1.25rem var(--head);line-height:1.2}
+.carp .cs{font-size:.92rem;color:var(--muted)}
+.carp .stars{font-weight:600;margin-top:.15rem}
+.carp .stars b{color:var(--brass);letter-spacing:.08em}
+#done{display:none}
+#done.on{display:block;animation:pop .35s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#done h2{font:900 clamp(1.9rem,6vw,2.8rem)/1 var(--head);margin:0 0 .8rem}
+dl{margin:1.5rem 0;display:grid;gap:.1rem;border-top:1px solid var(--line)}
+dl div{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+@media(min-width:640px){dl div{grid-template-columns:12rem 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand"><i></i>T</div>
+    <h1>Muebles hechos a tu medida</h1>
+    <p>Cuéntanos qué necesitas y te enviamos una cotización sin costo. Medimos, diseñamos y construimos en madera.</p>
+    <ul class="facts"><li>Cotización gratis</li><li>Visita a domicilio</li><li>Respuesta en 24 horas</li></ul>
+  </div>
+</header>
+
+<main>
+<div class="card">
+<form id="f" novalidate>
+ <div id="formArea">
+  <fieldset>
+    <legend>¿Qué necesitas?</legend>
+    <div class="chips" role="radiogroup" aria-label="Tipo de servicio">
+      <label class="chip"><input type="radio" name="servicio" value="Clóset o vestidor" required><span>Clóset o vestidor</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Cocina integral"><span>Cocina integral</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Puertas y ventanas"><span>Puertas y ventanas</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Mueble a medida"><span>Mueble a medida</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Reparación o restauración"><span>Reparación o restauración</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Otro"><span>Otro</span></label>
+    </div>
+    <p class="err" id="e-servicio"></p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Medidas y material</legend>
+    <div class="grid g3">
+      <div><label for="ancho">Ancho <span class="hint">(cm)</span></label><input id="ancho" name="ancho" type="number" min="1" inputmode="numeric" placeholder="240"></div>
+      <div><label for="alto">Alto <span class="hint">(cm)</span></label><input id="alto" name="alto" type="number" min="1" inputmode="numeric" placeholder="260"></div>
+      <div><label for="fondo">Fondo <span class="hint">(cm)</span></label><input id="fondo" name="fondo" type="number" min="1" inputmode="numeric" placeholder="60"></div>
+    </div>
+    <div class="grid g2" style="margin-top:1rem">
+      <div><label for="material">Material</label>
+        <select id="material" name="material">
+          <option>No estoy seguro, recomiéndenme</option><option>Pino</option><option>Cedro</option><option>Encino</option><option>Parota</option><option>MDF o melamina</option>
+        </select></div>
+      <div><label for="fecha">Fecha en que lo necesitas <span class="hint">(opcional)</span></label><input id="fecha" name="fecha" type="date"></div>
+    </div>
+    <div style="margin-top:1rem"><label for="desc">Describe tu proyecto</label>
+      <textarea id="desc" name="desc" required placeholder="Ej. Clóset de piso a techo con dos puertas corredizas, cajones y barra para colgar."></textarea>
+      <p class="err" id="e-desc"></p></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>¿Cómo te contactamos?</legend>
+    <div class="grid g2">
+      <div><label for="nombre">Nombre completo</label><input id="nombre" name="nombre" required autocomplete="name"><p class="err" id="e-nombre"></p></div>
+      <div><label for="tel">Teléfono o WhatsApp</label><input id="tel" name="tel" type="tel" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos"><p class="err" id="e-tel"></p></div>
+      <div><label for="mail">Correo <span class="hint">(opcional)</span></label><input id="mail" name="mail" type="email" autocomplete="email"><p class="err" id="e-mail"></p></div>
+      <div><label for="zona">Colonia o ciudad</label><input id="zona" name="zona" required autocomplete="address-level2"><p class="err" id="e-zona"></p></div>
+    </div>
+    <label class="check" style="margin-top:1.1rem"><input type="checkbox" name="visita" id="visita" checked> Quiero que vayan a mi domicilio a tomar medidas</label>
+  </fieldset>
+
+  <button class="btn" type="submit">Solicitar cotización</button>
+  <p class="small">Usaremos tus datos solo para responder esta solicitud.</p>
+ </div>
+
+ <div id="done" role="status" aria-live="polite" tabindex="-1">
+   <h2>Solicitud lista, <span id="d-nombre"></span></h2>
+   <p>Ya asignamos a tu carpintero. Te contactará al teléfono que nos diste para confirmar medidas y precio.</p>
+   <div class="carp"><div class="avatar" id="c-ini" aria-hidden="true"></div><div><div class="cl">Tu carpintero asignado</div><div class="cn" id="c-nombre"></div><div class="cs" id="c-esp"></div><div class="stars" id="c-stars"></div></div></div>
+   <dl id="resumen"></dl>
+   <button class="btn" type="button" id="copiar">Copiar resumen</button><button class="btn alt" type="button" id="otra">Hacer otra solicitud</button>
+ </div>
+</form>
+</div>
+</main>
+
+<script>
+(function(){
+  var CARPS=[
+    {n:'Ramón Esquivel',r:4.9,o:132,e:'Cocinas integrales y clósets · 18 años de experiencia',s:['Cocina integral','Clóset o vestidor']},
+    {n:'Marisol Treviño',r:4.8,o:96,e:'Puertas, ventanas y acabados · 11 años de experiencia',s:['Puertas y ventanas','Otro']},
+    {n:'Joaquín Barraza',r:4.7,o:74,e:'Muebles a medida · 9 años de experiencia',s:['Mueble a medida','Clóset o vestidor','Otro']},
+    {n:'Lucía Anaya',r:4.9,o:88,e:'Restauración y reparación · 14 años de experiencia',s:['Reparación o restauración','Mueble a medida']},
+    {n:'Esteban Ruiz',r:4.6,o:51,e:'Carpintería en general · 7 años de experiencia',s:['Cocina integral','Puertas y ventanas','Reparación o restauración','Otro']}
+  ];
+  var f=document.getElementById('f'), done=document.getElementById('done'), area=document.getElementById('formArea'), texto='';
+  function setErr(id,msg,field){var e=document.getElementById('e-'+id);if(e)e.textContent=msg;if(field)field.setAttribute('aria-invalid',msg?'true':'false');}
+  function validar(){
+    var ok=true, d=f.elements;
+    var checks=[
+      ['servicio',!f.querySelector('input[name=servicio]:checked'),'Elige un tipo de servicio.',null],
+      ['desc',d.desc.value.trim().length<10,'Cuéntanos un poco más (mínimo 10 caracteres).',d.desc],
+      ['nombre',!d.nombre.value.trim(),'Escribe tu nombre.',d.nombre],
+      ['tel',d.tel.value.replace(/\D/g,'').length<10,'Escribe un teléfono de 10 dígitos.',d.tel],
+      ['mail',d.mail.value&&!/^\S+@\S+\.\S+$/.test(d.mail.value),'Revisa el formato del correo.',d.mail],
+      ['zona',!d.zona.value.trim(),'Indica tu colonia o ciudad.',d.zona]
+    ], first=null;
+    checks.forEach(function(c){setErr(c[0],c[2]&&c[1]?c[2]:'',c[3]); if(c[1]){ok=false; if(!first)first=c[3]||f.querySelector('input[name=servicio]');}});
+    if(first)first.focus();
+    return ok;
+  }
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!validar())return;
+    var d=f.elements, med=[d.ancho.value,d.alto.value,d.fondo.value];
+    var medTxt=med.some(Boolean)?(med[0]||'—')+' × '+(med[1]||'—')+' × '+(med[2]||'—')+' cm (ancho × alto × fondo)':'Sin medidas aún';
+    var filas=[
+      ['Servicio',f.querySelector('input[name=servicio]:checked').value],
+      ['Medidas',medTxt],['Material',d.material.value],
+      ['Fecha deseada',d.fecha.value||'Sin fecha definida'],
+      ['Proyecto',d.desc.value.trim()],
+      ['Nombre',d.nombre.value.trim()],['Teléfono',d.tel.value.trim()],
+      ['Correo',d.mail.value.trim()||'—'],['Zona',d.zona.value.trim()],
+      ['Visita a domicilio',d.visita.checked?'Sí':'No']
+    ];
+    var serv=filas[0][1], pool=CARPS.filter(function(c){return c.s.indexOf(serv)>-1;});
+    if(!pool.length)pool=CARPS;
+    var carp=pool[Math.floor(Math.random()*pool.length)], estrellas=new Array(Math.round(carp.r)+1).join('★');
+    document.getElementById('c-ini').textContent=carp.n.split(' ').map(function(p){return p.charAt(0);}).join('');
+    document.getElementById('c-nombre').textContent=carp.n;
+    document.getElementById('c-esp').textContent=carp.e;
+    var st=document.getElementById('c-stars'); st.innerHTML=''; var b=document.createElement('b'); b.textContent=estrellas; b.setAttribute('aria-hidden','true');
+    st.appendChild(b); st.appendChild(document.createTextNode(' '+carp.r.toFixed(1)+' de 5 · '+carp.o+' reseñas'));
+    var dl=document.getElementById('resumen'); dl.innerHTML='';
+    filas.forEach(function(r){var w=document.createElement('div'),t=document.createElement('dt'),v=document.createElement('dd');t.textContent=r[0];v.textContent=r[1];w.appendChild(t);w.appendChild(v);dl.appendChild(w);});
+    texto='Solicitud de carpintería\n'+filas.map(function(r){return r[0]+': '+r[1];}).join('\n')+'\nCarpintero asignado: '+carp.n+' ('+carp.r.toFixed(1)+' de 5)';
+    document.getElementById('d-nombre').textContent=d.nombre.value.trim().split(' ')[0];
+    area.style.display='none'; done.classList.add('on'); done.focus(); window.scrollTo({top:0,behavior:'smooth'});
+  });
+  document.getElementById('copiar').addEventListener('click',function(){
+    var b=this;
+    try{navigator.clipboard.writeText(texto).then(function(){b.textContent='Resumen copiado';});}catch(e){b.textContent='No se pudo copiar';}
+  });
+  document.getElementById('otra').addEventListener('click',function(){
+    f.reset(); done.classList.remove('on'); area.style.display=''; document.getElementById('copiar').textContent='Copiar resumen';
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
