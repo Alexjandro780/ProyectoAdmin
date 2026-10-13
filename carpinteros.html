@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carpintería a tu medida — Solicita tu cotización</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9ECE6; --card:#FBFBF8; --ink:#1E2421; --muted:#5B655F; --line:#CBD1C8;
+  --pine:#1F3A33; --pine-ink:#F2F4EE; --brass:#B8862F; --brass-soft:#F1E3C4; --err:#A3321F;
+  --head:"Archivo","Arial Narrow",Arial,sans-serif; --body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141917; --card:#1D2421; --ink:#E8ECE6; --muted:#9AA69F; --line:#323C37;
+  --pine:#2F5A4E; --pine-ink:#F2F4EE; --brass:#D6A84E; --brass-soft:#3A2F17; --err:#E87A66;}}
+:root[data-theme="dark"]{
+  --bg:#141917; --card:#1D2421; --ink:#E8ECE6; --muted:#9AA69F; --line:#323C37;
+  --pine:#2F5A4E; --pine-ink:#F2F4EE; --brass:#D6A84E; --brass-soft:#3A2F17; --err:#E87A66;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--body)}
+.hero{
+  background:
+    repeating-linear-gradient(92deg,rgba(0,0,0,.0) 0 7px,rgba(0,0,0,.10) 7px 8px,rgba(255,255,255,.03) 8px 15px),
+    repeating-linear-gradient(88deg,rgba(0,0,0,.0) 0 31px,rgba(0,0,0,.14) 31px 33px),
+    linear-gradient(120deg,#244A40,#1A3029 60%,#22443A);
+  color:var(--pine-ink); padding:3.5rem 1.25rem 7rem;
+}
+.wrap{max-width:60rem;margin:0 auto}
+.brand{font:800 1rem var(--head);letter-spacing:.02em;display:flex;align-items:center;gap:.6rem}
+.brand i{width:1.6rem;height:1.6rem;border:3px solid var(--brass);border-radius:3px;display:inline-block;transform:rotate(45deg) scale(.8)}
+h1{font:900 clamp(2.6rem,9vw,5.4rem)/.95 var(--head);letter-spacing:-.02em;margin:2.5rem 0 1.2rem;max-width:13ch}
+.hero p{max-width:34rem;font-size:1.1rem;margin:0;color:#D5DDD6}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;margin:2rem 0 0;padding:0;list-style:none;font-weight:500}
+.facts li::before{content:"";display:inline-block;width:.55rem;height:.55rem;background:var(--brass);margin-right:.55rem}
+main{margin:-4.5rem auto 3rem;padding:0 1rem;max-width:60rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;position:relative;padding:3.4rem 1.25rem 1.75rem;box-shadow:0 18px 40px -22px rgba(0,0,0,.45)}
+/* cinta métrica */
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:1.6rem;border-radius:6px 6px 0 0;
+  background:
+    repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 40px) 0 100%/100% 100% no-repeat,
+    repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 8px) 0 100%/100% 35% no-repeat,
+    var(--brass);
+  opacity:.9}
+fieldset{border:0;padding:0;margin:0 0 2rem}
+legend{font:800 1.35rem var(--head);padding:0;margin-bottom:.9rem;letter-spacing:-.01em}
+.grid{display:grid;gap:1rem}
+@media(min-width:640px){.card{padding:3.4rem 2.5rem 2.5rem}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+label,.lab{display:block;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
+.hint{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:4px;padding:.7rem .8rem;min-height:2.9rem}
+textarea{min-height:7.5rem;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.chip input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--err)}
+.err{color:var(--err);font-size:.85rem;margin:.3rem 0 0;min-height:0}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;min-height:0;cursor:pointer}
+.chip span{display:block;padding:.6rem 1rem;border:1.5px solid var(--line);border-radius:999px;background:var(--bg);font-weight:500;font-size:.95rem;transition:background .15s,color .15s,border-color .15s}
+.chip input:checked+span{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-weight:500}
+.check input{width:1.3rem;height:1.3rem;min-height:0;margin-top:.15rem;accent-color:var(--pine)}
+.btn{font:800 1.1rem var(--head);background:var(--brass);color:#1E2421;border:0;border-radius:4px;padding:1rem 1.6rem;cursor:pointer;width:100%;min-height:3.2rem}
+.btn:hover{filter:brightness(1.07)}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-top:.7rem}
+.small{color:var(--muted);font-size:.85rem;margin:.9rem 0 0;text-align:center}
+@media(min-width:640px){.btn{width:auto}.btn.alt{margin-top:0;margin-left:.6rem}.small{text-align:left}}
+.carp{display:flex;gap:1rem;align-items:center;background:var(--brass-soft);border:1.5px solid var(--brass);border-radius:6px;padding:1rem 1.1rem;margin-top:1.4rem}
+.avatar{flex:none;width:3.4rem;height:3.4rem;border-radius:50%;background:var(--pine);color:var(--pine-ink);display:grid;place-items:center;font:800 1.2rem var(--head)}
+.carp .cl{font-size:.85rem;color:var(--muted)}
+.carp .cn{font:800 1.25rem var(--head);line-height:1.2}
+.carp .cs{font-size:.92rem;color:var(--muted)}
+.carp .stars{font-weight:600;margin-top:.15rem}
+.carp .stars b{color:var(--brass);letter-spacing:.08em}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.nav{color:var(--pine-ink);font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid var(--brass);border-radius:999px;padding:.45rem 1rem}
+.nav:hover{background:var(--brass);color:#1E2421}
+.nav:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+#portal{display:none}
+body[data-view=portal]>.hero,body[data-view=portal]>main{display:none}
+body[data-view=portal] #portal{display:block}
+.phead.hero{padding:1.5rem 1.25rem 5.5rem}
+.phead h1{font-size:clamp(2rem,6vw,3.2rem);margin:2rem 0 0;max-width:none}
+#lf h2,.pcard h2{font:800 1.35rem var(--head);margin:0 0 .8rem}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.25rem;margin-bottom:1rem;box-shadow:0 18px 40px -26px rgba(0,0,0,.45)}
+.prof{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.prof .grow{flex:1;min-width:12rem}
+.prof .cn{font:800 1.3rem var(--head)}
+.prof .cs{color:var(--muted);font-size:.9rem}
+.score{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.6rem}
+.score strong{font:900 3rem/1 var(--head)}
+.rev{border-top:1px solid var(--line);padding:.8rem 0}
+.rev b,.score b{color:var(--brass);letter-spacing:.08em}
+.tab{font:inherit;font-weight:600;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tab[aria-pressed=true]{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
+.tab:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.job{border:1px solid var(--line);border-left:5px solid var(--brass);border-radius:6px;padding:1rem;margin-top:.9rem;background:var(--bg)}
+.job.ok{border-left-color:var(--pine);opacity:.85}
+.job h3{font:800 1.15rem var(--head);margin:0}
+.job p{margin:.3rem 0}
+.meta{color:var(--muted);font-size:.9rem}
+.empty{color:var(--muted);padding:1rem 0 .4rem;margin:0}
+.btn.sm{width:auto;font-size:1rem;padding:.6rem 1rem;min-height:2.6rem;margin-top:.7rem}
+#done{display:none}
+#done.on{display:block;animation:pop .35s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#done h2{font:900 clamp(1.9rem,6vw,2.8rem)/1 var(--head);margin:0 0 .8rem}
+dl{margin:1.5rem 0;display:grid;gap:.1rem;border-top:1px solid var(--line)}
+dl div{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+@media(min-width:640px){dl div{grid-template-columns:12rem 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="top"><div class="brand"><i></i>Taller Madera Viva</div><a class="nav" href="#carpintero">Acceso carpinteros</a></div>
+    <h1>Muebles hechos a tu medida</h1>
+    <p>Cuéntanos qué necesitas y te enviamos una cotización sin costo. Medimos, diseñamos y construimos en madera.</p>
+    <ul class="facts"><li>Cotización gratis</li><li>Visita a domicilio</li><li>Respuesta en 24 horas</li></ul>
+  </div>
+</header>
+
+<main>
+<div class="card">
+<form id="f" novalidate>
+ <div id="formArea">
+  <fieldset>
+    <legend>¿Qué necesitas?</legend>
+    <div class="chips" role="radiogroup" aria-label="Tipo de servicio">
+      <label class="chip"><input type="radio" name="servicio" value="Clóset o vestidor" required><span>Clóset o vestidor</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Cocina integral"><span>Cocina integral</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Puertas y ventanas"><span>Puertas y ventanas</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Mueble a medida"><span>Mueble a medida</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Reparación o restauración"><span>Reparación o restauración</span></label>
+      <label class="chip"><input type="radio" name="servicio" value="Otro"><span>Otro</span></label>
+    </div>
+    <p class="err" id="e-servicio"></p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Medidas y material</legend>
+    <div class="grid g3">
+      <div><label for="ancho">Ancho <span class="hint">(cm)</span></label><input id="ancho" name="ancho" type="number" min="1" inputmode="numeric" placeholder="240"></div>
+      <div><label for="alto">Alto <span class="hint">(cm)</span></label><input id="alto" name="alto" type="number" min="1" inputmode="numeric" placeholder="260"></div>
+      <div><label for="fondo">Fondo <span class="hint">(cm)</span></label><input id="fondo" name="fondo" type="number" min="1" inputmode="numeric" placeholder="60"></div>
+    </div>
+    <div class="grid g2" style="margin-top:1rem">
+      <div><label for="material">Material</label>
+        <select id="material" name="material">
+          <option>No estoy seguro, recomiéndenme</option><option>Pino</option><option>Cedro</option><option>Encino</option><option>Parota</option><option>MDF o melamina</option>
+        </select></div>
+      <div><label for="fecha">Fecha en que lo necesitas <span class="hint">(opcional)</span></label><input id="fecha" name="fecha" type="date"></div>
+    </div>
+    <div style="margin-top:1rem"><label for="desc">Describe tu proyecto</label>
+      <textarea id="desc" name="desc" required placeholder="Ej. Clóset de piso a techo con dos puertas corredizas, cajones y barra para colgar."></textarea>
+      <p class="err" id="e-desc"></p></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>¿Cómo te contactamos?</legend>
+    <div class="grid g2">
+      <div><label for="nombre">Nombre completo</label><input id="nombre" name="nombre" required autocomplete="name"><p class="err" id="e-nombre"></p></div>
+      <div><label for="tel">Teléfono o WhatsApp</label><input id="tel" name="tel" type="tel" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos"><p class="err" id="e-tel"></p></div>
+      <div><label for="mail">Correo <span class="hint">(opcional)</span></label><input id="mail" name="mail" type="email" autocomplete="email"><p class="err" id="e-mail"></p></div>
+      <div><label for="zona">Colonia o ciudad</label><input id="zona" name="zona" required autocomplete="address-level2"><p class="err" id="e-zona"></p></div>
+    </div>
+    <label class="check" style="margin-top:1.1rem"><input type="checkbox" name="visita" id="visita" checked> Quiero que vayan a mi domicilio a tomar medidas</label>
+  </fieldset>
+
+  <button class="btn" type="submit">Solicitar cotización</button>
+  <p class="small">Usaremos tus datos solo para responder esta solicitud.</p>
+ </div>
+
+ <div id="done" role="status" aria-live="polite" tabindex="-1">
+   <h2>Solicitud lista, <span id="d-nombre"></span></h2>
+   <p>Ya asignamos a tu carpintero. Te contactará al teléfono que nos diste para confirmar medidas y precio.</p>
+   <div class="carp"><div class="avatar" id="c-ini" aria-hidden="true"></div><div><div class="cl">Tu carpintero asignado</div><div class="cn" id="c-nombre"></div><div class="cs" id="c-esp"></div><div class="stars" id="c-stars"></div></div></div>
+   <p class="small" id="sync" role="status"></p>
+   <dl id="resumen"></dl>
+   <button class="btn" type="button" id="copiar">Copiar resumen</button><button class="btn alt" type="button" id="otra">Hacer otra solicitud</button>
+ </div>
+</form>
+</div>
+</main>
+
+<div id="portal">
+<header class="hero phead"><div class="wrap"><div class="top"><div class="brand"><i></i>Taller Madera Viva</div><a class="nav" href="#">Ir al formulario de clientes</a></div><h1>Portal del carpintero</h1></div></header>
+<main>
+ <form class="card" id="lf" novalidate>
+  <h2>Entra con tu número de control</h2>
+  <div class="grid g2"><div><label for="ctl">Número de control</label><input id="ctl" placeholder="CR001" autocomplete="username" autocapitalize="characters"></div><div><label for="pwd">Contraseña</label><input id="pwd" type="password" autocomplete="current-password"></div></div>
+  <p class="err" id="e-login" role="alert"></p>
+  <button class="btn" type="submit" style="margin-top:.6rem">Entrar</button>
+ </form>
+ <div id="dash" hidden>
+  <section class="pcard prof"><div class="avatar" id="p-ini" aria-hidden="true"></div><div class="grow"><div class="cn" id="p-nombre"></div><div class="cs" id="p-ctl"></div></div><button class="btn alt sm" id="salir" type="button">Cerrar sesión</button></section>
+  <section class="pcard"><h2>Mis reseñas</h2><div class="score" id="p-score"></div><div id="p-revs"></div></section>
+  <section class="pcard"><h2>Mis trabajos</h2><div class="chips" id="p-tabs"></div><p class="err" id="p-msg" role="alert"></p><div id="p-jobs"></div></section>
+ </div>
+</main>
+</div>
+<script>
+(function(){
+  var CARPS=[
+    {n:'Ramón Esquivel',r:4.9,o:132,e:'Cocinas integrales y clósets · 18 años de experiencia',s:['Cocina integral','Clóset o vestidor']},
+    {n:'Marisol Treviño',r:4.8,o:96,e:'Puertas, ventanas y acabados · 11 años de experiencia',s:['Puertas y ventanas','Otro']},
+    {n:'Joaquín Barraza',r:4.7,o:74,e:'Muebles a medida · 9 años de experiencia',s:['Mueble a medida','Clóset o vestidor','Otro']},
+    {n:'Lucía Anaya',r:4.9,o:88,e:'Restauración y reparación · 14 años de experiencia',s:['Reparación o restauración','Mueble a medida']},
+    {n:'Esteban Ruiz',r:4.6,o:51,e:'Carpintería en general · 7 años de experiencia',s:['Cocina integral','Puertas y ventanas','Reparación o restauración','Otro']}
+  ];
+  CARPS.forEach(function(c,i){c.id='CR00'+(i+1);});
+  function getDb(){return (window.claude&&window.claude.use)?window.claude.use('db'):Promise.resolve(null);}
+  var f=document.getElementById('f'), done=document.getElementById('done'), area=document.getElementById('formArea'), texto='';
+  function setErr(id,msg,field){var e=document.getElementById('e-'+id);if(e)e.textContent=msg;if(field)field.setAttribute('aria-invalid',msg?'true':'false');}
+  function validar(){
+    var ok=true, d=f.elements;
+    var checks=[
+      ['servicio',!f.querySelector('input[name=servicio]:checked'),'Elige un tipo de servicio.',null],
+      ['desc',d.desc.value.trim().length<10,'Cuéntanos un poco más (mínimo 10 caracteres).',d.desc],
+      ['nombre',!d.nombre.value.trim(),'Escribe tu nombre.',d.nombre],
+      ['tel',d.tel.value.replace(/\D/g,'').length<10,'Escribe un teléfono de 10 dígitos.',d.tel],
+      ['mail',d.mail.value&&!/^\S+@\S+\.\S+$/.test(d.mail.value),'Revisa el formato del correo.',d.mail],
+      ['zona',!d.zona.value.trim(),'Indica tu colonia o ciudad.',d.zona]
+    ], first=null;
+    checks.forEach(function(c){setErr(c[0],c[2]&&c[1]?c[2]:'',c[3]); if(c[1]){ok=false; if(!first)first=c[3]||f.querySelector('input[name=servicio]');}});
+    if(first)first.focus();
+    return ok;
+  }
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!validar())return;
+    var d=f.elements, med=[d.ancho.value,d.alto.value,d.fondo.value];
+    var medTxt=med.some(Boolean)?(med[0]||'—')+' × '+(med[1]||'—')+' × '+(med[2]||'—')+' cm (ancho × alto × fondo)':'Sin medidas aún';
+    var filas=[
+      ['Servicio',f.querySelector('input[name=servicio]:checked').value],
+      ['Medidas',medTxt],['Material',d.material.value],
+      ['Fecha deseada',d.fecha.value||'Sin fecha definida'],
+      ['Proyecto',d.desc.value.trim()],
+      ['Nombre',d.nombre.value.trim()],['Teléfono',d.tel.value.trim()],
+      ['Correo',d.mail.value.trim()||'—'],['Zona',d.zona.value.trim()],
+      ['Visita a domicilio',d.visita.checked?'Sí':'No']
+    ];
+    var serv=filas[0][1], pool=CARPS.filter(function(c){return c.s.indexOf(serv)>-1;});
+    if(!pool.length)pool=CARPS;
+    var carp=pool[Math.floor(Math.random()*pool.length)], estrellas=new Array(Math.round(carp.r)+1).join('★');
+    document.getElementById('c-ini').textContent=carp.n.split(' ').map(function(p){return p.charAt(0);}).join('');
+    document.getElementById('c-nombre').textContent=carp.n;
+    document.getElementById('c-esp').textContent=carp.e;
+    var st=document.getElementById('c-stars'); st.innerHTML=''; var b=document.createElement('b'); b.textContent=estrellas; b.setAttribute('aria-hidden','true');
+    st.appendChild(b); st.appendChild(document.createTextNode(' '+carp.r.toFixed(1)+' de 5 · '+carp.o+' reseñas'));
+    var job={id:'T'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),servicio:filas[0][1],medidas:medTxt,material:d.material.value,fecha:d.fecha.value,desc:d.desc.value.trim(),nombre:d.nombre.value.trim(),tel:d.tel.value.trim(),mail:d.mail.value.trim(),zona:d.zona.value.trim(),visita:d.visita.checked,carp:carp.id,estado:'pendiente',creado:Date.now()};
+    var sy=document.getElementById('sync'); sy.textContent='Enviando tu solicitud al carpintero…';
+    getDb().then(function(db){if(!db)throw new Error('db');return db.collection('trabajos').doc(job.id).set(job);}).then(function(){sy.textContent='Listo: el trabajo ya aparece en el portal de '+carp.n+'.';}).catch(function(){sy.textContent='No pudimos registrar el trabajo en el portal del carpintero. Inténtalo de nuevo en unos minutos.';});
+    var dl=document.getElementById('resumen'); dl.innerHTML='';
+    filas.forEach(function(r){var w=document.createElement('div'),t=document.createElement('dt'),v=document.createElement('dd');t.textContent=r[0];v.textContent=r[1];w.appendChild(t);w.appendChild(v);dl.appendChild(w);});
+    texto='Solicitud de carpintería\n'+filas.map(function(r){return r[0]+': '+r[1];}).join('\n')+'\nCarpintero asignado: '+carp.n+' ('+carp.r.toFixed(1)+' de 5)';
+    document.getElementById('d-nombre').textContent=d.nombre.value.trim().split(' ')[0];
+    area.style.display='none'; done.classList.add('on'); done.focus(); window.scrollTo({top:0,behavior:'smooth'});
+  });
+  document.getElementById('copiar').addEventListener('click',function(){
+    var b=this;
+    try{navigator.clipboard.writeText(texto).then(function(){b.textContent='Resumen copiado';});}catch(e){b.textContent='No se pudo copiar';}
+  });
+  document.getElementById('otra').addEventListener('click',function(){
+    f.reset(); document.getElementById('sync').textContent=''; done.classList.remove('on'); area.style.display=''; document.getElementById('copiar').textContent='Copiar resumen';
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  /* ===== Portal del carpintero ===== */
+  var CRED={CR001:'ramon2026',CR002:'marisol2026',CR003:'joaquin2026',CR004:'lucia2026',CR005:'esteban2026'};
+  var POOL=[
+    {c:'Patricia G.',s:5,t:'Puntual, limpio y quedó exactamente como lo pedí.',d:'Hace 2 semanas'},
+    {c:'Luis M.',s:5,t:'Muy buen trato y entregó antes de la fecha acordada.',d:'Hace 1 mes'},
+    {c:'Andrea R.',s:4,t:'Excelente acabado. Solo tardó un poco en llegar a la visita.',d:'Hace 1 mes'},
+    {c:'Jorge V.',s:5,t:'Explicó cada opción de madera y respetó el presupuesto.',d:'Hace 2 meses'},
+    {c:'Carmen S.',s:5,t:'Trabajo de mucha calidad, lo recomiendo.',d:'Hace 3 meses'},
+    {c:'Daniel O.',s:4,t:'Buen resultado y precio justo.',d:'Hace 4 meses'}];
+  var P={db:null,unsub:null,cid:null,tab:'pendiente',jobs:[]};
+  function $(id){return document.getElementById(id);}
+  function h(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+  function carpById(id){return CARPS.filter(function(c){return c.id===id;})[0];}
+  function stars(n){return new Array(n+1).join('★');}
+  function msg(t){$('p-msg').textContent=t;}
+  function stop(){if(P.unsub){P.unsub();P.unsub=null;}}
+  function show(id){$('lf').hidden=!!id;$('dash').hidden=!id;}
+  function route(){
+    var on=location.hash==='#carpintero';
+    document.body.setAttribute('data-view',on?'portal':'form');window.scrollTo(0,0);
+    if(!on){stop();return;}
+    var id=null;try{id=sessionStorage.getItem('cr');}catch(e){}
+    if(id&&carpById(id))enter(id);else show(null);
+  }
+  function render(){
+    var pend=P.jobs.filter(function(j){return j.estado!=='realizado';}),hecho=P.jobs.filter(function(j){return j.estado==='realizado';});
+    var tabs=$('p-tabs');tabs.innerHTML='';
+    [['pendiente','Pendientes ('+pend.length+')'],['realizado','Realizados ('+hecho.length+')']].forEach(function(t){
+      var b=h('button','tab',t[1]);b.type='button';b.setAttribute('aria-pressed',String(P.tab===t[0]));
+      b.addEventListener('click',function(){P.tab=t[0];render();});tabs.appendChild(b);
+    });
+    var list=P.tab==='pendiente'?pend:hecho,box=$('p-jobs');box.innerHTML='';
+    if(!list.length){box.appendChild(h('p','empty',P.tab==='pendiente'?'No tienes trabajos pendientes. Cuando un cliente llene el formulario y se te asigne, aparecerá aquí.':'Aún no has marcado trabajos como realizados.'));return;}
+    list.forEach(function(j){
+      var ok=j.estado==='realizado',c=h('article','job'+(ok?' ok':''));
+      c.appendChild(h('h3',null,j.servicio));
+      c.appendChild(h('div','meta',j.nombre+' · '+j.tel+' · '+j.zona));
+      c.appendChild(h('p',null,j.desc));
+      c.appendChild(h('p','meta','Medidas: '+j.medidas+' · Material: '+j.material+' · Fecha deseada: '+(j.fecha||'sin fecha')+' · '+(j.visita?'Pidió visita a domicilio':'Sin visita a domicilio')));
+      var b=h('button','btn sm'+(ok?' alt':''),ok?'Volver a pendiente':'Marcar como realizado');b.type='button';
+      b.addEventListener('click',function(){
+        if(!P.db)return;b.disabled=true;
+        P.db.collection('trabajos').doc(j.id).update({estado:ok?'pendiente':'realizado'}).catch(function(){msg('No se pudo actualizar el trabajo. Revisa tu conexión y tus permisos.');b.disabled=false;});
+      });
+      c.appendChild(b);box.appendChild(c);
+    });
+  }
+  function enter(id){
+    var c=carpById(id);P.cid=id;P.tab='pendiente';P.jobs=[];show(id);stop();msg('');
+    $('p-ini').textContent=c.n.split(' ').map(function(p){return p.charAt(0);}).join('');
+    $('p-nombre').textContent=c.n;$('p-ctl').textContent=id+' · '+c.e;
+    var sc=$('p-score');sc.innerHTML='';var sp=h('span');var b=h('b',null,stars(Math.round(c.r)));b.setAttribute('aria-hidden','true');
+    sp.appendChild(b);sp.appendChild(document.createTextNode(' '+c.o+' reseñas en total'));
+    sc.appendChild(h('strong',null,c.r.toFixed(1)));sc.appendChild(sp);
+    var rv=$('p-revs');rv.innerHTML='';var i=Number(id.slice(2))-1;
+    [0,1,2].forEach(function(k){
+      var r=POOL[(i+k)%POOL.length],d=h('div','rev'),hd=h('div'),bs=h('b',null,stars(r.s));bs.setAttribute('aria-label',r.s+' de 5');
+      hd.appendChild(bs);hd.appendChild(document.createTextNode(' '+r.c+' · '+r.d));d.appendChild(hd);d.appendChild(h('div',null,r.t));rv.appendChild(d);
+    });
+    render();
+    getDb().then(function(db){
+      if(!db){msg('No se pudo conectar con los trabajos. Abre la página desde claude.ai con tu sesión iniciada.');return;}
+      P.db=db;
+      P.unsub=db.collection('trabajos').where('carp','==',id).onSnapshot(function(snap){
+        P.jobs=snap.docs.map(function(d){return d.data();}).sort(function(a,b){return b.creado-a.creado;});
+        msg('');render();
+      },function(){msg('Se perdió la conexión con los trabajos. Recarga la página.');});
+    });
+  }
+  $('lf').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var id=$('ctl').value.trim().toUpperCase(),pw=$('pwd').value;
+    if(!CRED.hasOwnProperty(id)||CRED[id]!==pw){$('e-login').textContent='Número de control o contraseña incorrectos.';return;}
+    $('e-login').textContent='';$('pwd').value='';
+    try{sessionStorage.setItem('cr',id);}catch(e){}
+    enter(id);
+  });
+  $('salir').addEventListener('click',function(){
+    try{sessionStorage.removeItem('cr');}catch(e){}
+    stop();P.cid=null;P.db=null;$('ctl').value='';show(null);
+  });
+  window.addEventListener('hashchange',route);route();
+})();
+</script>
+</body>
+</html>
