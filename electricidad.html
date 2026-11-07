@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Servicio de Electricidad</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--text:#14213d;--muted:#5b6785;--line:#dde3f0;--accent:#f5b700;--accent-d:#c99200;--hero1:#14213d;--hero2:#26408b;--ok:#1b9e5a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1220;--card:#161d33;--text:#eef1fa;--muted:#9aa5c4;--line:#2a3558;--hero1:#0a0f1f;--hero2:#1d3270}}
+:root[data-theme="dark"]{--bg:#0d1220;--card:#161d33;--text:#eef1fa;--muted:#9aa5c4;--line:#2a3558;--hero1:#0a0f1f;--hero2:#1d3270}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:48px 20px 90px;text-align:center}
+.bolt{font-size:48px;filter:drop-shadow(0 0 14px var(--accent))}
+.hero h1{margin:8px 0 6px;font-size:clamp(26px,5vw,40px)}
+.hero p{margin:0 auto;max-width:520px;opacity:.85}
+.wrap{max-width:720px;margin:-60px auto 40px;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 30px rgba(10,20,50,.15)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(245,183,0,.25)}
+textarea{min-height:100px;resize:vertical}
+button{width:100%;margin-top:22px;padding:15px;border:0;border-radius:12px;background:var(--accent);color:#14213d;font-size:17px;font-weight:700;cursor:pointer;transition:.15s}
+button:hover{background:var(--accent-d);transform:translateY(-1px)}
+.result{display:none;text-align:center}
+.result.show{display:block}
+.check{width:60px;height:60px;border-radius:50%;background:var(--ok);color:#fff;font-size:32px;display:grid;place-items:center;margin:0 auto 10px}
+.pro{display:flex;align-items:center;gap:16px;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin:18px 0}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--accent);color:#14213d;font-size:26px;font-weight:800;display:grid;place-items:center;flex:none}
+.pro h3{margin:0}
+.stars{color:var(--accent);font-size:20px;letter-spacing:2px}
+.muted{color:var(--muted);font-size:14px}
+.sum{text-align:left;font-size:15px;border-top:1px solid var(--line);padding-top:14px}
+.sum div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.sum span:first-child{color:var(--muted)}
+.btn2{background:transparent;border:1.5px solid var(--line);color:var(--text)}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="bolt">⚡</div>
+  <h1>Servicio de Electricidad</h1>
+  <p>Cuéntanos qué necesitas y te asignamos al instante un electricista certificado.</p>
+</header>
+<main class="wrap">
+  <section class="card" id="formCard">
+    <form id="f" novalidate>
+      <div class="grid">
+        <div><label for="nombre">Nombre completo</label><input id="nombre" required placeholder="Tu nombre"></div>
+        <div><label for="tel">Teléfono</label><input id="tel" type="tel" required placeholder="10 dígitos"></div>
+        <div class="full"><label for="dir">Dirección del servicio</label><input id="dir" required placeholder="Calle, número y colonia"></div>
+        <div><label for="tipo">Tipo de servicio</label>
+          <select id="tipo" required>
+            <option value="">Selecciona…</option>
+            <option>Instalación de contactos o apagadores</option>
+            <option>Cortocircuito o fallas de energía</option>
+            <option>Instalación de lámparas o ventiladores</option>
+            <option>Cableado nuevo</option>
+            <option>Revisión de centro de carga</option>
+            <option>Otro</option>
+          </select></div>
+        <div><label for="urg">Urgencia</label>
+          <select id="urg"><option>Normal</option><option>Urgente (hoy)</option><option>Emergencia (ahora)</option></select></div>
+        <div><label for="fecha">Fecha preferida</label><input id="fecha" type="date"></div>
+        <div><label for="hora">Horario</label>
+          <select id="hora"><option>Mañana (8–12)</option><option>Tarde (12–18)</option><option>Noche (18–21)</option></select></div>
+        <div class="full"><label for="desc">Describe el problema</label><textarea id="desc" placeholder="Ej. Se va la luz al encender el aire acondicionado…"></textarea></div>
+      </div>
+      <p class="muted" id="err" style="color:#d33;margin:12px 0 0"></p>
+      <button type="submit">Solicitar electricista ⚡</button>
+    </form>
+  </section>
+
+  <section class="card result" id="res">
+    <div class="check">✓</div>
+    <h2 style="margin:0">¡Solicitud enviada!</h2>
+    <p class="muted" style="margin:4px 0 0">Folio <b id="folio"></b></p>
+    <div class="pro">
+      <div class="avatar" id="av"></div>
+      <div>
+        <div class="muted">Tu electricista asignado</div>
+        <h3 id="pn"></h3>
+        <div class="stars" id="ps"></div>
+        <div class="muted" id="pm"></div>
+      </div>
+    </div>
+    <div class="sum" id="sum"></div>
+    <button class="btn2" id="nuevo">Hacer otra solicitud</button>
+  </section>
+</main>
+<script>
+const pros=[
+ {n:"Carlos Ramírez",r:4.9,t:12,e:"12 años de experiencia"},
+ {n:"Luis Hernández",r:4.7,t:8,e:"8 años de experiencia"},
+ {n:"Miguel Ángel Soto",r:4.8,t:15,e:"15 años de experiencia"},
+ {n:"Javier Morales",r:4.6,t:6,e:"6 años de experiencia"},
+ {n:"Roberto Villalobos",r:5.0,t:20,e:"20 años de experiencia"},
+ {n:"Fernando Gutiérrez",r:4.5,t:5,e:"5 años de experiencia"}
+];
+const $=id=>document.getElementById(id);
+$("fecha").min=new Date().toISOString().split("T")[0];
+function stars(r){const f=Math.round(r);return "★".repeat(f)+"☆".repeat(5-f)+" "+r.toFixed(1)}
+$("f").addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=id=>$(id).value.trim();
+  if(!v("nombre")||!v("tel")||!v("dir")||!v("tipo")){$("err").textContent="Completa nombre, teléfono, dirección y tipo de servicio.";return}
+  if(v("tel").replace(/\D/g,"").length<10){$("err").textContent="Ingresa un teléfono válido de 10 dígitos.";return}
+  $("err").textContent="";
+  const p=pros[Math.floor(Math.random()*pros.length)];
+  $("folio").textContent="EL-"+Math.floor(10000+Math.random()*90000);
+  $("av").textContent=p.n.split(" ").map(w=>w[0]).slice(0,2).join("");
+  $("pn").textContent=p.n;$("ps").textContent=stars(p.r);$("pm").textContent=p.e;
+  const rows=[["Cliente",v("nombre")],["Servicio",v("tipo")],["Urgencia",$("urg").value],["Dirección",v("dir")],["Cuándo",(v("fecha")||"Lo antes posible")+" · "+$("hora").value]];
+  $("sum").innerHTML="";
+  rows.forEach(([a,b])=>{const d=document.createElement("div");const s1=document.createElement("span");s1.textContent=a;const s2=document.createElement("span");s2.textContent=b;d.append(s1,s2);$("sum").append(d)});
+  $("formCard").style.display="none";$("res").classList.add("show");scrollTo({top:0,behavior:"smooth"});
+});
+$("nuevo").onclick=()=>{$("f").reset();$("res").classList.remove("show");$("formCard").style.display="block"};
+</script>
+</body>
+</html>

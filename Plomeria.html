@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Plomeria</title>
+<title>Gota Azul · Plomería a domicilio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -68,28 +68,49 @@ button.alt{padding:12px 18px;font:600 15px Figtree,sans-serif;color:var(--water-
 dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0 0 22px}
 dt{color:var(--mute)}dd{margin:0;font-weight:600;overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){.pipe .flow,.result.show{animation:none}}
+[hidden]{display:none!important}
+.plink{display:inline-block;margin:-12px 0 22px;font-weight:600;color:var(--water-d)}
+.pw{display:block;max-width:760px;padding-top:40px}
+.pw .panel{margin-bottom:22px}
+.who{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
+.who>div:first-child{display:flex;gap:14px;align-items:center}
+.job{border:1.5px solid var(--line);border-radius:12px;padding:16px;margin-top:12px;background:var(--bg)}
+.job h3{font-size:19px;margin-bottom:6px}.job p{margin:6px 0;color:var(--mute)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.acts button{flex:1 1 140px}
+button.ok2{background:var(--water-d);color:#fff;border:0;border-radius:10px;padding:12px 16px;font:600 15px Figtree,sans-serif;cursor:pointer}
+.est{display:inline-block;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600;background:var(--foam);color:var(--water-d)}
+.est.no{background:transparent;border:1.5px solid var(--err);color:var(--err)}
+.rev{padding:14px 0;border-top:1.5px solid var(--line)}.rev:first-child{border-top:0}
+.note{font-size:14px;color:var(--mute)}
 </style>
 </head>
 <body>
 <main class="wrap">
   <section class="hero" aria-label="Presentación">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C16 2 6 14 6 21a10 10 0 0 0 20 0C26 14 16 2 16 2Z" fill="var(--water)"/><path d="M11 21a5 5 0 0 0 5 5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Gota Azul
+    </div>
+    <a class="plink" href="#plomero">Acceso para plomeros</a>
     <h1>Un plomero en tu puerta, sin buscar.</h1>
-    <p class="lead">Cuéntanos qué ocurre y te enviaremos un plomero a revisar.</p>
+    <p class="lead">Cuéntanos qué pasa, y al enviar el formulario te asignamos a un plomero con nombre y calificación.</p>
     <svg class="pipe" viewBox="0 0 420 110" fill="none" aria-hidden="true">
       <path d="M0 55H120a20 20 0 0 1 20 20v0a20 20 0 0 0 20 20H300a20 20 0 0 0 20-20V35a20 20 0 0 1 20-20H420" stroke="var(--line)" stroke-width="18" stroke-linecap="round"/>
       <path class="flow" d="M0 55H120a20 20 0 0 1 20 20v0a20 20 0 0 0 20 20H300a20 20 0 0 0 20-20V35a20 20 0 0 1 20-20H420" stroke="var(--water)" stroke-width="5" stroke-linecap="round"/>
       <rect x="110" y="40" width="10" height="30" rx="3" fill="var(--brass)"/><rect x="300" y="80" width="30" height="10" rx="3" fill="var(--brass)"/>
     </svg>
     <ul class="facts">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Plomeros De Excelencia</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Totalmente Seguro: Plomeros de Confianza</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Cotizacion Y Revision Sin Costos</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Plomeros verificados y calificados por clientes</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Te avisamos quién va y en cuánto tiempo llega</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Revisión sin costo si aceptas la reparación</li>
     </ul>
   </section>
 
   <section>
     <form id="form" class="panel" novalidate>
       <h2>Solicita tu servicio</h2>
+      <p class="sub">Tarda menos de dos minutos.</p>
 
       <fieldset>
         <legend>Tus datos</legend>
@@ -130,7 +151,7 @@ dt{color:var(--mute)}dd{margin:0;font-weight:600;overflow-wrap:anywhere}
         <div class="row two" id="fechas" style="margin-top:14px;display:none">
           <label class="f">Fecha<input name="fecha" type="date"></label>
           <label class="f">Horario
-            <select name="hora"><option>Mañana (8–12)</option><option>Tarde (12–5)</option><option>Noche (5–8)</option></select>
+            <select name="hora"><option>Mañana (8–12)</option><option>Tarde (12–17)</option><option>Noche (17–20)</option></select>
           </label>
         </div>
       </fieldset>
@@ -155,6 +176,29 @@ dt{color:var(--mute)}dd{margin:0;font-weight:600;overflow-wrap:anywhere}
     </div>
   </section>
 </main>
+<main id="portal" class="wrap pw" hidden>
+  <a class="plink" href="#" style="margin:0 0 18px">Volver al formulario</a>
+  <form id="login" class="panel" novalidate>
+    <h2>Acceso para plomeros</h2>
+    <p class="sub">Entra con tu número de control y tu contraseña.</p>
+    <div class="row two">
+      <label class="f">Número de control<input id="lid" autocomplete="username" placeholder="PO001" maxlength="5" required></label>
+      <label class="f">Contraseña<input id="lpw" type="password" autocomplete="current-password" required></label>
+    </div>
+    <div class="msg" id="lerr" role="alert" style="margin:10px 0"></div>
+    <button class="go" type="submit">Entrar</button>
+  </form>
+  <div id="dash" hidden>
+    <div class="panel">
+      <div class="who"><div><div class="avatar" id="dav"></div><div><h2 id="dn"></h2><div class="rate"><div class="stars" aria-hidden="true">★★★★★<i id="dst">★★★★★</i></div><b id="dr"></b></div></div></div><button class="alt" id="out" type="button">Salir</button></div>
+      <p class="note" id="sync" role="status"></p>
+      <h3>Trabajos pendientes</h3>
+      <div id="pend"></div>
+    </div>
+    <div class="panel"><h3>Historial</h3><div id="hist"></div></div>
+    <div class="panel"><h3>Reseñas</h3><div id="revs"></div></div>
+  </div>
+</main>
 
 <script>
 const PLOMEROS=[
@@ -165,6 +209,14 @@ const PLOMEROS=[
  {n:"Julián Pacheco",r:4.6,j:276,e:["Calentador de agua","Fuga de agua","Otro"],t:"Boilers y gas"},
  {n:"Esteban Lozano",r:4.8,j:339,e:["Drenaje tapado","Baja presión de agua","Otro"],t:"Drenaje y presión"}
 ];
+["PO001","PO002","PO003","PO004","PO005","PO006"].forEach((id,i)=>{PLOMEROS[i].id=id;PLOMEROS[i].pw="agua"+id.slice(2)});
+const RESENAS=[
+ {a:"Laura M.",s:5,t:"Llegó puntual, encontró la fuga en minutos y dejó todo limpio."},
+ {a:"Carlos R.",s:5,t:"Muy profesional. Explicó el problema antes de empezar."},
+ {a:"Ana P.",s:4,t:"Buen trabajo y precio justo. Tardó un poco más de lo dicho."},
+ {a:"Jorge T.",s:5,t:"Resolvió el drenaje el mismo día. Lo recomiendo."},
+ {a:"Sofía G.",s:4,t:"Atento y amable. Todo quedó funcionando perfecto."},
+ {a:"Miguel A.",s:5,t:"Rápido y ordenado. Volvería a llamarlo."}];
 const $=s=>document.querySelector(s), f=$('#form');
 const fechas=$('#fechas');
 f.addEventListener('change',e=>{if(e.target.name==='urg')fechas.style.display=e.target.value==='Programado'?'grid':'none'});
@@ -186,7 +238,7 @@ f.addEventListener('submit',e=>{
   const p=top[Math.floor(Math.random()*top.length)];
   const eta=d.urg==='Emergencia'?'Llega en 45–90 minutos':d.urg==='Pronto'?'Visita en 24–48 horas':'Visita el '+new Date(d.fecha+'T12:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'})+', '+d.hora.toLowerCase();
 
-  $('#folio').textContent='Folio GA-'+Math.floor(10000+Math.random()*90000);
+  const folio='GA-'+Math.floor(10000+Math.random()*90000);$('#folio').textContent='Folio '+folio;guardar(folio,p,d,eta);
   $('#av').textContent=p.n.split(' ').map(w=>w[0]).join('');
   $('#pn').textContent=p.n;
   $('#pr').textContent=p.r.toFixed(1);
@@ -205,6 +257,81 @@ $('#again').addEventListener('click',()=>{
   $('#result').classList.remove('show');f.style.display='';
   f.querySelectorAll('.invalid').forEach(x=>x.classList.remove('invalid'));
 });
+let DB=null,me=null,unsub=null;
+const DBP=(window.claude&&claude.use?claude.use('db').catch(()=>null):Promise.resolve(null)).then(x=>DB=x);
+const ESTADO={pendiente:'Pendiente',realizado:'Realizado',no_realizado:'No realizado'};
+
+async function guardar(folio,p,d,eta){
+  await DBP;
+  const a=document.createElement('dt'),b=document.createElement('dd');a.textContent='Seguimiento';
+  try{
+    if(!DB)throw 0;
+    await DB.collection('trabajos').doc(folio).set({folio,plomero:p.id,estado:'pendiente',serv:d.serv,desc:d.desc,urg:d.urg,eta,nombre:d.nombre,tel:d.tel,dir:d.dir,creado:Date.now()});
+    b.textContent='Enviado al portal de '+p.n;
+  }catch(e){b.textContent='No se pudo enviar al portal del plomero (requiere acceso con tu cuenta de claude.ai).'}
+  $('#det').append(a,b);
+}
+
+function ruta(){const p=location.hash==='#plomero';document.querySelector('main.wrap').hidden=p;$('#portal').hidden=!p;window.scrollTo(0,0)}
+addEventListener('hashchange',ruta);
+
+$('#login').addEventListener('submit',e=>{
+  e.preventDefault();
+  const id=$('#lid').value.trim().toUpperCase(),pw=$('#lpw').value;
+  const p=PLOMEROS.find(x=>x.id===id&&x.pw===pw);
+  if(!p){$('#lerr').textContent='Número de control o contraseña incorrectos. El formato es PO000.';$('#lpw').value='';return}
+  $('#lerr').textContent='';entrar(p);
+});
+$('#out').addEventListener('click',()=>{unsub&&unsub();unsub=null;me=null;$('#dash').hidden=true;$('#login').hidden=false;$('#lpw').value=''});
+
+function entrar(p){
+  me=p;$('#login').hidden=true;$('#dash').hidden=false;
+  $('#dav').textContent=p.n.split(' ').map(w=>w[0]).join('');
+  $('#dn').textContent=p.n;$('#dr').textContent=p.r.toFixed(1)+' · '+p.id;$('#dst').style.width=(p.r/5*100)+'%';
+  const rv=$('#revs');rv.innerHTML='';
+  const i=PLOMEROS.indexOf(p);
+  [0,1,2].forEach(k=>{
+    const r=RESENAS[(i+k)%6],x=document.createElement('div');x.className='rev';
+    const s=document.createElement('div');s.className='stars';s.style.color='var(--brass)';s.textContent='★'.repeat(r.s);
+    const q=document.createElement('p');q.style.margin='6px 0 0';q.textContent=r.a+': '+r.t;
+    x.append(s,q);rv.append(x);
+  });
+  suscribir();
+}
+
+async function suscribir(){
+  $('#sync').textContent='Cargando trabajos…';
+  await DBP;
+  if(!DB){$('#sync').textContent='No hay conexión con el registro de trabajos. Abre esta página con tu cuenta de claude.ai.';pintar([]);return}
+  const t=setTimeout(()=>{$('#sync').textContent='Aún no se alcanzan los datos; lo que ves puede estar desactualizado.'},10000);
+  unsub=DB.collection('trabajos').where('plomero','==',me.id).onSnapshot(
+    s=>{clearTimeout(t);$('#sync').textContent='';pintar(s.docs.map(x=>x.data()))},
+    ()=>{clearTimeout(t);$('#sync').textContent='No se pudo leer el registro de trabajos.'});
+}
+
+function pintar(js){
+  js.sort((a,b)=>b.creado-a.creado);
+  const P=$('#pend'),H=$('#hist');P.innerHTML='';H.innerHTML='';
+  const pe=js.filter(j=>j.estado==='pendiente'),hi=js.filter(j=>j.estado!=='pendiente');
+  if(!pe.length)P.innerHTML='<p class="note">No tienes trabajos pendientes. Cuando un cliente llene el formulario, aparecerá aquí.</p>';
+  if(!hi.length)H.innerHTML='<p class="note">Todavía no has cerrado ningún trabajo.</p>';
+  pe.forEach(j=>P.append(tarjeta(j)));hi.forEach(j=>H.append(tarjeta(j)));
+}
+
+function tarjeta(j){
+  const c=document.createElement('div');c.className='job';
+  const h=document.createElement('h3');h.textContent=j.serv+' · '+j.folio;
+  const e=document.createElement('span');e.className='est'+(j.estado==='no_realizado'?' no':'');e.textContent=ESTADO[j.estado]||j.estado;
+  c.append(h,e);
+  const add=t=>{const p=document.createElement('p');p.textContent=t;c.append(p)};
+  add(j.desc);add('Cliente: '+j.nombre+' · '+j.tel);add('Dirección: '+j.dir);add(j.urg+' · '+j.eta);
+  const a=document.createElement('div');a.className='acts';
+  const b=(t,est,cls)=>{const x=document.createElement('button');x.type='button';x.className=cls;x.textContent=t;
+    x.onclick=()=>{x.disabled=true;DB.collection('trabajos').doc(j.folio).update({estado:est}).catch(()=>{x.disabled=false;$('#sync').textContent='No se pudo guardar el cambio. Inténtalo de nuevo.'})};a.append(x)};
+  if(j.estado==='pendiente'){b('Marcar realizado','realizado','ok2');b('No realizado','no_realizado','alt')}else b('Volver a pendiente','pendiente','alt');
+  c.append(a);return c;
+}
+ruta();
 </script>
 </body>
 </html>

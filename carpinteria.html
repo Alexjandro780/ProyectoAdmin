@@ -1,93 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Carpintería</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="styles.css">
-    <!-- Enlace al CSS del menú -->
-  <link rel="stylesheet" href="stylesmenu.css">
-    <!-- Script del menú con atributo defer para cargar después del HTML -->
-  <script src="MenuScript.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carpintería a tu medida — Solicita tu cotización</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-            body {
-              font-family: 'Merriweather', serif;
-              background: #f9f9f9;
-              margin: 0;
-              padding: 0;
-            }
-        
-            .borde-colorido {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 5px;
-              padding: 10px;
-              background: white;
-            }
-        
-            .borde-colorido span {
-              width: 25px;
-              height: 25px;
-              border-radius: 50%;
-              display: inline-block;
-            }
-        
-            /* Colores vivos para los círculos */
-            .rojo { background: #f94144; }
-            .naranja { background: #f8961e; }
-            .amarillo { background: #f9c74f; }
-            .verde { background: #43aa8b; }
-            .azul { background: #577590; }
-            .morado { background: #9d4edd; }
-        
-            .titulo {
-              text-align: center;
-              font-size: 50px;
-              font-weight: bold;
-              margin: 20px;
-            }
-        
-            .titulo span {
-              color: black;
-            }
-        
-            .titulo .c1 { color: #43aa8b; }
-            .titulo .c2 { color: #9d4edd; }
-            .titulo .c3 { color: #f9c74f; }
-            .titulo .c4 { color: #f8961e; }
-            .titulo .c5 { color: #577590; }
-        
-            .contenedor {
-              display: flex;
-              justify-content: center;
-              gap: 50px;
-              padding: 20px;
-              flex-wrap: wrap;
-            }
-        
-            .bloque {
-              width: 200px;
-              text-align: center;
-            }
-        
-            .bloque img {
-              width: 80px;
-              height: 80px;
-            }
-        
-            .bloque h3 {
-              font-size: 20px;
-              margin-top: 10px;
-              color: #333;
-            }
-        
-            .bloque p {
-              font-size: 14px;
-              color: #555;
-            }
 :root{
   --bg:#E9ECE6; --card:#FBFBF8; --ink:#1E2421; --muted:#5B655F; --line:#CBD1C8;
   --pine:#1F3A33; --pine-ink:#F2F4EE; --brass:#B8862F; --brass-soft:#F1E3C4; --err:#A3321F;
@@ -156,6 +75,35 @@ input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--err)}
 .carp .cs{font-size:.92rem;color:var(--muted)}
 .carp .stars{font-weight:600;margin-top:.15rem}
 .carp .stars b{color:var(--brass);letter-spacing:.08em}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.nav{color:var(--pine-ink);font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid var(--brass);border-radius:999px;padding:.45rem 1rem}
+.nav:hover{background:var(--brass);color:#1E2421}
+.nav:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+#portal{display:none}
+body[data-view=portal]>.hero,body[data-view=portal]>main{display:none}
+body[data-view=portal] #portal{display:block}
+.phead.hero{padding:1.5rem 1.25rem 5.5rem}
+.phead h1{font-size:clamp(2rem,6vw,3.2rem);margin:2rem 0 0;max-width:none}
+#lf h2,.pcard h2{font:800 1.35rem var(--head);margin:0 0 .8rem}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.25rem;margin-bottom:1rem;box-shadow:0 18px 40px -26px rgba(0,0,0,.45)}
+.prof{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.prof .grow{flex:1;min-width:12rem}
+.prof .cn{font:800 1.3rem var(--head)}
+.prof .cs{color:var(--muted);font-size:.9rem}
+.score{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.6rem}
+.score strong{font:900 3rem/1 var(--head)}
+.rev{border-top:1px solid var(--line);padding:.8rem 0}
+.rev b,.score b{color:var(--brass);letter-spacing:.08em}
+.tab{font:inherit;font-weight:600;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.tab[aria-pressed=true]{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
+.tab:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.job{border:1px solid var(--line);border-left:5px solid var(--brass);border-radius:6px;padding:1rem;margin-top:.9rem;background:var(--bg)}
+.job.ok{border-left-color:var(--pine);opacity:.85}
+.job h3{font:800 1.15rem var(--head);margin:0}
+.job p{margin:.3rem 0}
+.meta{color:var(--muted);font-size:.9rem}
+.empty{color:var(--muted);padding:1rem 0 .4rem;margin:0}
+.btn.sm{width:auto;font-size:1rem;padding:.6rem 1rem;min-height:2.6rem;margin-top:.7rem}
 #done{display:none}
 #done.on{display:block;animation:pop .35s ease-out}
 @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -170,6 +118,7 @@ dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap
 <body>
 <header class="hero">
   <div class="wrap">
+    <div class="top"><div class="brand"><i></i>Taller Madera Viva</div><a class="nav" href="#carpintero">Acceso carpinteros</a></div>
     <h1>Muebles hechos a tu medida</h1>
     <p>Cuéntanos qué necesitas y te enviamos una cotización sin costo. Medimos, diseñamos y construimos en madera.</p>
     <ul class="facts"><li>Cotización gratis</li><li>Visita a domicilio</li><li>Respuesta en 24 horas</li></ul>
@@ -231,6 +180,7 @@ dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap
    <h2>Solicitud lista, <span id="d-nombre"></span></h2>
    <p>Ya asignamos a tu carpintero. Te contactará al teléfono que nos diste para confirmar medidas y precio.</p>
    <div class="carp"><div class="avatar" id="c-ini" aria-hidden="true"></div><div><div class="cl">Tu carpintero asignado</div><div class="cn" id="c-nombre"></div><div class="cs" id="c-esp"></div><div class="stars" id="c-stars"></div></div></div>
+   <p class="small" id="sync" role="status"></p>
    <dl id="resumen"></dl>
    <button class="btn" type="button" id="copiar">Copiar resumen</button><button class="btn alt" type="button" id="otra">Hacer otra solicitud</button>
  </div>
@@ -238,6 +188,22 @@ dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap
 </div>
 </main>
 
+<div id="portal">
+<header class="hero phead"><div class="wrap"><div class="top"><div class="brand"><i></i>Taller Madera Viva</div><a class="nav" href="#">Ir al formulario de clientes</a></div><h1>Portal del carpintero</h1></div></header>
+<main>
+ <form class="card" id="lf" novalidate>
+  <h2>Entra con tu número de control</h2>
+  <div class="grid g2"><div><label for="ctl">Número de control</label><input id="ctl" placeholder="CR001" autocomplete="username" autocapitalize="characters"></div><div><label for="pwd">Contraseña</label><input id="pwd" type="password" autocomplete="current-password"></div></div>
+  <p class="err" id="e-login" role="alert"></p>
+  <button class="btn" type="submit" style="margin-top:.6rem">Entrar</button>
+ </form>
+ <div id="dash" hidden>
+  <section class="pcard prof"><div class="avatar" id="p-ini" aria-hidden="true"></div><div class="grow"><div class="cn" id="p-nombre"></div><div class="cs" id="p-ctl"></div></div><button class="btn alt sm" id="salir" type="button">Cerrar sesión</button></section>
+  <section class="pcard"><h2>Mis reseñas</h2><div class="score" id="p-score"></div><div id="p-revs"></div></section>
+  <section class="pcard"><h2>Mis trabajos</h2><div class="chips" id="p-tabs"></div><p class="err" id="p-msg" role="alert"></p><div id="p-jobs"></div></section>
+ </div>
+</main>
+</div>
 <script>
 (function(){
   var CARPS=[
@@ -247,6 +213,8 @@ dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap
     {n:'Lucía Anaya',r:4.9,o:88,e:'Restauración y reparación · 14 años de experiencia',s:['Reparación o restauración','Mueble a medida']},
     {n:'Esteban Ruiz',r:4.6,o:51,e:'Carpintería en general · 7 años de experiencia',s:['Cocina integral','Puertas y ventanas','Reparación o restauración','Otro']}
   ];
+  CARPS.forEach(function(c,i){c.id='CR00'+(i+1);});
+  function getDb(){return (window.claude&&window.claude.use)?window.claude.use('db'):Promise.resolve(null);}
   var f=document.getElementById('f'), done=document.getElementById('done'), area=document.getElementById('formArea'), texto='';
   function setErr(id,msg,field){var e=document.getElementById('e-'+id);if(e)e.textContent=msg;if(field)field.setAttribute('aria-invalid',msg?'true':'false');}
   function validar(){
@@ -285,6 +253,9 @@ dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap
     document.getElementById('c-esp').textContent=carp.e;
     var st=document.getElementById('c-stars'); st.innerHTML=''; var b=document.createElement('b'); b.textContent=estrellas; b.setAttribute('aria-hidden','true');
     st.appendChild(b); st.appendChild(document.createTextNode(' '+carp.r.toFixed(1)+' de 5 · '+carp.o+' reseñas'));
+    var job={id:'T'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),servicio:filas[0][1],medidas:medTxt,material:d.material.value,fecha:d.fecha.value,desc:d.desc.value.trim(),nombre:d.nombre.value.trim(),tel:d.tel.value.trim(),mail:d.mail.value.trim(),zona:d.zona.value.trim(),visita:d.visita.checked,carp:carp.id,estado:'pendiente',creado:Date.now()};
+    var sy=document.getElementById('sync'); sy.textContent='Enviando tu solicitud al carpintero…';
+    getDb().then(function(db){if(!db)throw new Error('db');return db.collection('trabajos').doc(job.id).set(job);}).then(function(){sy.textContent='Listo: el trabajo ya aparece en el portal de '+carp.n+'.';}).catch(function(){sy.textContent='No pudimos registrar el trabajo en el portal del carpintero. Inténtalo de nuevo en unos minutos.';});
     var dl=document.getElementById('resumen'); dl.innerHTML='';
     filas.forEach(function(r){var w=document.createElement('div'),t=document.createElement('dt'),v=document.createElement('dd');t.textContent=r[0];v.textContent=r[1];w.appendChild(t);w.appendChild(v);dl.appendChild(w);});
     texto='Solicitud de carpintería\n'+filas.map(function(r){return r[0]+': '+r[1];}).join('\n')+'\nCarpintero asignado: '+carp.n+' ('+carp.r.toFixed(1)+' de 5)';
@@ -296,9 +267,91 @@ dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap
     try{navigator.clipboard.writeText(texto).then(function(){b.textContent='Resumen copiado';});}catch(e){b.textContent='No se pudo copiar';}
   });
   document.getElementById('otra').addEventListener('click',function(){
-    f.reset(); done.classList.remove('on'); area.style.display=''; document.getElementById('copiar').textContent='Copiar resumen';
+    f.reset(); document.getElementById('sync').textContent=''; done.classList.remove('on'); area.style.display=''; document.getElementById('copiar').textContent='Copiar resumen';
     window.scrollTo({top:0,behavior:'smooth'});
   });
+  /* ===== Portal del carpintero ===== */
+  var CRED={CR001:'ramon2026',CR002:'marisol2026',CR003:'joaquin2026',CR004:'lucia2026',CR005:'esteban2026'};
+  var POOL=[
+    {c:'Patricia G.',s:5,t:'Puntual, limpio y quedó exactamente como lo pedí.',d:'Hace 2 semanas'},
+    {c:'Luis M.',s:5,t:'Muy buen trato y entregó antes de la fecha acordada.',d:'Hace 1 mes'},
+    {c:'Andrea R.',s:4,t:'Excelente acabado. Solo tardó un poco en llegar a la visita.',d:'Hace 1 mes'},
+    {c:'Jorge V.',s:5,t:'Explicó cada opción de madera y respetó el presupuesto.',d:'Hace 2 meses'},
+    {c:'Carmen S.',s:5,t:'Trabajo de mucha calidad, lo recomiendo.',d:'Hace 3 meses'},
+    {c:'Daniel O.',s:4,t:'Buen resultado y precio justo.',d:'Hace 4 meses'}];
+  var P={db:null,unsub:null,cid:null,tab:'pendiente',jobs:[]};
+  function $(id){return document.getElementById(id);}
+  function h(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+  function carpById(id){return CARPS.filter(function(c){return c.id===id;})[0];}
+  function stars(n){return new Array(n+1).join('★');}
+  function msg(t){$('p-msg').textContent=t;}
+  function stop(){if(P.unsub){P.unsub();P.unsub=null;}}
+  function show(id){$('lf').hidden=!!id;$('dash').hidden=!id;}
+  function route(){
+    var on=location.hash==='#carpintero';
+    document.body.setAttribute('data-view',on?'portal':'form');window.scrollTo(0,0);
+    if(!on){stop();return;}
+    var id=null;try{id=sessionStorage.getItem('cr');}catch(e){}
+    if(id&&carpById(id))enter(id);else show(null);
+  }
+  function render(){
+    var pend=P.jobs.filter(function(j){return j.estado!=='realizado';}),hecho=P.jobs.filter(function(j){return j.estado==='realizado';});
+    var tabs=$('p-tabs');tabs.innerHTML='';
+    [['pendiente','Pendientes ('+pend.length+')'],['realizado','Realizados ('+hecho.length+')']].forEach(function(t){
+      var b=h('button','tab',t[1]);b.type='button';b.setAttribute('aria-pressed',String(P.tab===t[0]));
+      b.addEventListener('click',function(){P.tab=t[0];render();});tabs.appendChild(b);
+    });
+    var list=P.tab==='pendiente'?pend:hecho,box=$('p-jobs');box.innerHTML='';
+    if(!list.length){box.appendChild(h('p','empty',P.tab==='pendiente'?'No tienes trabajos pendientes. Cuando un cliente llene el formulario y se te asigne, aparecerá aquí.':'Aún no has marcado trabajos como realizados.'));return;}
+    list.forEach(function(j){
+      var ok=j.estado==='realizado',c=h('article','job'+(ok?' ok':''));
+      c.appendChild(h('h3',null,j.servicio));
+      c.appendChild(h('div','meta',j.nombre+' · '+j.tel+' · '+j.zona));
+      c.appendChild(h('p',null,j.desc));
+      c.appendChild(h('p','meta','Medidas: '+j.medidas+' · Material: '+j.material+' · Fecha deseada: '+(j.fecha||'sin fecha')+' · '+(j.visita?'Pidió visita a domicilio':'Sin visita a domicilio')));
+      var b=h('button','btn sm'+(ok?' alt':''),ok?'Volver a pendiente':'Marcar como realizado');b.type='button';
+      b.addEventListener('click',function(){
+        if(!P.db)return;b.disabled=true;
+        P.db.collection('trabajos').doc(j.id).update({estado:ok?'pendiente':'realizado'}).catch(function(){msg('No se pudo actualizar el trabajo. Revisa tu conexión y tus permisos.');b.disabled=false;});
+      });
+      c.appendChild(b);box.appendChild(c);
+    });
+  }
+  function enter(id){
+    var c=carpById(id);P.cid=id;P.tab='pendiente';P.jobs=[];show(id);stop();msg('');
+    $('p-ini').textContent=c.n.split(' ').map(function(p){return p.charAt(0);}).join('');
+    $('p-nombre').textContent=c.n;$('p-ctl').textContent=id+' · '+c.e;
+    var sc=$('p-score');sc.innerHTML='';var sp=h('span');var b=h('b',null,stars(Math.round(c.r)));b.setAttribute('aria-hidden','true');
+    sp.appendChild(b);sp.appendChild(document.createTextNode(' '+c.o+' reseñas en total'));
+    sc.appendChild(h('strong',null,c.r.toFixed(1)));sc.appendChild(sp);
+    var rv=$('p-revs');rv.innerHTML='';var i=Number(id.slice(2))-1;
+    [0,1,2].forEach(function(k){
+      var r=POOL[(i+k)%POOL.length],d=h('div','rev'),hd=h('div'),bs=h('b',null,stars(r.s));bs.setAttribute('aria-label',r.s+' de 5');
+      hd.appendChild(bs);hd.appendChild(document.createTextNode(' '+r.c+' · '+r.d));d.appendChild(hd);d.appendChild(h('div',null,r.t));rv.appendChild(d);
+    });
+    render();
+    getDb().then(function(db){
+      if(!db){msg('No se pudo conectar con los trabajos. Abre la página desde claude.ai con tu sesión iniciada.');return;}
+      P.db=db;
+      P.unsub=db.collection('trabajos').where('carp','==',id).onSnapshot(function(snap){
+        P.jobs=snap.docs.map(function(d){return d.data();}).sort(function(a,b){return b.creado-a.creado;});
+        msg('');render();
+      },function(){msg('Se perdió la conexión con los trabajos. Recarga la página.');});
+    });
+  }
+  $('lf').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var id=$('ctl').value.trim().toUpperCase(),pw=$('pwd').value;
+    if(!CRED.hasOwnProperty(id)||CRED[id]!==pw){$('e-login').textContent='Número de control o contraseña incorrectos.';return;}
+    $('e-login').textContent='';$('pwd').value='';
+    try{sessionStorage.setItem('cr',id);}catch(e){}
+    enter(id);
+  });
+  $('salir').addEventListener('click',function(){
+    try{sessionStorage.removeItem('cr');}catch(e){}
+    stop();P.cid=null;P.db=null;$('ctl').value='';show(null);
+  });
+  window.addEventListener('hashchange',route);route();
 })();
 </script>
 </body>
