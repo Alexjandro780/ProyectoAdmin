@@ -3,335 +3,203 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Gota Azul · Plomería a domicilio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<title>AquaFix · Plomería para tu hogar</title>
 <style>
-:root{--bg:#EEF5F8;--card:#fff;--ink:#0B2B3A;--mute:#52707F;--line:#CFE0E8;--water:#1479B8;--water-d:#0D5C8C;--foam:#DDEFF8;--brass:#E3A21A;--err:#C93B3B;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08202B;--card:#0F2F3E;--ink:#E8F4F9;--mute:#9DBBC9;--line:#1E4558;--water:#4DB3EA;--water-d:#8CCFF3;--foam:#123C50;--brass:#F0B93A;--err:#F28080}}
-:root[data-theme="dark"]{--bg:#08202B;--card:#0F2F3E;--ink:#E8F4F9;--mute:#9DBBC9;--line:#1E4558;--water:#4DB3EA;--water-d:#8CCFF3;--foam:#123C50;--brass:#F0B93A;--err:#F28080}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Figtree,system-ui,sans-serif}
-h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,system-ui,sans-serif;line-height:1.08;margin:0}
-.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 56px;display:grid;gap:36px;grid-template-columns:1fr}
-@media(min-width:900px){.wrap{grid-template-columns:5fr 6fr;gap:56px;padding-top:56px}.hero{position:sticky;top:32px;align-self:start}}
-.brand{display:flex;align-items:center;gap:10px;font:700 18px 'Bricolage Grotesque',sans-serif;margin-bottom:34px}
-.brand svg{width:30px;height:30px}
-h1{font-size:clamp(38px,6vw,60px);font-weight:800;letter-spacing:-.02em}
-.lead{color:var(--mute);font-size:18px;max-width:42ch;margin:18px 0 28px}
-.pipe{width:100%;max-width:420px;height:auto;display:block}
-.pipe .flow{stroke-dasharray:6 12;animation:flow 1.6s linear infinite}
-@keyframes flow{to{stroke-dashoffset:-36}}
-.facts{display:grid;gap:10px;margin:26px 0 0;padding:0;list-style:none;color:var(--mute)}
-.facts li{display:flex;gap:10px;align-items:flex-start}
-.facts svg{flex:none;width:20px;height:20px;margin-top:3px;color:var(--water)}
-.panel{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:26px 22px}
-@media(min-width:600px){.panel{padding:34px}}
-.panel h2{font-size:26px;margin-bottom:6px}
-.sub{color:var(--mute);margin:0 0 22px}
-fieldset{border:0;margin:0 0 20px;padding:0;min-width:0}
-legend{font:700 15px 'Bricolage Grotesque',sans-serif;padding:0 0 10px;color:var(--water-d)}
-.row{display:grid;gap:14px;grid-template-columns:1fr}
-@media(min-width:600px){.row.two{grid-template-columns:1fr 1fr}}
-label.f{display:block;font-weight:600;font-size:14px}
-input,select,textarea{display:block;width:100%;margin-top:6px;padding:12px 13px;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px}
-textarea{min-height:92px;resize:vertical}
-:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
-input:focus,select:focus,textarea:focus{border-color:var(--water)}
-.invalid{border-color:var(--err)!important}
-.msg{color:var(--err);font-size:13px;font-weight:500;min-height:0;margin-top:4px}
-.urg{display:grid;gap:10px;grid-template-columns:1fr}
-@media(min-width:600px){.urg{grid-template-columns:repeat(3,1fr)}}
-.urg label{position:relative;display:block;cursor:pointer}
-.urg input{position:absolute;opacity:0;width:1px;height:1px}
-.urg span{display:block;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-weight:600;background:var(--bg)}
-.urg small{display:block;font-weight:400;color:var(--mute)}
-.urg input:checked+span{border-color:var(--water);background:var(--foam);box-shadow:inset 0 0 0 1px var(--water)}
-.urg input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
-button.go{width:100%;padding:15px 20px;font:700 17px 'Bricolage Grotesque',sans-serif;color:#fff;background:var(--water-d);border:0;border-radius:12px;cursor:pointer}
-button.go:hover{background:var(--water)}
-button.alt{padding:12px 18px;font:600 15px Figtree,sans-serif;color:var(--water-d);background:transparent;border:1.5px solid var(--line);border-radius:10px;cursor:pointer}
-.result{display:none}
-.result.show{display:block;animation:rise .5s ease-out}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.ok{display:inline-flex;align-items:center;gap:8px;background:var(--foam);color:var(--water-d);padding:6px 12px;border-radius:99px;font-weight:600;font-size:14px;margin-bottom:14px}
-.plumber{display:flex;gap:16px;align-items:center;padding:18px;border-radius:14px;background:var(--foam);margin:18px 0}
-.avatar{flex:none;width:68px;height:68px;border-radius:50%;background:var(--water-d);color:#fff;display:grid;place-items:center;font:800 26px 'Bricolage Grotesque',sans-serif}
-.plumber h3{font-size:24px}
-.stars{position:relative;display:inline-block;font-size:20px;letter-spacing:2px;color:var(--line);line-height:1}
-.stars i{position:absolute;inset:0;overflow:hidden;white-space:nowrap;color:var(--brass);font-style:normal}
-.rate{display:flex;align-items:center;gap:8px;margin-top:6px;font-weight:600}
-.rate span{color:var(--mute);font-weight:400;font-size:14px}
-.tag{display:inline-block;margin-top:8px;font-size:13px;color:var(--mute)}
-dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0 0 22px}
-dt{color:var(--mute)}dd{margin:0;font-weight:600;overflow-wrap:anywhere}
-@media(prefers-reduced-motion:reduce){.pipe .flow,.result.show{animation:none}}
-[hidden]{display:none!important}
-.plink{display:inline-block;margin:-12px 0 22px;font-weight:600;color:var(--water-d)}
-.pw{display:block;max-width:760px;padding-top:40px}
-.pw .panel{margin-bottom:22px}
-.who{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}
-.who>div:first-child{display:flex;gap:14px;align-items:center}
-.job{border:1.5px solid var(--line);border-radius:12px;padding:16px;margin-top:12px;background:var(--bg)}
-.job h3{font-size:19px;margin-bottom:6px}.job p{margin:6px 0;color:var(--mute)}
-.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.acts button{flex:1 1 140px}
-button.ok2{background:var(--water-d);color:#fff;border:0;border-radius:10px;padding:12px 16px;font:600 15px Figtree,sans-serif;cursor:pointer}
-.est{display:inline-block;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600;background:var(--foam);color:var(--water-d)}
-.est.no{background:transparent;border:1.5px solid var(--err);color:var(--err)}
-.rev{padding:14px 0;border-top:1.5px solid var(--line)}.rev:first-child{border-top:0}
-.note{font-size:14px;color:var(--mute)}
+:root{--bg:#f2f8fc;--card:#fff;--ink:#0b2540;--mut:#5b7690;--p:#0a84d6;--p2:#06b6d4;--dk:#06345c;--ok:#16a34a;--bad:#dc2626;--line:#d9e7f2;--star:#f5b301;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#071827;--card:#0d2740;--ink:#e6f3fc;--mut:#8fb0c9;--line:#1b3c5a;--dk:#021a30}}
+:root[data-theme="dark"]{--bg:#071827;--card:#0d2740;--ink:#e6f3fc;--mut:#8fb0c9;--line:#1b3c5a;--dk:#021a30}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;line-height:1.5}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 5%;background:color-mix(in srgb,var(--card) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:1.25rem;display:flex;gap:8px;align-items:center;color:var(--p)}
+nav div a{margin-left:18px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem}
+nav div a:hover{color:var(--p)}
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:84px 6% 150px;background:linear-gradient(160deg,#06345c,#0a84d6 60%,#06b6d4)}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);margin:0 0 12px;line-height:1.1}
+.hero p{max-width:620px;margin:0 auto 26px;opacity:.92;font-size:1.1rem}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:700;padding:13px 26px;border-radius:50px;background:#fff;color:var(--p);text-decoration:none;box-shadow:0 8px 24px #0004;transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn.pri{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff}
+.drop{position:absolute;top:-30px;width:14px;height:20px;background:#ffffff66;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(520px);opacity:0}}
+.wave{position:absolute;bottom:-2px;left:0;width:200%;height:110px;animation:slide 12s linear infinite}
+.wave.b{opacity:.5;animation-duration:7s;animation-direction:reverse;height:90px}
+@keyframes slide{to{transform:translateX(-50%)}}
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:-60px 5% 0;position:relative;z-index:2}
+.stat{background:var(--card);border-radius:18px;padding:18px 28px;text-align:center;box-shadow:0 10px 30px #0a84d622;min-width:150px}
+.stat b{font-size:1.8rem;color:var(--p);display:block}
+section{padding:64px 5%;max-width:1100px;margin:auto}
+h2{font-size:1.9rem;margin:0 0 6px}.sub{color:var(--mut);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 6px 20px #0a84d612;transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 30px #0a84d633}
+.ic{font-size:2rem}
+form{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+form .full{grid-column:1/-1}
+label{font-weight:600;font-size:.88rem;display:block;margin-bottom:4px}
+input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--p);box-shadow:0 0 0 4px #0a84d630}
+.urg{display:flex;gap:8px;flex-wrap:wrap}
+.urg label{flex:1;min-width:110px;border:1.5px solid var(--line);border-radius:12px;padding:10px;text-align:center;cursor:pointer;margin:0}
+.urg input{display:none}
+.urg label:has(input:checked){background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border-color:transparent}
+.stars{color:var(--star);letter-spacing:2px;white-space:nowrap}
+.plum{display:flex;gap:14px;align-items:center}
+.av{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem;background:linear-gradient(135deg,var(--p),var(--p2));flex:none}
+.tag{display:inline-block;font-size:.75rem;padding:3px 10px;border-radius:20px;background:#0a84d61f;color:var(--p);font-weight:700}
+#res{display:none;margin-top:26px;border:2px solid var(--p2);background:linear-gradient(135deg,#0a84d614,#06b6d414);animation:pop .5s}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+.portal{background:linear-gradient(160deg,var(--dk),#0a5fa0);color:#fff;border-radius:28px;padding:34px;max-width:none}
+.portal .card{color:var(--ink)}
+.portal h2,.portal .sub{color:#fff}.portal .sub{opacity:.8}
+.login{max-width:380px;display:grid;gap:12px}
+.err{color:#ffb4b4;min-height:1.2em;font-weight:600}
+.dash{display:none}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){form,.cols{grid-template-columns:1fr}nav div a:not(.keep){display:none}}
+.job{border-left:5px solid var(--star);margin-bottom:12px;padding:14px 16px;border-radius:14px;background:var(--bg);color:var(--ink)}
+.job.done{border-color:var(--ok)}.job.no{border-color:var(--bad)}
+.job small{color:var(--mut)}
+.acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.acts button{border:0;border-radius:10px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer;color:#fff}
+.g{background:var(--ok)}.r{background:var(--bad)}.n{background:var(--mut)}
+.rev{padding:12px 0;border-bottom:1px solid var(--line)}
+.sm{font-size:.82rem;padding:8px 16px;box-shadow:none;border:1.5px solid #fff8;background:transparent;color:#fff}
+footer{text-align:center;padding:30px;color:var(--mut);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(30px);transition:.7s}.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <section class="hero" aria-label="Presentación">
-    <div class="brand">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C16 2 6 14 6 21a10 10 0 0 0 20 0C26 14 16 2 16 2Z" fill="var(--water)"/><path d="M11 21a5 5 0 0 0 5 5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      Gota Azul
-    </div>
-    <a class="plink" href="#plomero">Acceso para plomeros</a>
-    <h1>Un plomero en tu puerta, sin buscar.</h1>
-    <p class="lead">Cuéntanos qué pasa, y al enviar el formulario te asignamos a un plomero con nombre y calificación.</p>
-    <svg class="pipe" viewBox="0 0 420 110" fill="none" aria-hidden="true">
-      <path d="M0 55H120a20 20 0 0 1 20 20v0a20 20 0 0 0 20 20H300a20 20 0 0 0 20-20V35a20 20 0 0 1 20-20H420" stroke="var(--line)" stroke-width="18" stroke-linecap="round"/>
-      <path class="flow" d="M0 55H120a20 20 0 0 1 20 20v0a20 20 0 0 0 20 20H300a20 20 0 0 0 20-20V35a20 20 0 0 1 20-20H420" stroke="var(--water)" stroke-width="5" stroke-linecap="round"/>
-      <rect x="110" y="40" width="10" height="30" rx="3" fill="var(--brass)"/><rect x="300" y="80" width="30" height="10" rx="3" fill="var(--brass)"/>
-    </svg>
-    <ul class="facts">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Plomeros verificados y calificados por clientes</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Te avisamos quién va y en cuánto tiempo llega</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Revisión sin costo si aceptas la reparación</li>
-    </ul>
-  </section>
+<nav><span class="logo">💧 AquaFix</span><div><a href="#servicios">Servicios</a><a href="#plomeros">Plomeros</a><a href="#solicitar">Solicitar</a><a class="keep" href="#portal">Portal plomeros</a></div></nav>
 
-  <section>
-    <form id="form" class="panel" novalidate>
-      <h2>Solicita tu servicio</h2>
-      <p class="sub">Tarda menos de dos minutos.</p>
+<header class="hero" id="top">
+<div id="drops"></div>
+<h1>Fugas, tuberías y drenajes<br>resueltos en tu hogar</h1>
+<p>Cuéntanos tu problema y al instante te asignamos un plomero certificado, con calificación y nombre.</p>
+<a class="btn" href="#solicitar">🔧 Solicitar un plomero</a>
+<svg class="wave b" viewBox="0 0 1200 100" preserveAspectRatio="none"><path d="M0 50 Q150 0 300 50 T600 50 T900 50 T1200 50 V100 H0Z" fill="#f2f8fc"/></svg>
+<svg class="wave" viewBox="0 0 1200 100" preserveAspectRatio="none"><path d="M0 60 Q150 10 300 60 T600 60 T900 60 T1200 60 V100 H0Z" fill="var(--bg)"/></svg>
+</header>
 
-      <fieldset>
-        <legend>Tus datos</legend>
-        <div class="row two">
-          <label class="f">Nombre completo<input name="nombre" autocomplete="name" required placeholder="Ej. María López"></label>
-          <label class="f">Teléfono<input name="tel" type="tel" inputmode="tel" autocomplete="tel" required pattern="[0-9 +()\-]{8,}" placeholder="10 dígitos"></label>
-        </div>
-        <div class="row" style="margin-top:14px">
-          <label class="f">Dirección del servicio<input name="dir" autocomplete="street-address" required placeholder="Calle, número y colonia"></label>
-        </div>
-      </fieldset>
+<div class="stats">
+<div class="stat"><b data-n="1280">0</b>servicios hechos</div>
+<div class="stat"><b data-n="4">0</b>plomeros expertos</div>
+<div class="stat"><b>4.8 ★</b>calificación media</div>
+<div class="stat"><b>24/7</b>urgencias</div>
+</div>
 
-      <fieldset>
-        <legend>¿Qué necesitas?</legend>
-        <div class="row">
-          <label class="f">Tipo de servicio
-            <select name="serv" required>
-              <option value="">Elige una opción</option>
-              <option>Fuga de agua</option>
-              <option>Drenaje tapado</option>
-              <option>Calentador de agua</option>
-              <option>Instalación de baño o cocina</option>
-              <option>Baja presión de agua</option>
-              <option>Otro</option>
-            </select>
-          </label>
-          <label class="f">Describe el problema<textarea name="desc" required placeholder="Ej. Gotea la tubería debajo del lavabo de la cocina"></textarea></label>
-        </div>
-      </fieldset>
+<section id="servicios" class="reveal">
+<h2>Nuestros servicios</h2><p class="sub">Todo lo que tu casa necesita para que el agua fluya bien.</p>
+<div class="grid">
+<div class="card"><div class="ic">🚰</div><h3>Fugas</h3>Detección y reparación de fugas en llaves, tubos y muros.</div>
+<div class="card"><div class="ic">🚽</div><h3>Drenajes</h3>Destape de coladeras, WC, regaderas y tuberías.</div>
+<div class="card"><div class="ic">🔥</div><h3>Boiler</h3>Instalación, mantenimiento y reparación de calentadores.</div>
+<div class="card"><div class="ic">🛁</div><h3>Instalaciones</h3>Lavabos, tinacos, cisternas, bombas y regaderas.</div>
+</div>
+</section>
 
-      <fieldset>
-        <legend>¿Qué tan pronto?</legend>
-        <div class="urg">
-          <label><input type="radio" name="urg" value="Emergencia" required><span>Emergencia<small>Hoy mismo</small></span></label>
-          <label><input type="radio" name="urg" value="Pronto" checked><span>Pronto<small>En 1 o 2 días</small></span></label>
-          <label><input type="radio" name="urg" value="Programado"><span>Programado<small>Elijo fecha</small></span></label>
-        </div>
-        <div class="row two" id="fechas" style="margin-top:14px;display:none">
-          <label class="f">Fecha<input name="fecha" type="date"></label>
-          <label class="f">Horario
-            <select name="hora"><option>Mañana (8–12)</option><option>Tarde (12–17)</option><option>Noche (17–20)</option></select>
-          </label>
-        </div>
-      </fieldset>
+<section id="plomeros" class="reveal">
+<h2>Conoce a nuestros plomeros</h2><p class="sub">Calificados por clientes reales.</p>
+<div class="grid" id="team"></div>
+</section>
 
-      <div class="msg" id="err" role="alert"></div>
-      <button class="go" type="submit">Asignarme un plomero</button>
-    </form>
+<section id="solicitar" class="reveal">
+<h2>Solicita tu servicio</h2><p class="sub">Llena el formulario y te asignamos un plomero al momento.</p>
+<div class="card">
+<form id="f">
+<div><label>Nombre completo</label><input name="nom" required placeholder="Ej. María López"></div>
+<div><label>Teléfono</label><input name="tel" required inputmode="tel" pattern="[0-9 +()-]{8,}" placeholder="492 123 4567"></div>
+<div class="full"><label>Dirección</label><input name="dir" required placeholder="Calle, número, colonia"></div>
+<div><label>Tipo de servicio</label><select name="tipo"><option>Fuga de agua</option><option>Drenaje tapado</option><option>Boiler / calentador</option><option>Instalación</option><option>Baño / WC</option><option>Otro</option></select></div>
+<div><label>Fecha preferida</label><input type="date" name="fec" required></div>
+<div class="full"><label>Urgencia</label><div class="urg"><label><input type="radio" name="urg" value="Normal" checked>🟢 Normal</label><label><input type="radio" name="urg" value="Pronto">🟡 Pronto</label><label><input type="radio" name="urg" value="Urgente">🔴 Urgente</label></div></div>
+<div class="full"><label>Describe el problema</label><textarea name="des" rows="3" required placeholder="¿Qué está pasando?"></textarea></div>
+<div class="full"><button class="btn pri" type="submit">💧 Asignarme un plomero</button></div>
+</form>
+</div>
+<div class="card" id="res"></div>
+</section>
 
-    <div id="result" class="panel result" aria-live="polite" tabindex="-1">
-      <span class="ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Solicitud enviada · <span id="folio"></span></span>
-      <h2>Ya tienes plomero asignado</h2>
-      <div class="plumber">
-        <div class="avatar" id="av"></div>
-        <div>
-          <h3 id="pn"></h3>
-          <div class="rate"><div class="stars" aria-hidden="true">★★★★★<i id="st">★★★★★</i></div><b id="pr"></b><span id="pj"></span></div>
-          <span class="tag" id="ps"></span>
-        </div>
-      </div>
-      <dl id="det"></dl>
-      <button class="alt" id="again" type="button">Hacer otra solicitud</button>
-    </div>
-  </section>
-</main>
-<main id="portal" class="wrap pw" hidden>
-  <a class="plink" href="#" style="margin:0 0 18px">Volver al formulario</a>
-  <form id="login" class="panel" novalidate>
-    <h2>Acceso para plomeros</h2>
-    <p class="sub">Entra con tu número de control y tu contraseña.</p>
-    <div class="row two">
-      <label class="f">Número de control<input id="lid" autocomplete="username" placeholder="PO001" maxlength="5" required></label>
-      <label class="f">Contraseña<input id="lpw" type="password" autocomplete="current-password" required></label>
-    </div>
-    <div class="msg" id="lerr" role="alert" style="margin:10px 0"></div>
-    <button class="go" type="submit">Entrar</button>
-  </form>
-  <div id="dash" hidden>
-    <div class="panel">
-      <div class="who"><div><div class="avatar" id="dav"></div><div><h2 id="dn"></h2><div class="rate"><div class="stars" aria-hidden="true">★★★★★<i id="dst">★★★★★</i></div><b id="dr"></b></div></div></div><button class="alt" id="out" type="button">Salir</button></div>
-      <p class="note" id="sync" role="status"></p>
-      <h3>Trabajos pendientes</h3>
-      <div id="pend"></div>
-    </div>
-    <div class="panel"><h3>Historial</h3><div id="hist"></div></div>
-    <div class="panel"><h3>Reseñas</h3><div id="revs"></div></div>
-  </div>
-</main>
+<section id="portal" class="reveal">
+<div class="portal">
+<h2>🔐 Portal para plomeros</h2><p class="sub">Accede con tu número de control para ver tus reseñas y tus trabajos.</p>
+<div id="login" class="login">
+<input id="u" placeholder="Número de control (PO001)" autocomplete="username">
+<input id="pw" type="password" placeholder="Contraseña" autocomplete="current-password">
+<button class="btn" id="go">Entrar</button>
+<div class="err" id="err"></div>
+<small style="opacity:.75">Demo: PO001 / agua001 · PO002 / agua002 · PO003 / agua003 · PO004 / agua004</small>
+</div>
+<div class="dash" id="dash">
+<div class="top"><div class="plum"><div class="av" id="dav"></div><div><h3 style="margin:0" id="dn"></h3><span id="dm"></span></div></div><button class="btn sm" id="out">Salir</button></div>
+<div class="grid" style="margin-bottom:18px" id="kpi"></div>
+<div class="cols">
+<div class="card"><h3>📋 Mis trabajos</h3><div id="jobs"></div></div>
+<div class="card"><h3>⭐ Mis reseñas</h3><div id="revs"></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>© 2026 AquaFix · Plomería para el hogar 💧</footer>
 
 <script>
-const PLOMEROS=[
- {n:"Ricardo Valdez",r:4.9,j:312,e:["Fuga de agua","Baja presión de agua","Otro"],t:"Detección de fugas"},
- {n:"Marisol Tovar",r:4.8,j:254,e:["Calentador de agua","Instalación de baño o cocina","Otro"],t:"Calentadores e instalaciones"},
- {n:"Héctor Ramírez",r:4.7,j:401,e:["Drenaje tapado","Fuga de agua","Otro"],t:"Destapes de drenaje"},
- {n:"Daniela Cortés",r:4.9,j:187,e:["Instalación de baño o cocina","Baja presión de agua","Otro"],t:"Baños y cocinas"},
- {n:"Julián Pacheco",r:4.6,j:276,e:["Calentador de agua","Fuga de agua","Otro"],t:"Boilers y gas"},
- {n:"Esteban Lozano",r:4.8,j:339,e:["Drenaje tapado","Baja presión de agua","Otro"],t:"Drenaje y presión"}
+var P=[
+{id:"PO001",pw:"agua001",n:"Carlos Ramírez",e:"👨‍🔧",esp:"Fugas y tuberías",ex:12,r:[[5,"Ana G.","Llegó rápido y arregló la fuga en una hora. ¡Excelente!"],[5,"Luis M.","Muy profesional y limpio."],[4,"Rosa T.","Buen trabajo, tardó un poco en llegar."]]},
+{id:"PO002",pw:"agua002",n:"Mariana Torres",e:"👩‍🔧",esp:"Boilers y calentadores",ex:9,r:[[5,"Jorge P.","Dejó mi boiler como nuevo."],[5,"Elena R.","Puntual y muy amable."],[5,"Pedro S.","Explicó todo con claridad."]]},
+{id:"PO003",pw:"agua003",n:"Héctor Salinas",e:"🧔",esp:"Drenajes y destapes",ex:15,r:[[4,"Marta V.","Destapó el drenaje sin problema."],[5,"Iván C.","Cobró lo justo, muy recomendable."],[4,"Sofía D.","Trabajo bueno y rápido."]]},
+{id:"PO004",pw:"agua004",n:"Daniela Cruz",e:"👩",esp:"Instalaciones y baños",ex:7,r:[[5,"Raúl B.","Instaló mi regadera perfecto."],[4,"Lupe A.","Muy atenta, quedó bonito."],[5,"Tomás F.","Súper puntual."]]}
 ];
-["PO001","PO002","PO003","PO004","PO005","PO006"].forEach((id,i)=>{PLOMEROS[i].id=id;PLOMEROS[i].pw="agua"+id.slice(2)});
-const RESENAS=[
- {a:"Laura M.",s:5,t:"Llegó puntual, encontró la fuga en minutos y dejó todo limpio."},
- {a:"Carlos R.",s:5,t:"Muy profesional. Explicó el problema antes de empezar."},
- {a:"Ana P.",s:4,t:"Buen trabajo y precio justo. Tardó un poco más de lo dicho."},
- {a:"Jorge T.",s:5,t:"Resolvió el drenaje el mismo día. Lo recomiendo."},
- {a:"Sofía G.",s:4,t:"Atento y amable. Todo quedó funcionando perfecto."},
- {a:"Miguel A.",s:5,t:"Rápido y ordenado. Volvería a llamarlo."}];
-const $=s=>document.querySelector(s), f=$('#form');
-const fechas=$('#fechas');
-f.addEventListener('change',e=>{if(e.target.name==='urg')fechas.style.display=e.target.value==='Programado'?'grid':'none'});
-
-f.addEventListener('submit',e=>{
-  e.preventDefault();
-  let bad=false;
-  f.querySelectorAll('input,select,textarea').forEach(el=>{
-    const ok=el.type==='radio'||el.checkValidity();
-    el.classList.toggle('invalid',!ok); if(!ok)bad=true;
-  });
-  if(f.urg.value==='Programado'&&!f.fecha.value){f.fecha.classList.add('invalid');bad=true}
-  $('#err').textContent=bad?'Revisa los campos marcados en rojo antes de continuar.':'';
-  if(bad){f.querySelector('.invalid')?.focus();return}
-
-  const d=Object.fromEntries(new FormData(f));
-  let pool=PLOMEROS.filter(p=>p.e.includes(d.serv));
-  const top=d.urg==='Emergencia'?pool.sort((a,b)=>b.r-a.r).slice(0,2):pool;
-  const p=top[Math.floor(Math.random()*top.length)];
-  const eta=d.urg==='Emergencia'?'Llega en 45–90 minutos':d.urg==='Pronto'?'Visita en 24–48 horas':'Visita el '+new Date(d.fecha+'T12:00').toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'})+', '+d.hora.toLowerCase();
-
-  const folio='GA-'+Math.floor(10000+Math.random()*90000);$('#folio').textContent='Folio '+folio;guardar(folio,p,d,eta);
-  $('#av').textContent=p.n.split(' ').map(w=>w[0]).join('');
-  $('#pn').textContent=p.n;
-  $('#pr').textContent=p.r.toFixed(1);
-  $('#pj').textContent='('+p.j+' trabajos)';
-  $('#st').style.width=(p.r/5*100)+'%';
-  $('#ps').textContent='Especialidad: '+p.t;
-  const rows=[['Servicio',d.serv],['Prioridad',d.urg],['Atención',eta],['Dirección',d.dir],['Contacto',d.nombre+' · '+d.tel]];
-  const dl=$('#det');dl.innerHTML='';
-  rows.forEach(([k,v])=>{const a=document.createElement('dt'),b=document.createElement('dd');a.textContent=k;b.textContent=v;dl.append(a,b)});
-  f.style.display='none';
-  const r=$('#result');r.classList.add('show');r.focus();window.scrollTo({top:0,behavior:'smooth'});
+var J=[];try{J=JSON.parse(localStorage.getItem("aq_jobs")||"[]")}catch(e){}
+function save(){try{localStorage.setItem("aq_jobs",JSON.stringify(J))}catch(e){}}
+function avg(p){return p.r.reduce(function(a,x){return a+x[0]},0)/p.r.length}
+function st(n){var r=Math.round(n);return "★".repeat(r)+"☆".repeat(5-r)}
+function $(i){return document.getElementById(i)}
+// gotas
+for(var i=0;i<18;i++){var d=document.createElement("span");d.className="drop";d.style.left=Math.random()*100+"%";d.style.animationDuration=(3+Math.random()*4)+"s";d.style.animationDelay=(-Math.random()*6)+"s";$("drops").appendChild(d)}
+// equipo
+$("team").innerHTML=P.map(function(p){return '<div class="card"><div class="plum"><div class="av">'+p.e+'</div><div><b>'+p.n+'</b><br><span class="stars">'+st(avg(p))+'</span> '+avg(p).toFixed(1)+'</div></div><p><span class="tag">'+p.esp+'</span><br><small>'+p.ex+' años de experiencia · '+p.r.length+' reseñas</small></p></div>'}).join("");
+// contadores
+document.querySelectorAll("[data-n]").forEach(function(el){var t=+el.dataset.n,c=0,s=Math.max(1,Math.ceil(t/60));var iv=setInterval(function(){c=Math.min(t,c+s);el.textContent=c;if(c>=t)clearInterval(iv)},25)});
+// reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting)x.target.classList.add("in")})},{threshold:.1});
+document.querySelectorAll(".reveal").forEach(function(e){io.observe(e)});
+// fecha mínima
+var hoy=new Date().toISOString().slice(0,10);document.querySelector("[name=fec]").min=hoy;document.querySelector("[name=fec]").value=hoy;
+// asignación
+var map={"Fuga de agua":"PO001","Boiler / calentador":"PO002","Drenaje tapado":"PO003","Instalación":"PO004","Baño / WC":"PO004"};
+$("f").addEventListener("submit",function(ev){
+ev.preventDefault();var f=new FormData(ev.target),o={};f.forEach(function(v,k){o[k]=v});
+var cand=P.filter(function(p){return p.id===map[o.tipo]});
+var p=(Math.random()<.7&&cand.length)?cand[0]:P[Math.floor(Math.random()*P.length)];
+var job={id:"S"+Date.now().toString().slice(-6),pid:p.id,nom:o.nom,tel:o.tel,dir:o.dir,tipo:o.tipo,fec:o.fec,urg:o.urg,des:o.des,est:"pendiente"};
+J.unshift(job);save();
+var r=$("res");r.style.display="block";
+r.innerHTML='<h3>✅ ¡Listo, '+esc(o.nom.split(" ")[0])+'! Tu solicitud #'+job.id+' fue registrada</h3><div class="plum"><div class="av" style="width:76px;height:76px;font-size:2.3rem">'+p.e+'</div><div><b style="font-size:1.25rem">'+p.n+'</b><br><span class="stars">'+st(avg(p))+'</span> <b>'+avg(p).toFixed(1)+'</b> ('+p.r.length+' reseñas)<br><span class="tag">'+p.esp+'</span></div></div><p>Te contactará al <b>'+esc(o.tel)+'</b> para el servicio de <b>'+o.tipo.toLowerCase()+'</b> ('+o.urg.toLowerCase()+') el <b>'+o.fec+'</b>.</p>';
+r.scrollIntoView({behavior:"smooth",block:"center"});ev.target.reset();document.querySelector("[name=fec]").value=hoy;
+if(cur&&cur.id===p.id)render();
 });
-
-$('#again').addEventListener('click',()=>{
-  f.reset();fechas.style.display='none';
-  $('#result').classList.remove('show');f.style.display='';
-  f.querySelectorAll('.invalid').forEach(x=>x.classList.remove('invalid'));
-});
-let DB=null,me=null,unsub=null;
-const DBP=(window.claude&&claude.use?claude.use('db').catch(()=>null):Promise.resolve(null)).then(x=>DB=x);
-const ESTADO={pendiente:'Pendiente',realizado:'Realizado',no_realizado:'No realizado'};
-
-async function guardar(folio,p,d,eta){
-  await DBP;
-  const a=document.createElement('dt'),b=document.createElement('dd');a.textContent='Seguimiento';
-  try{
-    if(!DB)throw 0;
-    await DB.collection('trabajos').doc(folio).set({folio,plomero:p.id,estado:'pendiente',serv:d.serv,desc:d.desc,urg:d.urg,eta,nombre:d.nombre,tel:d.tel,dir:d.dir,creado:Date.now()});
-    b.textContent='Enviado al portal de '+p.n;
-  }catch(e){b.textContent='No se pudo enviar al portal del plomero (requiere acceso con tu cuenta de claude.ai).'}
-  $('#det').append(a,b);
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+// portal
+var cur=null;
+$("go").onclick=function(){var u=$("u").value.trim().toUpperCase(),w=$("pw").value;
+var p=P.filter(function(x){return x.id===u&&x.pw===w})[0];
+if(!p){$("err").textContent="Número de control o contraseña incorrectos.";return}
+$("err").textContent="";cur=p;$("login").style.display="none";$("dash").style.display="block";render()};
+$("pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("go").click()});
+$("out").onclick=function(){cur=null;$("dash").style.display="none";$("login").style.display="grid";$("pw").value=""};
+function setE(id,e){J.forEach(function(j){if(j.id===id)j.est=e});save();render()}
+window.setE=setE;
+function render(){
+var p=cur,mine=J.filter(function(j){return j.pid===p.id});
+$("dav").textContent=p.e;$("dn").textContent=p.n;$("dm").innerHTML='<span class="tag">'+p.id+'</span> '+p.esp;
+var pen=mine.filter(function(j){return j.est==="pendiente"}).length,ok=mine.filter(function(j){return j.est==="realizado"}).length;
+$("kpi").innerHTML=[["⭐",avg(p).toFixed(1),"calificación"],["💬",p.r.length,"reseñas"],["⏳",pen,"pendientes"],["✅",ok,"realizados"]].map(function(k){return '<div class="card" style="text-align:center;color:var(--ink)"><div class="ic">'+k[0]+'</div><b style="font-size:1.6rem">'+k[1]+'</b><br><small>'+k[2]+'</small></div>'}).join("");
+$("jobs").innerHTML=mine.length?mine.map(function(j){var cl=j.est==="realizado"?"done":j.est==="no realizado"?"no":"";
+return '<div class="job '+cl+'"><b>#'+j.id+' · '+j.tipo+'</b> <span class="tag">'+j.urg+'</span><br>👤 '+esc(j.nom)+' · 📞 '+esc(j.tel)+'<br>📍 '+esc(j.dir)+'<br>📅 '+j.fec+'<br><small>“'+esc(j.des)+'”</small><div class="acts"><button class="g" onclick="setE(\''+j.id+'\',\'realizado\')">✔ Realizado</button><button class="r" onclick="setE(\''+j.id+'\',\'no realizado\')">✖ No realizado</button><button class="n" onclick="setE(\''+j.id+'\',\'pendiente\')">↺ Pendiente</button></div><small>Estado: <b>'+j.est+'</b></small></div>'}).join(""):"<p>Aún no tienes trabajos. Cuando un cliente te sea asignado, aparecerá aquí. 🔧</p>";
+$("revs").innerHTML=p.r.map(function(r){return '<div class="rev"><span class="stars">'+st(r[0])+'</span> <b>'+r[1]+'</b><br>“'+r[2]+'”</div>'}).join("");
 }
-
-function ruta(){const p=location.hash==='#plomero';document.querySelector('main.wrap').hidden=p;$('#portal').hidden=!p;window.scrollTo(0,0)}
-addEventListener('hashchange',ruta);
-
-$('#login').addEventListener('submit',e=>{
-  e.preventDefault();
-  const id=$('#lid').value.trim().toUpperCase(),pw=$('#lpw').value;
-  const p=PLOMEROS.find(x=>x.id===id&&x.pw===pw);
-  if(!p){$('#lerr').textContent='Número de control o contraseña incorrectos. El formato es PO000.';$('#lpw').value='';return}
-  $('#lerr').textContent='';entrar(p);
-});
-$('#out').addEventListener('click',()=>{unsub&&unsub();unsub=null;me=null;$('#dash').hidden=true;$('#login').hidden=false;$('#lpw').value=''});
-
-function entrar(p){
-  me=p;$('#login').hidden=true;$('#dash').hidden=false;
-  $('#dav').textContent=p.n.split(' ').map(w=>w[0]).join('');
-  $('#dn').textContent=p.n;$('#dr').textContent=p.r.toFixed(1)+' · '+p.id;$('#dst').style.width=(p.r/5*100)+'%';
-  const rv=$('#revs');rv.innerHTML='';
-  const i=PLOMEROS.indexOf(p);
-  [0,1,2].forEach(k=>{
-    const r=RESENAS[(i+k)%6],x=document.createElement('div');x.className='rev';
-    const s=document.createElement('div');s.className='stars';s.style.color='var(--brass)';s.textContent='★'.repeat(r.s);
-    const q=document.createElement('p');q.style.margin='6px 0 0';q.textContent=r.a+': '+r.t;
-    x.append(s,q);rv.append(x);
-  });
-  suscribir();
-}
-
-async function suscribir(){
-  $('#sync').textContent='Cargando trabajos…';
-  await DBP;
-  if(!DB){$('#sync').textContent='No hay conexión con el registro de trabajos. Abre esta página con tu cuenta de claude.ai.';pintar([]);return}
-  const t=setTimeout(()=>{$('#sync').textContent='Aún no se alcanzan los datos; lo que ves puede estar desactualizado.'},10000);
-  unsub=DB.collection('trabajos').where('plomero','==',me.id).onSnapshot(
-    s=>{clearTimeout(t);$('#sync').textContent='';pintar(s.docs.map(x=>x.data()))},
-    ()=>{clearTimeout(t);$('#sync').textContent='No se pudo leer el registro de trabajos.'});
-}
-
-function pintar(js){
-  js.sort((a,b)=>b.creado-a.creado);
-  const P=$('#pend'),H=$('#hist');P.innerHTML='';H.innerHTML='';
-  const pe=js.filter(j=>j.estado==='pendiente'),hi=js.filter(j=>j.estado!=='pendiente');
-  if(!pe.length)P.innerHTML='<p class="note">No tienes trabajos pendientes. Cuando un cliente llene el formulario, aparecerá aquí.</p>';
-  if(!hi.length)H.innerHTML='<p class="note">Todavía no has cerrado ningún trabajo.</p>';
-  pe.forEach(j=>P.append(tarjeta(j)));hi.forEach(j=>H.append(tarjeta(j)));
-}
-
-function tarjeta(j){
-  const c=document.createElement('div');c.className='job';
-  const h=document.createElement('h3');h.textContent=j.serv+' · '+j.folio;
-  const e=document.createElement('span');e.className='est'+(j.estado==='no_realizado'?' no':'');e.textContent=ESTADO[j.estado]||j.estado;
-  c.append(h,e);
-  const add=t=>{const p=document.createElement('p');p.textContent=t;c.append(p)};
-  add(j.desc);add('Cliente: '+j.nombre+' · '+j.tel);add('Dirección: '+j.dir);add(j.urg+' · '+j.eta);
-  const a=document.createElement('div');a.className='acts';
-  const b=(t,est,cls)=>{const x=document.createElement('button');x.type='button';x.className=cls;x.textContent=t;
-    x.onclick=()=>{x.disabled=true;DB.collection('trabajos').doc(j.folio).update({estado:est}).catch(()=>{x.disabled=false;$('#sync').textContent='No se pudo guardar el cambio. Inténtalo de nuevo.'})};a.append(x)};
-  if(j.estado==='pendiente'){b('Marcar realizado','realizado','ok2');b('No realizado','no_realizado','alt')}else b('Volver a pendiente','pendiente','alt');
-  c.append(a);return c;
-}
-ruta();
 </script>
 </body>
 </html>

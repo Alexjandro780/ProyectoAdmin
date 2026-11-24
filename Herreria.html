@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Forja Hogar | Herrería para tu casa</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4efe8;--bg2:#fff;--tx:#241c17;--mu:#6b5e55;--ac:#d9531e;--ac2:#f2a516;--ln:#dccfc2;--hero:#1b1512;--herotx:#f7efe6;--sh:0 8px 24px rgba(40,20,5,.12);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15110f;--bg2:#211a16;--tx:#f3e9de;--mu:#a89a8d;--ln:#3a2f28;--sh:0 8px 24px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#15110f;--bg2:#211a16;--tx:#f3e9de;--mu:#a89a8d;--ln:#3a2f28;--sh:0 8px 24px rgba(0,0,0,.5)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3,.logo{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;letter-spacing:.04em;margin:0}
+a{color:inherit}
+header{position:sticky;top:0;z-index:20;background:var(--hero);color:var(--herotx);display:flex;align-items:center;justify-content:space-between;padding:12px 5vw;border-bottom:3px solid var(--ac)}
+.logo{font-size:1.5rem;font-weight:700;text-decoration:none}.logo b{color:var(--ac2)}
+nav{display:flex;gap:18px;align-items:center}nav a{text-decoration:none;font-size:.9rem;opacity:.85}nav a:hover{color:var(--ac2);opacity:1}
+nav button{background:none;border:1px solid #fff5;color:inherit;border-radius:8px;padding:4px 9px;cursor:pointer}
+.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 120%,#7a2a0c 0,var(--hero) 60%);color:var(--herotx);text-align:center;padding:90px 6vw 110px}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);line-height:1.05;text-shadow:0 0 30px #f2a51666}
+.hero h1 span{color:var(--ac2)}.hero p{max-width:620px;margin:18px auto 28px;opacity:.85}
+.anvil{font-size:4rem;filter:drop-shadow(0 0 18px #f2a516);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{transform:scale(1.08);filter:drop-shadow(0 0 32px #ff6a1a)}}
+.sp{position:absolute;bottom:-10px;width:5px;height:5px;border-radius:50%;background:var(--ac2);box-shadow:0 0 8px 2px #ff7a1a;animation:rise linear infinite;opacity:0}
+@keyframes rise{0%{transform:translate(0,0);opacity:1}100%{transform:translate(var(--dx),-420px);opacity:0}}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#1b0e05;font:700 1rem Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;border:0;border-radius:10px;padding:13px 28px;cursor:pointer;text-decoration:none;box-shadow:0 6px 18px #d9531e55;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:none;border:2px solid var(--ac);color:var(--ac);box-shadow:none}
+section{padding:64px 5vw;max-width:1100px;margin:auto}
+h2{font-size:2rem;margin-bottom:6px}h2+p{color:var(--mu);margin:0 0 28px}
+.steps,.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--bg2);border:1px solid var(--ln);border-radius:16px;padding:22px;box-shadow:var(--sh)}
+.step .n{font:700 2.4rem Oswald;color:var(--ac)}
+.formwrap{display:grid;gap:26px;grid-template-columns:1fr}
+@media(min-width:860px){.formwrap{grid-template-columns:1.3fr 1fr}}
+label{display:block;font-weight:600;font-size:.85rem;margin:14px 0 5px}
+input,select,textarea{width:100%;background:var(--bg);color:var(--tx);border:1.5px solid var(--ln);border-radius:10px;padding:11px 12px;font:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px #d9531e33}
+.row{display:grid;gap:12px;grid-template-columns:1fr 1fr}@media(max-width:520px){.row{grid-template-columns:1fr}}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips input{display:none}
+.chips span{display:block;border:1.5px solid var(--ln);border-radius:99px;padding:7px 16px;cursor:pointer;font-size:.9rem}
+.chips input:checked+span{background:var(--ac);border-color:var(--ac);color:#fff}
+.err{color:#d12e2e;font-size:.8rem;min-height:1em}
+#res{display:flex;align-items:center;justify-content:center;text-align:center;min-height:300px;border:2px dashed var(--ln);box-shadow:none}
+.assign{animation:pop .5s}@keyframes pop{from{transform:scale(.8);opacity:0}}
+.forge{font-size:3rem;animation:hammer .5s infinite alternate}@keyframes hammer{to{transform:rotate(-25deg)}}
+.av{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font:700 2rem Oswald;color:#fff;margin:0 auto 10px;background:linear-gradient(135deg,var(--ac),#7a2a0c);border:3px solid var(--ac2)}
+.st{font-size:1.2rem;letter-spacing:2px;background:linear-gradient(90deg,var(--ac2) var(--p),var(--ln) var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-block;font-size:.75rem;background:#d9531e22;color:var(--ac);border-radius:99px;padding:2px 10px;margin:2px}
+.hc{text-align:center;transition:.2s;cursor:pointer;text-decoration:none;display:block}.hc:hover{transform:translateY(-5px);border-color:var(--ac)}
+.hc small{color:var(--mu)}
+.prof{display:grid;gap:26px}@media(min-width:800px){.prof{grid-template-columns:320px 1fr}}
+.bar{display:flex;align-items:center;gap:8px;font-size:.85rem;margin:5px 0}.bar i{flex:1;height:8px;background:var(--ln);border-radius:9px;overflow:hidden}.bar u{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+.rev{border-left:4px solid var(--ac);margin:14px 0;padding:6px 0 6px 16px}.rev small{color:var(--mu)}
+.big{font:700 3.6rem/1 Oswald;color:var(--ac)}
+footer{background:var(--hero);color:var(--herotx);text-align:center;padding:30px;font-size:.85rem;opacity:.95;border-top:3px solid var(--ac)}
+.stars-in{display:flex;flex-direction:row-reverse;justify-content:flex-end}.stars-in input{display:none}.stars-in label{font-size:1.8rem;margin:0;cursor:pointer;color:var(--ln)}.stars-in input:checked~label,.stars-in label:hover,.stars-in label:hover~label{color:var(--ac2)}
+.job{margin-bottom:14px}.job p{margin:4px 0}.jh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}.bd{font-size:.72rem;border-radius:99px;padding:3px 12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}.bd.pendiente{background:#f2a51633;color:#b87400}.bd.en-proceso{background:#2a7de133;color:#2a7de1}.bd.terminado{background:#2ea04333;color:#2ea043}.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));margin:18px 0}.stats div{text-align:center;background:var(--bg2);border:1px solid var(--ln);border-radius:14px;padding:14px;box-shadow:var(--sh)}.stats b{display:block;font:700 2.2rem/1.1 Oswald;color:var(--ac)}.stats small{color:var(--mu)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}.tabs button{background:var(--bg2);color:var(--tx);border:1.5px solid var(--ln);border-radius:99px;padding:7px 18px;cursor:pointer;text-transform:capitalize;font:inherit}.tabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}.phead{display:flex;align-items:center;gap:16px;flex-wrap:wrap}.phead .av{margin:0}
+</style>
+</head>
+<body>
+<header><a class="logo" href="#inicio">🔥 Forja<b>Hogar</b></a><nav><a href="#inicio">Inicio</a><a href="#solicitar">Solicitar</a><a href="#herreros">Herreros</a><a href="#portal" style="color:var(--ac2)">🔐 Soy herrero</a><button id="th" title="Cambiar tema">◐</button></nav></header>
+<main id="app"></main>
+<footer>© 2026 ForjaHogar · Herrería artesanal para tu casa · Zacatecas, México</footer>
+<script>
+var H=[
+{id:'ramiro-ortega',n:'Ramiro Ortega',t:'Portones y rejas',k:['porton','reja'],y:18,z:'Guadalupe',b:'Soldador de oficio desde los 16 años. Especialista en portones corredizos y rejas de seguridad.',r:[[5,'Lucía M.','Instaló mi portón en un día y quedó perfecto. Muy limpio y puntual.','hace 2 semanas'],[5,'Héctor P.','Soldaduras impecables, buen precio.','hace 1 mes'],[4,'Sandra V.','Muy buen trabajo, solo tardó un poco en llegar.','hace 2 meses']]},
+{id:'marisol-reyes',n:'Marisol Reyes',t:'Barandales y escaleras',k:['barandal','decor'],y:12,z:'Zacatecas',b:'Diseña barandales modernos y escaleras de caracol. Combina hierro con madera y vidrio.',r:[[5,'Andrés C.','Mi barandal parece de revista. Muy creativa.','hace 1 semana'],[5,'Paola T.','Cumplió con las medidas al milímetro.','hace 3 semanas'],[5,'Iván R.','Excelente acabado y trato amable.','hace 2 meses'],[4,'Ceci G.','Hermoso, aunque el presupuesto subió un poco.','hace 3 meses']]},
+{id:'josue-valdez',n:'Josué Valdez',t:'Puertas y ventanas',k:['puerta','reja'],y:9,z:'Fresnillo',b:'Puertas de herrería, protecciones de ventanas y marcos. Siempre con pintura anticorrosiva.',r:[[4,'Mario L.','Buen trabajo y garantía por escrito.','hace 2 semanas'],[5,'Elena S.','Mis ventanas quedaron súper seguras.','hace 1 mes'],[4,'Tomás B.','Recomendado, cumplió en tiempo.','hace 2 meses']]},
+{id:'catalina-nava',n:'Catalina Nava',t:'Techumbres y pérgolas',k:['pergola','porton'],y:14,z:'Guadalupe',b:'Estructuras metálicas para patios, cocheras y terrazas. Cálculo estructural incluido.',r:[[5,'Rubén A.','La pérgola cambió mi patio por completo.','hace 5 días'],[5,'Gabi F.','Muy profesional y ordenada.','hace 1 mes'],[5,'Luis D.','Cumplió todo lo prometido.','hace 2 meses']]},
+{id:'beto-salinas',n:'Beto Salinas',t:'Reparaciones y soldadura',k:['repara','puerta','reja','barandal'],y:21,z:'Zacatecas',b:'Arregla lo que otros no pueden. Soldadura TIG, MIG y electrodo para urgencias a domicilio.',r:[[5,'Norma J.','Vino el mismo día y arregló mi reja rota.','hace 1 semana'],[4,'Pablo E.','Rápido y económico.','hace 1 mes'],[4,'Diana O.','Buen servicio, puntual.','hace 3 meses'],[5,'Víctor K.','Un maestro de verdad.','hace 4 meses']]}];
+var S=[['porton','Portón / cochera'],['reja','Reja o protección de ventana'],['barandal','Barandal o escalera'],['puerta','Puerta de herrería'],['pergola','Techumbre o pérgola'],['repara','Reparación / soldadura'],['decor','Diseño decorativo']];
+var ex={};try{ex=JSON.parse(localStorage.getItem('fh-rev')||'{}')}catch(e){}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function all(h){return h.r.concat(ex[h.id]||[])}
+function avg(h){var a=all(h);return a.reduce(function(s,x){return s+x[0]},0)/a.length}
+function st(r){return '<span class="st" style="--p:'+(r/5*100)+'%">★★★★★</span>'}
+function ini(n){return n.split(' ').map(function(w){return w[0]}).join('')}
+var CODE={'ramiro-ortega':'HE101','marisol-reyes':'HE102','josue-valdez':'HE103','catalina-nava':'HE104','beto-salinas':'HE105'},J={},cur=null,flt='todos';
+try{J=JSON.parse(localStorage.getItem('fh-jobs')||'{}')}catch(e){}
+function sv(){try{localStorage.setItem('fh-jobs',JSON.stringify(J))}catch(e){}}
+function jobs(id){if(!J[id]){J[id]=[{cli:'Lucía M.',tel:'492 555 0101',dir:'Col. Centro, Guadalupe',tp:'Trabajo de muestra',ds:'Instalación completa con pintura anticorrosiva.',w:'3',hh:'2',ma:'Hierro negro',ur:'Normal',st:'terminado',f:'10/11/2026'},{cli:'Héctor P.',tel:'492 555 0102',dir:'Col. Sierra de Álica, Zacatecas',tp:'Trabajo de muestra',ds:'Reparación y refuerzo de estructura.',w:'2',hh:'1.5',ma:'Galvanizado',ur:'Esta semana',st:'en proceso',f:'18/11/2026'}];sv()}return J[id]}
+function addJob(id,j){jobs(id).unshift(j);sv()}
+function portal(){
+if(!cur){app.innerHTML='<section style="max-width:460px"><div class="card" style="text-align:center"><div class="anvil">🔐</div><h2>Portal del herrero</h2><p>Ingresa tu código de acceso para ver tus trabajos.</p><input id="cd" placeholder="Ej. HE101" style="text-align:center"><div class="err" id="ce"></div><br><button class="btn" id="lg">Entrar</button><p><small style="color:var(--mu)">Códigos de prueba: HE101 a HE105</small></p></div></section>';
+var go=function(){var v=document.getElementById('cd').value.trim().toUpperCase(),k=Object.keys(CODE).filter(function(i){return CODE[i]===v})[0];if(!k){document.getElementById('ce').textContent='Código incorrecto';return}cur=k;portal()};
+document.getElementById('lg').onclick=go;document.getElementById('cd').onkeydown=function(e){if(e.key==='Enter')go()};return}
+var h=H.filter(function(x){return x.id===cur})[0],L=jobs(cur),n=function(s){return L.filter(function(j){return j.st===s}).length};
+var tabs=['todos','pendiente','en proceso','terminado'].map(function(t){return '<button data-t="'+t+'" class="'+(flt===t?'on':'')+'">'+t+'</button>'}).join('');
+var cards=L.map(function(j,i){return [j,i]}).filter(function(p){return flt==='todos'||p[0].st===flt}).map(function(p){var j=p[0],i=p[1],act=j.st==='pendiente'?'<button class="btn" data-i="'+i+'" data-s="en proceso">Aceptar trabajo</button>':j.st==='en proceso'?'<button class="btn" data-i="'+i+'" data-s="terminado">Marcar terminado</button>':'<span style="color:#2ea043;font-weight:600">✔ Trabajo completado</span>';
+return '<div class="card job"><div class="jh"><h3>'+esc(j.tp)+'</h3><span class="bd '+j.st.replace(' ','-')+'">'+j.st+'</span></div><p>👤 <b>'+esc(j.cli)+'</b> · 📞 '+esc(j.tel)+'</p><p>📍 '+esc(j.dir)+'</p><p>📐 '+(esc(j.w)||'—')+' × '+(esc(j.hh)||'—')+' m · '+esc(j.ma)+' · '+esc(j.ur)+'</p>'+(j.ds?'<p style="color:var(--mu)">“'+esc(j.ds)+'”</p>':'')+'<p><small style="color:var(--mu)">Recibido: '+esc(j.f)+'</small></p><br>'+act+'</div>'}).join('')||'<p style="color:var(--mu)">No hay trabajos en esta categoría.</p>';
+app.innerHTML='<section><div class="phead"><div class="av">'+ini(h.n)+'</div><div style="flex:1"><h2>Hola, '+h.n.split(' ')[0]+' 👋</h2><p style="margin:0;color:var(--mu)">Estos son tus trabajos asignados.</p></div><a class="btn ghost" href="#herrero-'+h.id+'">Mi perfil público</a><button class="btn ghost" id="lo">Salir</button></div>'+
+'<div class="stats"><div><b>'+n('pendiente')+'</b><small>Pendientes</small></div><div><b>'+n('en proceso')+'</b><small>En proceso</small></div><div><b>'+n('terminado')+'</b><small>Terminados</small></div><div><b>'+avg(h).toFixed(1)+'</b><small>Calificación</small></div></div><div class="tabs">'+tabs+'</div>'+cards+'</section>';
+app.querySelectorAll('[data-t]').forEach(function(b){b.onclick=function(){flt=b.dataset.t;portal()}});
+app.querySelectorAll('[data-s]').forEach(function(b){b.onclick=function(){L[+b.dataset.i].st=b.dataset.s;sv();portal()}});
+document.getElementById('lo').onclick=function(){cur=null;flt='todos';portal()}}
+var app=document.getElementById('app');
+function home(){
+var tags=H.map(function(h){return '<a class="card hc" href="#herrero-'+h.id+'"><div class="av">'+ini(h.n)+'</div><h3>'+h.n+'</h3>'+st(avg(h))+' <b>'+avg(h).toFixed(1)+'</b><br><small>'+all(h).length+' reseñas · '+h.z+'</small><br><span class="tag">'+h.t+'</span></a>'}).join('');
+app.innerHTML='<div class="hero" id="inicio"><div class="anvil">⚒️</div><h1>Hierro forjado<br>para tu <span>hogar</span></h1><p>Portones, rejas, barandales y más. Cuéntanos qué necesitas y te asignamos un herrero calificado de tu zona.</p><a class="btn" href="#solicitar">Solicitar herrero</a> <a class="btn ghost" href="#herreros">Ver herreros</a></div>'+
+'<section><h2>¿Cómo funciona?</h2><p>Tres pasos y el fuego hace el resto.</p><div class="steps"><div class="card step"><div class="n">01</div><h3>Llena el formulario</h3><p>Describe el trabajo, las medidas y tu ubicación.</p></div><div class="card step"><div class="n">02</div><h3>Te asignamos herrero</h3><p>Recibes nombre y calificación al instante.</p></div><div class="card step"><div class="n">03</div><h3>Revisa su perfil</h3><p>Lee reseñas reales y déjale la tuya al terminar.</p></div></div></section>'+
+'<section id="solicitar"><h2>Solicita tu herrero</h2><p>Todos los campos marcados son obligatorios.</p><div class="formwrap"><form class="card" id="f" novalidate>'+
+'<div class="row"><div><label>Nombre completo *</label><input id="nm" placeholder="Alejandro Pérez"><div class="err"></div></div><div><label>Teléfono *</label><input id="tel" inputmode="numeric" placeholder="492 123 4567"><div class="err"></div></div></div>'+
+'<label>Dirección / colonia *</label><input id="dir" placeholder="Calle, número, colonia"><div class="err"></div>'+
+'<div class="row"><div><label>Tipo de trabajo *</label><select id="tp"><option value="">Selecciona…</option>'+S.map(function(s){return '<option value="'+s[0]+'">'+s[1]+'</option>'}).join('')+'</select><div class="err"></div></div><div><label>Fecha deseada</label><input type="date" id="fe"></div></div>'+
+'<div class="row"><div><label>Ancho aprox. (m)</label><input type="number" min="0" step="0.1" id="an" placeholder="2.5"></div><div><label>Alto aprox. (m)</label><input type="number" min="0" step="0.1" id="al" placeholder="2"></div></div>'+
+'<label>Material y acabado</label><div class="chips"><label><input type="radio" name="ma" checked><span>Hierro negro</span></label><label><input type="radio" name="ma"><span>Galvanizado</span></label><label><input type="radio" name="ma"><span>Aluminio</span></label><label><input type="radio" name="ma"><span>Inoxidable</span></label></div>'+
+'<label>Urgencia</label><div class="chips"><label><input type="radio" name="ur" checked><span>Normal</span></label><label><input type="radio" name="ur"><span>Esta semana</span></label><label><input type="radio" name="ur"><span>Urgente 🔥</span></label></div>'+
+'<label>Describe tu proyecto</label><textarea id="ds" rows="3" placeholder="Cuéntanos detalles, diseño, referencias…"></textarea><br><button class="btn" style="width:100%">Forjar mi solicitud</button></form>'+
+'<div class="card" id="res"><div><div class="anvil">🛠️</div><p style="color:var(--mu)">Aquí aparecerá tu herrero asignado.</p></div></div></div></section>'+
+'<section id="herreros"><h2>Nuestros herreros</h2><p>Haz clic en cualquiera para ver su perfil completo.</p><div class="grid">'+tags+'</div></section>';
+for(var i=0;i<28;i++){var s=document.createElement('i');s.className='sp';s.style.cssText='left:'+Math.random()*100+'%;--dx:'+(Math.random()*120-60)+'px;animation-duration:'+(2+Math.random()*3)+'s;animation-delay:'+Math.random()*4+'s';app.querySelector('.hero').appendChild(s)}
+document.getElementById('f').onsubmit=send;
+}
+function bad(el,m){el.nextElementSibling.textContent=m;return 1}
+function send(e){e.preventDefault();var er=0;document.querySelectorAll('.err').forEach(function(x){x.textContent=''});
+var nm=document.getElementById('nm'),tel=document.getElementById('tel'),dir=document.getElementById('dir'),tp=document.getElementById('tp');
+if(nm.value.trim().length<3)er+=bad(nm,'Escribe tu nombre');
+if(!/^\d{10}$/.test(tel.value.replace(/\D/g,'')))er+=bad(tel,'Teléfono de 10 dígitos');
+if(dir.value.trim().length<5)er+=bad(dir,'Escribe tu dirección');
+if(!tp.value)er+=bad(tp,'Elige un tipo de trabajo');
+if(er)return;
+var res=document.getElementById('res');res.style.borderStyle='dashed';
+res.innerHTML='<div><div class="forge">🔨</div><p>Forjando tu asignación…</p></div>';
+var pool=H.filter(function(h){return h.k.indexOf(tp.value)>-1});if(!pool.length)pool=H;
+var h=pool[Math.floor(Math.random()*pool.length)],name=nm.value.trim().split(' ')[0];
+var lab=function(q){var c=document.querySelector('input[name='+q+']:checked');return c?c.nextElementSibling.textContent:''};
+addJob(h.id,{cli:nm.value.trim(),tel:tel.value,dir:dir.value.trim(),tp:S.filter(function(s){return s[0]===tp.value})[0][1],ds:document.getElementById('ds').value.trim(),w:document.getElementById('an').value,hh:document.getElementById('al').value,ma:lab('ma'),ur:lab('ur'),st:'pendiente',f:new Date().toLocaleDateString('es-MX')});
+setTimeout(function(){res.style.borderStyle='solid';res.style.borderColor='var(--ac)';
+res.innerHTML='<div class="assign"><p style="color:var(--mu);margin:0">¡Listo, '+esc(name)+'! Tu herrero es:</p><br><div class="av">'+ini(h.n)+'</div><h2>'+h.n+'</h2>'+st(avg(h))+' <b>'+avg(h).toFixed(1)+'</b><br><span class="tag">'+h.t+'</span><span class="tag">'+h.y+' años de experiencia</span><p style="color:var(--mu)">Te contactará al '+esc(tel.value)+' en menos de 24 h.</p><a class="btn" href="#herrero-'+h.id+'">Ver perfil y reseñas</a></div>'},1500)}
+function prof(id){
+var h=H.filter(function(x){return x.id===id})[0];if(!h){location.hash='#inicio';return}
+var a=all(h),m=avg(h),bars=[5,4,3,2,1].map(function(n){var c=a.filter(function(x){return x[0]===n}).length;return '<div class="bar"><span>'+n+'★</span><i><u style="width:'+c/a.length*100+'%"></u></i><span>'+c+'</span></div>'}).join('');
+var revs=a.slice().reverse().map(function(r){return '<div class="rev">'+st(r[0])+' <b>'+esc(r[1])+'</b> <small>· '+(r[3]||'justo ahora')+'</small><p style="margin:4px 0">'+esc(r[2])+'</p></div>'}).join('');
+app.innerHTML='<section><a href="#inicio" style="color:var(--ac)">← Volver</a><br><br><div class="prof"><div><div class="card" style="text-align:center"><div class="av" style="width:110px;height:110px;font-size:2.6rem">'+ini(h.n)+'</div><h2>'+h.n+'</h2><span class="tag">'+h.t+'</span><p style="color:var(--mu)">'+h.b+'</p><p>📍 '+h.z+' · 🔧 '+h.y+' años</p><div class="big">'+m.toFixed(1)+'</div>'+st(m)+'<br><small style="color:var(--mu)">'+a.length+' reseñas</small><div style="text-align:left;margin-top:14px">'+bars+'</div></div></div>'+
+'<div><div class="card"><h3>Reseñas de clientes</h3>'+revs+'</div><br><form class="card" id="rf"><h3>Deja tu reseña</h3><label>Tu nombre</label><input id="rn" maxlength="30"><label>Calificación</label><div class="stars-in">'+[5,4,3,2,1].map(function(n){return '<input type="radio" name="rs" id="s'+n+'" value="'+n+'"><label for="s'+n+'">★</label>'}).join('')+'</div><label>Comentario</label><textarea id="rc" rows="3" maxlength="300"></textarea><div class="err" id="re"></div><button class="btn">Publicar reseña</button></form></div></div></section>';
+document.getElementById('rf').onsubmit=function(e){e.preventDefault();var n=document.getElementById('rn').value.trim(),c=document.getElementById('rc').value.trim(),s=document.querySelector('input[name=rs]:checked');
+if(!n||!c||!s){document.getElementById('re').textContent='Completa nombre, calificación y comentario';return}
+(ex[h.id]=ex[h.id]||[]).push([+s.value,n,c,'']);try{localStorage.setItem('fh-rev',JSON.stringify(ex))}catch(x){}prof(id)}}
+function route(){var x=location.hash.slice(1);if(x==='portal'){portal();scrollTo(0,0)}else if(x.indexOf('herrero-')===0){prof(x.slice(8));scrollTo(0,0)}else{home();if(x&&x!=='inicio'){var el=document.getElementById(x);if(el)el.scrollIntoView()}else scrollTo(0,0)}}
+addEventListener('hashchange',route);route();
+document.getElementById('th').onclick=function(){var r=document.documentElement,d=getComputedStyle(r).getPropertyValue('--bg').trim()==='#15110f';r.setAttribute('data-theme',d?'light':'dark')};
+</script>
+</body>
+</html>

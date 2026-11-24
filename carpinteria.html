@@ -3,356 +3,217 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Carpintería a tu medida — Solicita tu cotización</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Madera Viva · Carpintería para tu hogar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#E9ECE6; --card:#FBFBF8; --ink:#1E2421; --muted:#5B655F; --line:#CBD1C8;
-  --pine:#1F3A33; --pine-ink:#F2F4EE; --brass:#B8862F; --brass-soft:#F1E3C4; --err:#A3321F;
-  --head:"Archivo","Arial Narrow",Arial,sans-serif; --body:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#141917; --card:#1D2421; --ink:#E8ECE6; --muted:#9AA69F; --line:#323C37;
-  --pine:#2F5A4E; --pine-ink:#F2F4EE; --brass:#D6A84E; --brass-soft:#3A2F17; --err:#E87A66;}}
-:root[data-theme="dark"]{
-  --bg:#141917; --card:#1D2421; --ink:#E8ECE6; --muted:#9AA69F; --line:#323C37;
-  --pine:#2F5A4E; --pine-ink:#F2F4EE; --brass:#D6A84E; --brass-soft:#3A2F17; --err:#E87A66;}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--body)}
-.hero{
-  background:
-    repeating-linear-gradient(92deg,rgba(0,0,0,.0) 0 7px,rgba(0,0,0,.10) 7px 8px,rgba(255,255,255,.03) 8px 15px),
-    repeating-linear-gradient(88deg,rgba(0,0,0,.0) 0 31px,rgba(0,0,0,.14) 31px 33px),
-    linear-gradient(120deg,#244A40,#1A3029 60%,#22443A);
-  color:var(--pine-ink); padding:3.5rem 1.25rem 7rem;
-}
-.wrap{max-width:60rem;margin:0 auto}
-.brand{font:800 1rem var(--head);letter-spacing:.02em;display:flex;align-items:center;gap:.6rem}
-.brand i{width:1.6rem;height:1.6rem;border:3px solid var(--brass);border-radius:3px;display:inline-block;transform:rotate(45deg) scale(.8)}
-h1{font:900 clamp(2.6rem,9vw,5.4rem)/.95 var(--head);letter-spacing:-.02em;margin:2.5rem 0 1.2rem;max-width:13ch}
-.hero p{max-width:34rem;font-size:1.1rem;margin:0;color:#D5DDD6}
-.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;margin:2rem 0 0;padding:0;list-style:none;font-weight:500}
-.facts li::before{content:"";display:inline-block;width:.55rem;height:.55rem;background:var(--brass);margin-right:.55rem}
-main{margin:-4.5rem auto 3rem;padding:0 1rem;max-width:60rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:6px;position:relative;padding:3.4rem 1.25rem 1.75rem;box-shadow:0 18px 40px -22px rgba(0,0,0,.45)}
-/* cinta métrica */
-.card::before{content:"";position:absolute;left:0;right:0;top:0;height:1.6rem;border-radius:6px 6px 0 0;
-  background:
-    repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 40px) 0 100%/100% 100% no-repeat,
-    repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 8px) 0 100%/100% 35% no-repeat,
-    var(--brass);
-  opacity:.9}
-fieldset{border:0;padding:0;margin:0 0 2rem}
-legend{font:800 1.35rem var(--head);padding:0;margin-bottom:.9rem;letter-spacing:-.01em}
-.grid{display:grid;gap:1rem}
-@media(min-width:640px){.card{padding:3.4rem 2.5rem 2.5rem}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
-label,.lab{display:block;font-weight:600;font-size:.92rem;margin-bottom:.35rem}
-.hint{font-weight:400;color:var(--muted)}
-input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:4px;padding:.7rem .8rem;min-height:2.9rem}
-textarea{min-height:7.5rem;resize:vertical}
-input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.chip input:focus-visible+span{outline:3px solid var(--brass);outline-offset:2px}
-input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--err)}
-.err{color:var(--err);font-size:.85rem;margin:.3rem 0 0;min-height:0}
-.chips{display:flex;flex-wrap:wrap;gap:.6rem}
-.chip{position:relative}
-.chip input{position:absolute;opacity:0;inset:0;min-height:0;cursor:pointer}
-.chip span{display:block;padding:.6rem 1rem;border:1.5px solid var(--line);border-radius:999px;background:var(--bg);font-weight:500;font-size:.95rem;transition:background .15s,color .15s,border-color .15s}
-.chip input:checked+span{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
-.check{display:flex;gap:.7rem;align-items:flex-start;font-weight:500}
-.check input{width:1.3rem;height:1.3rem;min-height:0;margin-top:.15rem;accent-color:var(--pine)}
-.btn{font:800 1.1rem var(--head);background:var(--brass);color:#1E2421;border:0;border-radius:4px;padding:1rem 1.6rem;cursor:pointer;width:100%;min-height:3.2rem}
-.btn:hover{filter:brightness(1.07)}
-.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-top:.7rem}
-.small{color:var(--muted);font-size:.85rem;margin:.9rem 0 0;text-align:center}
-@media(min-width:640px){.btn{width:auto}.btn.alt{margin-top:0;margin-left:.6rem}.small{text-align:left}}
-.carp{display:flex;gap:1rem;align-items:center;background:var(--brass-soft);border:1.5px solid var(--brass);border-radius:6px;padding:1rem 1.1rem;margin-top:1.4rem}
-.avatar{flex:none;width:3.4rem;height:3.4rem;border-radius:50%;background:var(--pine);color:var(--pine-ink);display:grid;place-items:center;font:800 1.2rem var(--head)}
-.carp .cl{font-size:.85rem;color:var(--muted)}
-.carp .cn{font:800 1.25rem var(--head);line-height:1.2}
-.carp .cs{font-size:.92rem;color:var(--muted)}
-.carp .stars{font-weight:600;margin-top:.15rem}
-.carp .stars b{color:var(--brass);letter-spacing:.08em}
-.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
-.nav{color:var(--pine-ink);font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid var(--brass);border-radius:999px;padding:.45rem 1rem}
-.nav:hover{background:var(--brass);color:#1E2421}
-.nav:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
-#portal{display:none}
-body[data-view=portal]>.hero,body[data-view=portal]>main{display:none}
-body[data-view=portal] #portal{display:block}
-.phead.hero{padding:1.5rem 1.25rem 5.5rem}
-.phead h1{font-size:clamp(2rem,6vw,3.2rem);margin:2rem 0 0;max-width:none}
-#lf h2,.pcard h2{font:800 1.35rem var(--head);margin:0 0 .8rem}
-.pcard{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.4rem 1.25rem;margin-bottom:1rem;box-shadow:0 18px 40px -26px rgba(0,0,0,.45)}
-.prof{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.prof .grow{flex:1;min-width:12rem}
-.prof .cn{font:800 1.3rem var(--head)}
-.prof .cs{color:var(--muted);font-size:.9rem}
-.score{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.6rem}
-.score strong{font:900 3rem/1 var(--head)}
-.rev{border-top:1px solid var(--line);padding:.8rem 0}
-.rev b,.score b{color:var(--brass);letter-spacing:.08em}
-.tab{font:inherit;font-weight:600;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
-.tab[aria-pressed=true]{background:var(--pine);color:var(--pine-ink);border-color:var(--pine)}
-.tab:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
-.job{border:1px solid var(--line);border-left:5px solid var(--brass);border-radius:6px;padding:1rem;margin-top:.9rem;background:var(--bg)}
-.job.ok{border-left-color:var(--pine);opacity:.85}
-.job h3{font:800 1.15rem var(--head);margin:0}
-.job p{margin:.3rem 0}
-.meta{color:var(--muted);font-size:.9rem}
-.empty{color:var(--muted);padding:1rem 0 .4rem;margin:0}
-.btn.sm{width:auto;font-size:1rem;padding:.6rem 1rem;min-height:2.6rem;margin-top:.7rem}
-#done{display:none}
-#done.on{display:block;animation:pop .35s ease-out}
-@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-#done h2{font:900 clamp(1.9rem,6vw,2.8rem)/1 var(--head);margin:0 0 .8rem}
-dl{margin:1.5rem 0;display:grid;gap:.1rem;border-top:1px solid var(--line)}
-dl div{display:grid;gap:.1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
-dt{color:var(--muted);font-size:.85rem}dd{margin:0;font-weight:500;overflow-wrap:anywhere}
-@media(min-width:640px){dl div{grid-template-columns:12rem 1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:root{--bg:#f6efe4;--card:#fffaf2;--ink:#2b1d12;--mut:#7a6552;--wood:#8b5a2b;--wood2:#c18a4a;--dark:#3a2411;--line:#e3d3bb;--ok:#2f7d4f;--bad:#b3402f;--star:#e8a317;--sh:0 10px 30px rgba(58,36,17,.15);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c130b;--card:#2a1c10;--ink:#f3e6d3;--mut:#bba58a;--wood:#d49a5a;--wood2:#e0b072;--dark:#0f0a05;--line:#4a3420;--sh:0 10px 30px rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#1c130b;--card:#2a1c10;--ink:#f3e6d3;--mut:#bba58a;--wood:#d49a5a;--wood2:#e0b072;--dark:#0f0a05;--line:#4a3420;--sh:0 10px 30px rgba(0,0,0,.5)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;
+background-image:repeating-linear-gradient(90deg,transparent 0 46px,rgba(139,90,43,.05) 46px 48px)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 5%;background:var(--dark);color:#f3e6d3;box-shadow:0 4px 18px rgba(0,0,0,.35)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:30}
+.logo{font-family:'Playfair Display',serif;font-weight:800;font-size:1.3rem;display:flex;gap:8px;align-items:center}
+.logo span{color:var(--wood2)}
+nav button{background:none;border:0;color:#f3e6d3;font:500 .95rem Inter,sans-serif;padding:8px 14px;border-radius:99px;cursor:pointer;transition:.2s}
+nav button:hover,nav button.on{background:var(--wood);color:#fff}
+.hero{position:relative;overflow:hidden;color:#fff;padding:90px 5% 110px;text-align:center;
+background:linear-gradient(135deg,rgba(40,22,8,.88),rgba(110,66,28,.78)),repeating-linear-gradient(8deg,#6b4423 0 14px,#7d5129 14px 28px,#5e3a1c 28px 44px)}
+.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.1;animation:up .8s both}
+.hero h1 em{color:var(--wood2);font-style:normal}
+.hero p{max-width:560px;margin:18px auto 28px;opacity:.92;animation:up .8s .15s both}
+.cta{display:inline-block;background:var(--wood2);color:#2b1d12;font-weight:600;border:0;border-radius:99px;padding:14px 30px;font-size:1rem;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.35);transition:.25s;animation:up .8s .3s both}
+.cta:hover{transform:translateY(-3px) scale(1.03)}
+.hero svg{position:absolute;opacity:.12;animation:float 6s ease-in-out infinite}
+.wave{position:absolute;bottom:-1px;left:0;width:100%;height:50px}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-14px) rotate(6deg)}}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+section{padding:60px 5%;max-width:1100px;margin:auto}
+.title{text-align:center;margin-bottom:34px}
+.title h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+.title p{color:var(--mut);margin:8px 0 0}
+.title::after{content:"";display:block;width:70px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--wood),var(--wood2));margin:14px auto 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 18px;text-align:center;box-shadow:var(--sh);transition:.3s;cursor:pointer}
+.svc:hover{transform:translateY(-8px) rotate(-1deg);border-color:var(--wood2)}
+.svc b{font-size:2.4rem;display:block;margin-bottom:6px}
+.svc h3{font-size:1.1rem}
+.svc p{color:var(--mut);font-size:.88rem;margin:6px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--sh);position:relative}
+.card::before{content:"";position:absolute;inset:0 0 auto;height:8px;border-radius:22px 22px 0 0;background:repeating-linear-gradient(90deg,var(--wood) 0 30px,var(--wood2) 30px 60px)}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f .full{grid-column:1/-1}
+label{font-weight:600;font-size:.88rem;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;transition:.2s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--wood2);box-shadow:0 0 0 4px rgba(193,138,74,.25)}
+.btn{background:linear-gradient(135deg,var(--wood),#5e3a1c);color:#fff;border:0;border-radius:12px;padding:14px 26px;font:600 1rem Inter,sans-serif;cursor:pointer;transition:.25s;width:100%}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(94,58,28,.4)}
+.btn.sm{width:auto;padding:8px 14px;font-size:.85rem;border-radius:99px}
+.btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}.btn.ghost{background:none;color:var(--ink);border:1.5px solid var(--line)}
+.stars{color:var(--star);letter-spacing:2px;white-space:nowrap}.stars i{color:var(--line);font-style:normal}
+.result{display:none;text-align:center;animation:pop .5s both}
+.av{width:92px;height:92px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font:800 2rem 'Playfair Display',serif;color:#fff;border:4px solid var(--wood2);box-shadow:var(--sh)}
+.tag{display:inline-block;background:var(--bg);border:1px dashed var(--wood2);border-radius:99px;padding:4px 12px;font-size:.8rem;margin:3px;color:var(--mut)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.steps div{background:var(--card);border-radius:16px;padding:20px 20px 20px 66px;position:relative;border:1px solid var(--line)}
+.steps div::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:18px;width:36px;height:36px;border-radius:50%;background:var(--wood);color:#fff;display:grid;place-items:center;font-weight:700}
+.view{display:none}.view.on{display:block}
+.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:20px 0}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+.stat b{font:800 1.9rem 'Playfair Display',serif;display:block;color:var(--wood)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev,.job{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px;animation:pop .4s both}
+.job .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.badge{float:right;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:99px;color:#fff;background:var(--star)}
+.badge.hecho{background:var(--ok)}.badge.no{background:var(--bad)}
+.hint{background:var(--bg);border-left:4px solid var(--wood2);padding:10px 14px;border-radius:8px;font-size:.85rem;color:var(--mut);margin-top:14px}
+.err{color:var(--bad);font-size:.88rem;min-height:1.2em;margin:8px 0 0}
+footer{background:var(--dark);color:#bba58a;text-align:center;padding:30px 5%;margin-top:40px;font-size:.9rem}
+@media(max-width:720px){.f,.two{grid-template-columns:1fr}.hero{padding:60px 6% 80px}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="wrap">
-    <div class="top"><div class="brand"><i></i>Taller Madera Viva</div><a class="nav" href="#carpintero">Acceso carpinteros</a></div>
-    <h1>Muebles hechos a tu medida</h1>
-    <p>Cuéntanos qué necesitas y te enviamos una cotización sin costo. Medimos, diseñamos y construimos en madera.</p>
-    <ul class="facts"><li>Cotización gratis</li><li>Visita a domicilio</li><li>Respuesta en 24 horas</li></ul>
-  </div>
-</header>
+<nav>
+  <div class="logo">🪚 Madera <span>Viva</span></div>
+  <div><button id="nb-inicio" class="on" onclick="go('inicio')">Solicitar</button><button id="nb-portal" onclick="go('portal')">Soy carpintero</button></div>
+</nav>
 
-<main>
-<div class="card">
-<form id="f" novalidate>
- <div id="formArea">
-  <fieldset>
-    <legend>¿Qué necesitas?</legend>
-    <div class="chips" role="radiogroup" aria-label="Tipo de servicio">
-      <label class="chip"><input type="radio" name="servicio" value="Clóset o vestidor" required><span>Clóset o vestidor</span></label>
-      <label class="chip"><input type="radio" name="servicio" value="Cocina integral"><span>Cocina integral</span></label>
-      <label class="chip"><input type="radio" name="servicio" value="Puertas y ventanas"><span>Puertas y ventanas</span></label>
-      <label class="chip"><input type="radio" name="servicio" value="Mueble a medida"><span>Mueble a medida</span></label>
-      <label class="chip"><input type="radio" name="servicio" value="Reparación o restauración"><span>Reparación o restauración</span></label>
-      <label class="chip"><input type="radio" name="servicio" value="Otro"><span>Otro</span></label>
+<!-- ============ CLIENTES ============ -->
+<div id="v-inicio" class="view on">
+  <header class="hero">
+    <svg style="left:6%;top:18%" width="90" height="90" viewBox="0 0 24 24" fill="#fff"><path d="M3 17l9-9 4 4-9 9H3z"/><path d="M14 6l2-2 4 4-2 2z"/></svg>
+    <svg style="right:8%;top:30%;animation-delay:-2s" width="120" height="120" viewBox="0 0 24 24" fill="#fff"><path d="M2 12h20v4H2zM5 12v2M9 12v2M13 12v2M17 12v2" stroke="#000" stroke-width=".4"/></svg>
+    <h1>Muebles y reparaciones<br>con <em>manos de maestro</em></h1>
+    <p>Cuéntanos qué necesitas en tu hogar y te asignamos al carpintero ideal, con nombre, experiencia y calificación real de clientes.</p>
+    <button class="cta" onclick="document.getElementById('form').scrollIntoView()">Solicitar carpintero →</button>
+    <svg class="wave" viewBox="0 0 1200 50" preserveAspectRatio="none" style="opacity:1;animation:none"><path d="M0 30 Q300 0 600 28 T1200 20 V50H0z" fill="var(--bg)"/></svg>
+  </header>
+
+  <section>
+    <div class="title"><h2>¿Qué podemos hacer por ti?</h2><p>Toca un servicio para elegirlo en el formulario</p></div>
+    <div class="grid" id="svcs"></div>
+  </section>
+
+  <section id="form">
+    <div class="title"><h2>Solicita tu servicio</h2><p>Llena el formulario y se te asignará un carpintero al instante</p></div>
+    <div class="card" id="formCard">
+      <form id="frm" class="f" novalidate>
+        <div><label>Nombre completo</label><input id="nom" placeholder="Ej. María López" required></div>
+        <div><label>Teléfono</label><input id="tel" type="tel" placeholder="492 123 4567" required></div>
+        <div class="full"><label>Dirección del hogar</label><input id="dir" placeholder="Calle, número, colonia" required></div>
+        <div><label>Tipo de servicio</label><select id="srv"></select></div>
+        <div><label>Urgencia</label><select id="urg"><option>Normal</option><option>Pronto (esta semana)</option><option>Urgente (24 h)</option></select></div>
+        <div><label>Fecha deseada</label><input id="fec" type="date" required></div>
+        <div><label>Presupuesto aproximado</label><select id="pre"><option>Menos de $1,000</option><option>$1,000 – $5,000</option><option>$5,000 – $15,000</option><option>Más de $15,000</option></select></div>
+        <div class="full"><label>Describe el trabajo</label><textarea id="des" rows="4" placeholder="Medidas, material preferido, detalles…" required></textarea></div>
+        <div class="full"><button class="btn" type="submit">🔨 Solicitar carpintero</button><p class="err" id="err"></p></div>
+      </form>
+      <div class="result" id="res"></div>
     </div>
-    <p class="err" id="e-servicio"></p>
-  </fieldset>
+  </section>
 
-  <fieldset>
-    <legend>Medidas y material</legend>
-    <div class="grid g3">
-      <div><label for="ancho">Ancho <span class="hint">(cm)</span></label><input id="ancho" name="ancho" type="number" min="1" inputmode="numeric" placeholder="240"></div>
-      <div><label for="alto">Alto <span class="hint">(cm)</span></label><input id="alto" name="alto" type="number" min="1" inputmode="numeric" placeholder="260"></div>
-      <div><label for="fondo">Fondo <span class="hint">(cm)</span></label><input id="fondo" name="fondo" type="number" min="1" inputmode="numeric" placeholder="60"></div>
+  <section>
+    <div class="title"><h2>Así funciona</h2></div>
+    <div class="steps">
+      <div><b>Llenas el formulario</b><br>Dinos qué necesitas y dónde.</div>
+      <div><b>Te asignamos</b><br>Elegimos al carpintero mejor calificado en ese servicio.</div>
+      <div><b>Él recibe tu trabajo</b><br>Aparece en su portal para atenderte.</div>
     </div>
-    <div class="grid g2" style="margin-top:1rem">
-      <div><label for="material">Material</label>
-        <select id="material" name="material">
-          <option>No estoy seguro, recomiéndenme</option><option>Pino</option><option>Cedro</option><option>Encino</option><option>Parota</option><option>MDF o melamina</option>
-        </select></div>
-      <div><label for="fecha">Fecha en que lo necesitas <span class="hint">(opcional)</span></label><input id="fecha" name="fecha" type="date"></div>
-    </div>
-    <div style="margin-top:1rem"><label for="desc">Describe tu proyecto</label>
-      <textarea id="desc" name="desc" required placeholder="Ej. Clóset de piso a techo con dos puertas corredizas, cajones y barra para colgar."></textarea>
-      <p class="err" id="e-desc"></p></div>
-  </fieldset>
-
-  <fieldset>
-    <legend>¿Cómo te contactamos?</legend>
-    <div class="grid g2">
-      <div><label for="nombre">Nombre completo</label><input id="nombre" name="nombre" required autocomplete="name"><p class="err" id="e-nombre"></p></div>
-      <div><label for="tel">Teléfono o WhatsApp</label><input id="tel" name="tel" type="tel" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos"><p class="err" id="e-tel"></p></div>
-      <div><label for="mail">Correo <span class="hint">(opcional)</span></label><input id="mail" name="mail" type="email" autocomplete="email"><p class="err" id="e-mail"></p></div>
-      <div><label for="zona">Colonia o ciudad</label><input id="zona" name="zona" required autocomplete="address-level2"><p class="err" id="e-zona"></p></div>
-    </div>
-    <label class="check" style="margin-top:1.1rem"><input type="checkbox" name="visita" id="visita" checked> Quiero que vayan a mi domicilio a tomar medidas</label>
-  </fieldset>
-
-  <button class="btn" type="submit">Solicitar cotización</button>
-  <p class="small">Usaremos tus datos solo para responder esta solicitud.</p>
- </div>
-
- <div id="done" role="status" aria-live="polite" tabindex="-1">
-   <h2>Solicitud lista, <span id="d-nombre"></span></h2>
-   <p>Ya asignamos a tu carpintero. Te contactará al teléfono que nos diste para confirmar medidas y precio.</p>
-   <div class="carp"><div class="avatar" id="c-ini" aria-hidden="true"></div><div><div class="cl">Tu carpintero asignado</div><div class="cn" id="c-nombre"></div><div class="cs" id="c-esp"></div><div class="stars" id="c-stars"></div></div></div>
-   <p class="small" id="sync" role="status"></p>
-   <dl id="resumen"></dl>
-   <button class="btn" type="button" id="copiar">Copiar resumen</button><button class="btn alt" type="button" id="otra">Hacer otra solicitud</button>
- </div>
-</form>
+  </section>
 </div>
-</main>
 
-<div id="portal">
-<header class="hero phead"><div class="wrap"><div class="top"><div class="brand"><i></i>Taller Madera Viva</div><a class="nav" href="#">Ir al formulario de clientes</a></div><h1>Portal del carpintero</h1></div></header>
-<main>
- <form class="card" id="lf" novalidate>
-  <h2>Entra con tu número de control</h2>
-  <div class="grid g2"><div><label for="ctl">Número de control</label><input id="ctl" placeholder="CR001" autocomplete="username" autocapitalize="characters"></div><div><label for="pwd">Contraseña</label><input id="pwd" type="password" autocomplete="current-password"></div></div>
-  <p class="err" id="e-login" role="alert"></p>
-  <button class="btn" type="submit" style="margin-top:.6rem">Entrar</button>
- </form>
- <div id="dash" hidden>
-  <section class="pcard prof"><div class="avatar" id="p-ini" aria-hidden="true"></div><div class="grow"><div class="cn" id="p-nombre"></div><div class="cs" id="p-ctl"></div></div><button class="btn alt sm" id="salir" type="button">Cerrar sesión</button></section>
-  <section class="pcard"><h2>Mis reseñas</h2><div class="score" id="p-score"></div><div id="p-revs"></div></section>
-  <section class="pcard"><h2>Mis trabajos</h2><div class="chips" id="p-tabs"></div><p class="err" id="p-msg" role="alert"></p><div id="p-jobs"></div></section>
- </div>
-</main>
+<!-- ============ PORTAL ============ -->
+<div id="v-portal" class="view">
+  <section>
+    <div id="login" class="card" style="max-width:440px;margin:30px auto">
+      <div class="title" style="margin-bottom:18px"><h2>Portal del carpintero</h2><p>Ingresa con tu número de control</p></div>
+      <label>Número de control</label><input id="ctl" placeholder="CR001" maxlength="5" style="text-transform:uppercase">
+      <label style="margin-top:14px">Contraseña</label><input id="pwd" type="password" placeholder="••••••••">
+      <p class="err" id="lerr"></p>
+      <button class="btn" onclick="login()">Entrar</button>
+      <div class="hint">Demo: usuarios <b>CR001</b> a <b>CR005</b>, contraseña <b>madera123</b>.</div>
+    </div>
+    <div id="dashboard" style="display:none"></div>
+  </section>
 </div>
+
+<footer>🪵 Madera Viva · Carpintería para hogares · Hecho con paciencia y buena madera</footer>
+
 <script>
-(function(){
-  var CARPS=[
-    {n:'Ramón Esquivel',r:4.9,o:132,e:'Cocinas integrales y clósets · 18 años de experiencia',s:['Cocina integral','Clóset o vestidor']},
-    {n:'Marisol Treviño',r:4.8,o:96,e:'Puertas, ventanas y acabados · 11 años de experiencia',s:['Puertas y ventanas','Otro']},
-    {n:'Joaquín Barraza',r:4.7,o:74,e:'Muebles a medida · 9 años de experiencia',s:['Mueble a medida','Clóset o vestidor','Otro']},
-    {n:'Lucía Anaya',r:4.9,o:88,e:'Restauración y reparación · 14 años de experiencia',s:['Reparación o restauración','Mueble a medida']},
-    {n:'Esteban Ruiz',r:4.6,o:51,e:'Carpintería en general · 7 años de experiencia',s:['Cocina integral','Puertas y ventanas','Reparación o restauración','Otro']}
-  ];
-  CARPS.forEach(function(c,i){c.id='CR00'+(i+1);});
-  function getDb(){return (window.claude&&window.claude.use)?window.claude.use('db'):Promise.resolve(null);}
-  var f=document.getElementById('f'), done=document.getElementById('done'), area=document.getElementById('formArea'), texto='';
-  function setErr(id,msg,field){var e=document.getElementById('e-'+id);if(e)e.textContent=msg;if(field)field.setAttribute('aria-invalid',msg?'true':'false');}
-  function validar(){
-    var ok=true, d=f.elements;
-    var checks=[
-      ['servicio',!f.querySelector('input[name=servicio]:checked'),'Elige un tipo de servicio.',null],
-      ['desc',d.desc.value.trim().length<10,'Cuéntanos un poco más (mínimo 10 caracteres).',d.desc],
-      ['nombre',!d.nombre.value.trim(),'Escribe tu nombre.',d.nombre],
-      ['tel',d.tel.value.replace(/\D/g,'').length<10,'Escribe un teléfono de 10 dígitos.',d.tel],
-      ['mail',d.mail.value&&!/^\S+@\S+\.\S+$/.test(d.mail.value),'Revisa el formato del correo.',d.mail],
-      ['zona',!d.zona.value.trim(),'Indica tu colonia o ciudad.',d.zona]
-    ], first=null;
-    checks.forEach(function(c){setErr(c[0],c[2]&&c[1]?c[2]:'',c[3]); if(c[1]){ok=false; if(!first)first=c[3]||f.querySelector('input[name=servicio]');}});
-    if(first)first.focus();
-    return ok;
-  }
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    if(!validar())return;
-    var d=f.elements, med=[d.ancho.value,d.alto.value,d.fondo.value];
-    var medTxt=med.some(Boolean)?(med[0]||'—')+' × '+(med[1]||'—')+' × '+(med[2]||'—')+' cm (ancho × alto × fondo)':'Sin medidas aún';
-    var filas=[
-      ['Servicio',f.querySelector('input[name=servicio]:checked').value],
-      ['Medidas',medTxt],['Material',d.material.value],
-      ['Fecha deseada',d.fecha.value||'Sin fecha definida'],
-      ['Proyecto',d.desc.value.trim()],
-      ['Nombre',d.nombre.value.trim()],['Teléfono',d.tel.value.trim()],
-      ['Correo',d.mail.value.trim()||'—'],['Zona',d.zona.value.trim()],
-      ['Visita a domicilio',d.visita.checked?'Sí':'No']
-    ];
-    var serv=filas[0][1], pool=CARPS.filter(function(c){return c.s.indexOf(serv)>-1;});
-    if(!pool.length)pool=CARPS;
-    var carp=pool[Math.floor(Math.random()*pool.length)], estrellas=new Array(Math.round(carp.r)+1).join('★');
-    document.getElementById('c-ini').textContent=carp.n.split(' ').map(function(p){return p.charAt(0);}).join('');
-    document.getElementById('c-nombre').textContent=carp.n;
-    document.getElementById('c-esp').textContent=carp.e;
-    var st=document.getElementById('c-stars'); st.innerHTML=''; var b=document.createElement('b'); b.textContent=estrellas; b.setAttribute('aria-hidden','true');
-    st.appendChild(b); st.appendChild(document.createTextNode(' '+carp.r.toFixed(1)+' de 5 · '+carp.o+' reseñas'));
-    var job={id:'T'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),servicio:filas[0][1],medidas:medTxt,material:d.material.value,fecha:d.fecha.value,desc:d.desc.value.trim(),nombre:d.nombre.value.trim(),tel:d.tel.value.trim(),mail:d.mail.value.trim(),zona:d.zona.value.trim(),visita:d.visita.checked,carp:carp.id,estado:'pendiente',creado:Date.now()};
-    var sy=document.getElementById('sync'); sy.textContent='Enviando tu solicitud al carpintero…';
-    getDb().then(function(db){if(!db)throw new Error('db');return db.collection('trabajos').doc(job.id).set(job);}).then(function(){sy.textContent='Listo: el trabajo ya aparece en el portal de '+carp.n+'.';}).catch(function(){sy.textContent='No pudimos registrar el trabajo en el portal del carpintero. Inténtalo de nuevo en unos minutos.';});
-    var dl=document.getElementById('resumen'); dl.innerHTML='';
-    filas.forEach(function(r){var w=document.createElement('div'),t=document.createElement('dt'),v=document.createElement('dd');t.textContent=r[0];v.textContent=r[1];w.appendChild(t);w.appendChild(v);dl.appendChild(w);});
-    texto='Solicitud de carpintería\n'+filas.map(function(r){return r[0]+': '+r[1];}).join('\n')+'\nCarpintero asignado: '+carp.n+' ('+carp.r.toFixed(1)+' de 5)';
-    document.getElementById('d-nombre').textContent=d.nombre.value.trim().split(' ')[0];
-    area.style.display='none'; done.classList.add('on'); done.focus(); window.scrollTo({top:0,behavior:'smooth'});
-  });
-  document.getElementById('copiar').addEventListener('click',function(){
-    var b=this;
-    try{navigator.clipboard.writeText(texto).then(function(){b.textContent='Resumen copiado';});}catch(e){b.textContent='No se pudo copiar';}
-  });
-  document.getElementById('otra').addEventListener('click',function(){
-    f.reset(); document.getElementById('sync').textContent=''; done.classList.remove('on'); area.style.display=''; document.getElementById('copiar').textContent='Copiar resumen';
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-  /* ===== Portal del carpintero ===== */
-  var CRED={CR001:'ramon2026',CR002:'marisol2026',CR003:'joaquin2026',CR004:'lucia2026',CR005:'esteban2026'};
-  var POOL=[
-    {c:'Patricia G.',s:5,t:'Puntual, limpio y quedó exactamente como lo pedí.',d:'Hace 2 semanas'},
-    {c:'Luis M.',s:5,t:'Muy buen trato y entregó antes de la fecha acordada.',d:'Hace 1 mes'},
-    {c:'Andrea R.',s:4,t:'Excelente acabado. Solo tardó un poco en llegar a la visita.',d:'Hace 1 mes'},
-    {c:'Jorge V.',s:5,t:'Explicó cada opción de madera y respetó el presupuesto.',d:'Hace 2 meses'},
-    {c:'Carmen S.',s:5,t:'Trabajo de mucha calidad, lo recomiendo.',d:'Hace 3 meses'},
-    {c:'Daniel O.',s:4,t:'Buen resultado y precio justo.',d:'Hace 4 meses'}];
-  var P={db:null,unsub:null,cid:null,tab:'pendiente',jobs:[]};
-  function $(id){return document.getElementById(id);}
-  function h(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
-  function carpById(id){return CARPS.filter(function(c){return c.id===id;})[0];}
-  function stars(n){return new Array(n+1).join('★');}
-  function msg(t){$('p-msg').textContent=t;}
-  function stop(){if(P.unsub){P.unsub();P.unsub=null;}}
-  function show(id){$('lf').hidden=!!id;$('dash').hidden=!id;}
-  function route(){
-    var on=location.hash==='#carpintero';
-    document.body.setAttribute('data-view',on?'portal':'form');window.scrollTo(0,0);
-    if(!on){stop();return;}
-    var id=null;try{id=sessionStorage.getItem('cr');}catch(e){}
-    if(id&&carpById(id))enter(id);else show(null);
-  }
-  function render(){
-    var pend=P.jobs.filter(function(j){return j.estado!=='realizado';}),hecho=P.jobs.filter(function(j){return j.estado==='realizado';});
-    var tabs=$('p-tabs');tabs.innerHTML='';
-    [['pendiente','Pendientes ('+pend.length+')'],['realizado','Realizados ('+hecho.length+')']].forEach(function(t){
-      var b=h('button','tab',t[1]);b.type='button';b.setAttribute('aria-pressed',String(P.tab===t[0]));
-      b.addEventListener('click',function(){P.tab=t[0];render();});tabs.appendChild(b);
-    });
-    var list=P.tab==='pendiente'?pend:hecho,box=$('p-jobs');box.innerHTML='';
-    if(!list.length){box.appendChild(h('p','empty',P.tab==='pendiente'?'No tienes trabajos pendientes. Cuando un cliente llene el formulario y se te asigne, aparecerá aquí.':'Aún no has marcado trabajos como realizados.'));return;}
-    list.forEach(function(j){
-      var ok=j.estado==='realizado',c=h('article','job'+(ok?' ok':''));
-      c.appendChild(h('h3',null,j.servicio));
-      c.appendChild(h('div','meta',j.nombre+' · '+j.tel+' · '+j.zona));
-      c.appendChild(h('p',null,j.desc));
-      c.appendChild(h('p','meta','Medidas: '+j.medidas+' · Material: '+j.material+' · Fecha deseada: '+(j.fecha||'sin fecha')+' · '+(j.visita?'Pidió visita a domicilio':'Sin visita a domicilio')));
-      var b=h('button','btn sm'+(ok?' alt':''),ok?'Volver a pendiente':'Marcar como realizado');b.type='button';
-      b.addEventListener('click',function(){
-        if(!P.db)return;b.disabled=true;
-        P.db.collection('trabajos').doc(j.id).update({estado:ok?'pendiente':'realizado'}).catch(function(){msg('No se pudo actualizar el trabajo. Revisa tu conexión y tus permisos.');b.disabled=false;});
-      });
-      c.appendChild(b);box.appendChild(c);
-    });
-  }
-  function enter(id){
-    var c=carpById(id);P.cid=id;P.tab='pendiente';P.jobs=[];show(id);stop();msg('');
-    $('p-ini').textContent=c.n.split(' ').map(function(p){return p.charAt(0);}).join('');
-    $('p-nombre').textContent=c.n;$('p-ctl').textContent=id+' · '+c.e;
-    var sc=$('p-score');sc.innerHTML='';var sp=h('span');var b=h('b',null,stars(Math.round(c.r)));b.setAttribute('aria-hidden','true');
-    sp.appendChild(b);sp.appendChild(document.createTextNode(' '+c.o+' reseñas en total'));
-    sc.appendChild(h('strong',null,c.r.toFixed(1)));sc.appendChild(sp);
-    var rv=$('p-revs');rv.innerHTML='';var i=Number(id.slice(2))-1;
-    [0,1,2].forEach(function(k){
-      var r=POOL[(i+k)%POOL.length],d=h('div','rev'),hd=h('div'),bs=h('b',null,stars(r.s));bs.setAttribute('aria-label',r.s+' de 5');
-      hd.appendChild(bs);hd.appendChild(document.createTextNode(' '+r.c+' · '+r.d));d.appendChild(hd);d.appendChild(h('div',null,r.t));rv.appendChild(d);
-    });
-    render();
-    getDb().then(function(db){
-      if(!db){msg('No se pudo conectar con los trabajos. Abre la página desde claude.ai con tu sesión iniciada.');return;}
-      P.db=db;
-      P.unsub=db.collection('trabajos').where('carp','==',id).onSnapshot(function(snap){
-        P.jobs=snap.docs.map(function(d){return d.data();}).sort(function(a,b){return b.creado-a.creado;});
-        msg('');render();
-      },function(){msg('Se perdió la conexión con los trabajos. Recarga la página.');});
-    });
-  }
-  $('lf').addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var id=$('ctl').value.trim().toUpperCase(),pw=$('pwd').value;
-    if(!CRED.hasOwnProperty(id)||CRED[id]!==pw){$('e-login').textContent='Número de control o contraseña incorrectos.';return;}
-    $('e-login').textContent='';$('pwd').value='';
-    try{sessionStorage.setItem('cr',id);}catch(e){}
-    enter(id);
-  });
-  $('salir').addEventListener('click',function(){
-    try{sessionStorage.removeItem('cr');}catch(e){}
-    stop();P.cid=null;P.db=null;$('ctl').value='';show(null);
-  });
-  window.addEventListener('hashchange',route);route();
-})();
+var SERV=[["🪑","Muebles a medida","Mesas, sillas, libreros"],["🚪","Puertas y ventanas","Instalación y reparación"],["🍳","Cocinas integrales","Gabinetes y barras"],["👔","Closets y vestidores","Diseño a tu espacio"],["🪵","Pisos y duelas","Instalación y pulido"],["🛠️","Reparaciones","Arreglos y restauración"]];
+var COL=["#8b5a2b","#a0522d","#6b4423","#9c6b30","#7a4a21"];
+var CARP=[
+{id:"CR001",n:"Don Ramiro Salas",r:4.9,y:22,sp:[0,3],rv:[["Lucía M.",5,"Mi librero quedó espectacular, ¡puntual y muy limpio!"],["Jorge P.",5,"Medidas perfectas. Lo recomiendo totalmente."],["Ana R.",4,"Excelente trabajo, tardó un día más de lo previsto."]],jobs:[]},
+{id:"CR002",n:"Marcos Villalobos",r:4.7,y:15,sp:[1,5],rv:[["Elena T.",5,"Arregló mi puerta rechinante en media hora."],["Pedro G.",4,"Buen trabajo y buen precio."]],jobs:[]},
+{id:"CR003",n:"Sofía Contreras",r:4.8,y:11,sp:[2,3],rv:[["Carla V.",5,"Mi cocina integral es una belleza, ¡gracias Sofía!"],["Raúl D.",5,"Muy profesional y creativa."],["Inés F.",4,"Todo quedó muy bien acabado."]],jobs:[]},
+{id:"CR004",n:"Héctor Domínguez",r:4.5,y:8,sp:[4,5],rv:[["Tomás B.",4,"Dejó el piso como nuevo."],["Rosa K.",5,"Rápido y ordenado."]],jobs:[]},
+{id:"CR005",n:"Teresa Ibarra",r:4.6,y:9,sp:[0,1,2],rv:[["Mario L.",5,"Hizo una mesa de comedor preciosa."],["Gaby S.",4,"Muy amable y detallista."]],jobs:[]}
+];
+var cur=null,folio=1000;
+function $(i){return document.getElementById(i)}
+function stars(r){var f=Math.round(r),s="";for(var i=0;i<5;i++)s+=i<f?"★":"<i>★</i>";return '<span class="stars">'+s+'</span>'}
+function ini(n){var p=n.split(" ");return p[0][0]+p[p.length-1][0]}
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function go(v){document.querySelectorAll(".view").forEach(function(e){e.classList.remove("on")});$("v-"+v).classList.add("on");$("nb-inicio").className=v=="inicio"?"on":"";$("nb-portal").className=v=="portal"?"on":"";try{history.replaceState(null,"","#"+v)}catch(e){}window.scrollTo(0,0)}
+/* servicios */
+$("svcs").innerHTML=SERV.map(function(s,i){return '<div class="svc" onclick="pick('+i+')"><b>'+s[0]+'</b><h3>'+s[1]+'</h3><p>'+s[2]+'</p></div>'}).join("");
+$("srv").innerHTML=SERV.map(function(s,i){return '<option value="'+i+'">'+s[0]+' '+s[1]+'</option>'}).join("");
+function pick(i){$("srv").value=i;$("form").scrollIntoView()}
+/* formulario */
+$("frm").addEventListener("submit",function(e){
+ e.preventDefault();
+ var ids=["nom","tel","dir","fec","des"];
+ for(var k=0;k<ids.length;k++){if(!$(ids[k]).value.trim()){$("err").textContent="Por favor completa todos los campos.";$(ids[k]).focus();return}}
+ $("err").textContent="";
+ var s=+$("srv").value;
+ var c=CARP.filter(function(x){return x.sp.indexOf(s)>-1}).sort(function(a,b){return b.r-a.r||a.jobs.length-b.jobs.length})[0];
+ folio++;
+ var job={f:"#"+folio,cli:$("nom").value.trim(),tel:$("tel").value.trim(),srv:SERV[s][1],ico:SERV[s][0],dir:$("dir").value.trim(),fec:$("fec").value,urg:$("urg").value,pre:$("pre").value,des:$("des").value.trim(),st:"pendiente"};
+ c.jobs.unshift(job);
+ var i=CARP.indexOf(c);
+ $("frm").style.display="none";
+ var r=$("res");r.style.display="block";
+ r.innerHTML='<h2>¡Solicitud enviada! 🎉</h2><p style="color:var(--mut)">Folio <b>'+job.f+'</b> · Tu carpintero asignado es:</p>'
+ +'<div class="av" style="background:'+COL[i]+'">'+ini(c.n)+'</div><h3>'+c.n+'</h3><div style="font-size:1.3rem">'+stars(c.r)+' <b>'+c.r.toFixed(1)+'</b></div>'
+ +'<p style="color:var(--mut);margin:6px 0">'+c.y+' años de experiencia · No. de control <b>'+c.id+'</b></p>'
+ +'<div>'+c.sp.map(function(x){return '<span class="tag">'+SERV[x][0]+' '+SERV[x][1]+'</span>'}).join("")+'</div>'
+ +'<div class="hint" style="text-align:left">📞 Se pondrá en contacto contigo al <b>'+esc(job.tel)+'</b> para el servicio de <b>'+job.srv+'</b> el '+job.fec+'.</div>'
+ +'<button class="btn" style="margin-top:18px" onclick="again()">Hacer otra solicitud</button>';
+});
+function again(){$("frm").reset();$("frm").style.display="grid";$("res").style.display="none"}
+/* portal */
+function login(){
+ var id=$("ctl").value.trim().toUpperCase(),p=$("pwd").value;
+ if(!/^CR\d{3}$/.test(id)){$("lerr").textContent="El formato debe ser CR000 (ej. CR001).";return}
+ var c=CARP.filter(function(x){return x.id==id})[0];
+ if(!c||p!=="madera123"){$("lerr").textContent="Número de control o contraseña incorrectos.";return}
+ $("lerr").textContent="";cur=c;$("login").style.display="none";$("dashboard").style.display="block";draw();
+}
+function logout(){cur=null;$("pwd").value="";$("dashboard").style.display="none";$("login").style.display="block"}
+function mark(i,st){cur.jobs[i].st=st;draw()}
+function draw(){
+ var c=cur,ix=CARP.indexOf(c);
+ var pend=c.jobs.filter(function(j){return j.st=="pendiente"}).length,done=c.jobs.filter(function(j){return j.st=="hecho"}).length;
+ var lbl={pendiente:"Pendiente",hecho:"Realizado",no:"No realizado"};
+ var jobs=c.jobs.length?c.jobs.map(function(j,i){
+  return '<div class="job"><span class="badge '+j.st+'">'+lbl[j.st]+'</span><b>'+j.ico+' '+j.srv+'</b> <small style="color:var(--mut)">'+j.f+'</small>'
+  +'<div style="font-size:.9rem"><b>'+esc(j.cli)+'</b> · 📞 '+esc(j.tel)+'<br>📍 '+esc(j.dir)+'<br>📅 '+j.fec+' · ⏱ '+j.urg+' · 💰 '+j.pre+'</div>'
+  +'<p style="margin:8px 0 0;font-size:.9rem;color:var(--mut)">“'+esc(j.des)+'”</p>'
+  +'<div class="row">'+(j.st=="pendiente"?'<button class="btn sm ok" onclick="mark('+i+',\'hecho\')">✔ Realizado</button><button class="btn sm bad" onclick="mark('+i+',\'no\')">✖ No realizado</button>':'<button class="btn sm ghost" onclick="mark('+i+',\'pendiente\')">↺ Reabrir</button>')+'</div></div>'
+ }).join(""):'<p style="color:var(--mut)">Aún no tienes trabajos. Cuando un cliente te sea asignado desde el formulario aparecerá aquí. 🪚</p>';
+ var revs=c.rv.map(function(r){return '<div class="rev">'+stars(r[1])+' <b>'+esc(r[0])+'</b><p style="margin:6px 0 0;font-size:.92rem">“'+esc(r[2])+'”</p></div>'}).join("");
+ $("dashboard").innerHTML='<div class="card"><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><div class="av" style="background:'+COL[ix]+';margin:0">'+ini(c.n)+'</div>'
+ +'<div style="flex:1;min-width:200px"><h2>Hola, '+c.n.split(" ")[0]+' 👋</h2><div>'+stars(c.r)+' <b>'+c.r.toFixed(1)+'</b> · '+c.id+'</div><div>'+c.sp.map(function(x){return '<span class="tag">'+SERV[x][0]+' '+SERV[x][1]+'</span>'}).join("")+'</div></div>'
+ +'<button class="btn sm ghost" onclick="logout()">Salir</button></div>'
+ +'<div class="dash"><div class="stat"><b>'+pend+'</b>Pendientes</div><div class="stat"><b>'+done+'</b>Realizados</div><div class="stat"><b>'+c.rv.length+'</b>Reseñas</div><div class="stat"><b>'+c.y+'</b>Años de oficio</div></div>'
+ +'<div class="two"><div><h3 style="margin-bottom:12px">📋 Mis trabajos</h3>'+jobs+'</div><div><h3 style="margin-bottom:12px">⭐ Mis reseñas</h3>'+revs+'</div></div></div>';
+}
+if(location.hash=="#portal")go("portal");
 </script>
 </body>
 </html>

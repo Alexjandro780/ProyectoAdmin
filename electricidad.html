@@ -1,126 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Servicio de Electricidad</title>
+<title>Voltio Hogar · Electricistas para tu casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6fb;--card:#fff;--text:#14213d;--muted:#5b6785;--line:#dde3f0;--accent:#f5b700;--accent-d:#c99200;--hero1:#14213d;--hero2:#26408b;--ok:#1b9e5a;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1220;--card:#161d33;--text:#eef1fa;--muted:#9aa5c4;--line:#2a3558;--hero1:#0a0f1f;--hero2:#1d3270}}
-:root[data-theme="dark"]{--bg:#0d1220;--card:#161d33;--text:#eef1fa;--muted:#9aa5c4;--line:#2a3558;--hero1:#0a0f1f;--hero2:#1d3270}
-*{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
-.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:48px 20px 90px;text-align:center}
-.bolt{font-size:48px;filter:drop-shadow(0 0 14px var(--accent))}
-.hero h1{margin:8px 0 6px;font-size:clamp(26px,5vw,40px)}
-.hero p{margin:0 auto;max-width:520px;opacity:.85}
-.wrap{max-width:720px;margin:-60px auto 40px;padding:0 16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 12px 30px rgba(10,20,50,.15)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.full{grid-column:1/-1}
-label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
-input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(245,183,0,.25)}
-textarea{min-height:100px;resize:vertical}
-button{width:100%;margin-top:22px;padding:15px;border:0;border-radius:12px;background:var(--accent);color:#14213d;font-size:17px;font-weight:700;cursor:pointer;transition:.15s}
-button:hover{background:var(--accent-d);transform:translateY(-1px)}
-.result{display:none;text-align:center}
-.result.show{display:block}
-.check{width:60px;height:60px;border-radius:50%;background:var(--ok);color:#fff;font-size:32px;display:grid;place-items:center;margin:0 auto 10px}
-.pro{display:flex;align-items:center;gap:16px;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin:18px 0}
-.avatar{width:64px;height:64px;border-radius:50%;background:var(--accent);color:#14213d;font-size:26px;font-weight:800;display:grid;place-items:center;flex:none}
-.pro h3{margin:0}
-.stars{color:var(--accent);font-size:20px;letter-spacing:2px}
-.muted{color:var(--muted);font-size:14px}
-.sum{text-align:left;font-size:15px;border-top:1px solid var(--line);padding-top:14px}
-.sum div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
-.sum span:first-child{color:var(--muted)}
-.btn2{background:transparent;border:1.5px solid var(--line);color:var(--text)}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.card{padding:20px}}
+:root{--bg:#F3F5F9;--ink:#151A30;--mut:#59617D;--card:#fff;--line:#D9DEEA;--volt:#FFD21F;--wire:#1F6FEB;--cu:#C0692B;--ok:#16895C;--dk:#151A30;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1021;--ink:#EDF0FA;--mut:#9AA3C4;--card:#171B33;--line:#2A3050;--wire:#6FA3FF;--cu:#E39358;--ok:#3CCB91}}
+:root[data-theme="dark"]{--bg:#0D1021;--ink:#EDF0FA;--mut:#9AA3C4;--card:#171B33;--line:#2A3050;--wire:#6FA3FF;--cu:#E39358;--ok:#3CCB91;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',Georgia,serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--wire);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--dk);color:#fff}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dk);z-index:30}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.logo{display:flex;align-items:center;gap:10px;font:800 1.3rem 'Bricolage Grotesque',serif;color:#fff;text-decoration:none}
+.logo svg{width:28px;height:28px}
+nav{display:flex;gap:6px;background:#232949;padding:4px;border-radius:999px}
+nav a{color:#C9D0EE;text-decoration:none;padding:7px 16px;border-radius:999px;font-weight:700;font-size:.92rem}
+nav a[aria-current=page]{background:var(--volt);color:#151A30}
+.hero{background:var(--dk);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:64px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--volt)}
+.hero p{color:#B9C1E2;max-width:46ch;font-size:1.1rem;margin:18px 0 26px}
+.btn{display:inline-block;background:var(--volt);color:#151A30;font-weight:700;border:0;border-radius:12px;padding:14px 26px;cursor:pointer;text-decoration:none;box-shadow:0 4px 0 #B8960A;transition:transform .12s,box-shadow .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #B8960A}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px var(--line)}
+.panel{width:100%;height:auto}
+.pulse{stroke-dasharray:14 380;animation:run 3.2s linear infinite}
+@keyframes run{to{stroke-dashoffset:-788}}
+.bulb{animation:glow 3.2s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+.sw{transition:transform .3s}
+.sw.on{transform:translateY(-14px)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:-34px auto 0;position:relative;z-index:2}
+.step{background:var(--card);padding:22px 24px;border:1px solid var(--line)}
+.step:first-child{border-radius:16px 0 0 16px}.step:last-child{border-radius:0 16px 16px 0}
+.step b{font:800 1.9rem 'Bricolage Grotesque',serif;color:var(--cu)}
+.step p{margin:4px 0 0;color:var(--mut);font-size:.95rem}
+main{padding:56px 0 70px}
+.view[hidden]{display:none}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.lead{color:var(--mut);margin:10px 0 26px}
+form,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.f{margin-bottom:18px}
+label,.lbl{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px}
+input[type=text],input[type=tel],input[type=date],select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);transition:border-color .15s}
+input:focus,select:focus,textarea:focus{border-color:var(--wire);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--wire) 25%,transparent)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{margin:0;border:1.5px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;font-weight:500;background:var(--bg);transition:all .15s}
+.chips input:checked+label{background:var(--volt);border-color:var(--volt);color:#151A30;font-weight:700}
+.chips input:focus-visible+label{outline:3px solid var(--wire);outline-offset:2px}
+.side{position:sticky;top:84px}
+.tips{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.tips li{display:flex;gap:12px;color:var(--mut);font-size:.95rem}
+.tips span{flex:none;width:34px;height:34px;border-radius:10px;background:var(--dk);color:var(--volt);display:grid;place-items:center;font-weight:800}
+.ticket{border:2px dashed var(--cu);background:var(--card);border-radius:18px;padding:26px;animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.pro{display:flex;gap:16px;align-items:center;margin:16px 0}
+.av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font:800 1.4rem 'Bricolage Grotesque',serif;color:#151A30;box-shadow:0 0 0 4px var(--card),0 0 0 6px var(--wire)}
+.stars{color:#E8A400;letter-spacing:2px;white-space:nowrap}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:999px;background:color-mix(in srgb,var(--wire) 16%,transparent);color:var(--wire)}
+.tag.ok{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.tag.cu{background:color-mix(in srgb,var(--cu) 18%,transparent);color:var(--cu)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.95rem;margin:12px 0;padding:12px 0;border-block:1px solid var(--line)}
+.kv dt{color:var(--mut)}.kv dd{margin:0;font-weight:500}
+.rate{display:flex;gap:4px;margin:8px 0}
+.rate input{position:absolute;opacity:0}
+.rate label{margin:0;font-size:1.7rem;cursor:pointer;color:var(--line);line-height:1}
+.rate label.on{color:#E8A400}
+.login{max-width:520px}
+.demo{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.demo button{border:1.5px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 12px;cursor:pointer;font-size:.88rem}
+.demo button:hover{border-color:var(--wire)}
+.err{color:#D6334C;font-weight:700;min-height:1.4em;margin:8px 0 0}
+.pf{display:flex;gap:20px;align-items:center;flex-wrap:wrap;background:var(--dk);color:#fff;border-radius:20px;padding:26px;margin-bottom:24px}
+.pf h2{color:#fff;font-size:1.9rem}
+.pf .m{color:#B9C1E2}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font:800 2rem 'Bricolage Grotesque',serif}
+.stat span{color:var(--mut);font-size:.9rem}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tabs button{border:1.5px solid var(--line);background:var(--card);padding:9px 18px;border-radius:999px;cursor:pointer;font-weight:700}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.item{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--wire);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+.item.urg{border-left-color:#E5484D}.item.done{border-left-color:var(--ok);opacity:.85}
+.item h3{font-size:1.15rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.item p{margin:6px 0;color:var(--mut)}
+.acts{display:flex;gap:8px;margin-top:10px}
+.sm{padding:8px 16px;border-radius:9px;font-weight:700;cursor:pointer;border:0;background:var(--volt);color:#151A30}
+.sm.o{background:var(--ok);color:#fff}
+.empty{text-align:center;padding:40px 20px;border:2px dashed var(--line);border-radius:16px;color:var(--mut)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--dk);color:#fff;padding:12px 22px;border-radius:12px;opacity:0;transition:.3s;z-index:40;font-weight:700}
+.toast.show{transform:translate(-50%,0);opacity:1}
+footer{background:var(--dk);color:#8F98BB;text-align:center;padding:26px 20px;font-size:.9rem}
+@media (max-width:820px){.hero .wrap,.grid{grid-template-columns:1fr}.side{position:static}.steps{grid-template-columns:1fr;margin-top:-20px}.step:first-child{border-radius:16px 16px 0 0}.step:last-child{border-radius:0 0 16px 16px}.row,.stats{grid-template-columns:1fr}.logo span{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="bolt">⚡</div>
-  <h1>Servicio de Electricidad</h1>
-  <p>Cuéntanos qué necesitas y te asignamos al instante un electricista certificado.</p>
-</header>
-<main class="wrap">
-  <section class="card" id="formCard">
-    <form id="f" novalidate>
-      <div class="grid">
-        <div><label for="nombre">Nombre completo</label><input id="nombre" required placeholder="Tu nombre"></div>
-        <div><label for="tel">Teléfono</label><input id="tel" type="tel" required placeholder="10 dígitos"></div>
-        <div class="full"><label for="dir">Dirección del servicio</label><input id="dir" required placeholder="Calle, número y colonia"></div>
-        <div><label for="tipo">Tipo de servicio</label>
-          <select id="tipo" required>
-            <option value="">Selecciona…</option>
-            <option>Instalación de contactos o apagadores</option>
-            <option>Cortocircuito o fallas de energía</option>
-            <option>Instalación de lámparas o ventiladores</option>
-            <option>Cableado nuevo</option>
-            <option>Revisión de centro de carga</option>
-            <option>Otro</option>
-          </select></div>
-        <div><label for="urg">Urgencia</label>
-          <select id="urg"><option>Normal</option><option>Urgente (hoy)</option><option>Emergencia (ahora)</option></select></div>
-        <div><label for="fecha">Fecha preferida</label><input id="fecha" type="date"></div>
-        <div><label for="hora">Horario</label>
-          <select id="hora"><option>Mañana (8–12)</option><option>Tarde (12–18)</option><option>Noche (18–21)</option></select></div>
-        <div class="full"><label for="desc">Describe el problema</label><textarea id="desc" placeholder="Ej. Se va la luz al encender el aire acondicionado…"></textarea></div>
-      </div>
-      <p class="muted" id="err" style="color:#d33;margin:12px 0 0"></p>
-      <button type="submit">Solicitar electricista ⚡</button>
-    </form>
-  </section>
+<header><div class="wrap">
+<a class="logo" href="#solicitar"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#FFD21F"/><path d="M18 5 8 18h7l-2 9 11-14h-7z" fill="#151A30"/></svg><span>Voltio Hogar</span></a>
+<nav aria-label="Principal"><a href="#solicitar" id="n1">Pedir electricista</a><a href="#electricista" id="n2">Soy electricista</a></nav>
+</div></header>
 
-  <section class="card result" id="res">
-    <div class="check">✓</div>
-    <h2 style="margin:0">¡Solicitud enviada!</h2>
-    <p class="muted" style="margin:4px 0 0">Folio <b id="folio"></b></p>
-    <div class="pro">
-      <div class="avatar" id="av"></div>
-      <div>
-        <div class="muted">Tu electricista asignado</div>
-        <h3 id="pn"></h3>
-        <div class="stars" id="ps"></div>
-        <div class="muted" id="pm"></div>
-      </div>
-    </div>
-    <div class="sum" id="sum"></div>
-    <button class="btn2" id="nuevo">Hacer otra solicitud</button>
-  </section>
-</main>
+<section class="hero"><div class="wrap">
+<div>
+<h1>Que vuelva la <em>luz</em> a tu casa hoy.</h1>
+<p>Cuéntanos qué falla y te asignamos al instante a un electricista verificado, con su calificación y reseñas a la vista.</p>
+<a class="btn" href="#formulario" onclick="go('solicitar')">Solicitar servicio</a>
+</div>
+<svg class="panel" viewBox="0 0 400 320" role="img" aria-label="Tablero eléctrico con un pulso de corriente">
+<rect x="20" y="20" width="360" height="190" rx="18" fill="#232949" stroke="#3A4270" stroke-width="3"/>
+<g fill="#151A30" stroke="#4A5486" stroke-width="2">
+<rect x="48" y="50" width="48" height="90" rx="8"/><rect x="116" y="50" width="48" height="90" rx="8"/><rect x="184" y="50" width="48" height="90" rx="8"/><rect x="252" y="50" width="48" height="90" rx="8"/><rect x="320" y="50" width="36" height="90" rx="8"/></g>
+<g fill="#FFD21F"><rect class="sw on" x="58" y="95" width="28" height="36" rx="5"/><rect class="sw on" x="126" y="95" width="28" height="36" rx="5"/><rect class="sw" x="194" y="95" width="28" height="36" rx="5" style="transform:translateY(0)"/><rect class="sw on" x="262" y="95" width="28" height="36" rx="5"/></g>
+<rect x="194" y="95" width="28" height="36" rx="5" fill="#E5484D" opacity=".0"/>
+<path d="M72 210V250H200V290M140 210V240H200M208 210V290M276 210V250H200M338 210V260H260V290" fill="none" stroke="#3A4270" stroke-width="4" stroke-linejoin="round"/>
+<path class="pulse" d="M208 210V290" fill="none" stroke="#FFD21F" stroke-width="6" stroke-linecap="round"/>
+<path class="pulse" style="animation-delay:-1.4s" d="M72 210V250H200V290" fill="none" stroke="#6FA3FF" stroke-width="6" stroke-linecap="round"/>
+<g class="bulb"><circle cx="200" cy="300" r="22" fill="#FFD21F" opacity=".25"/><circle cx="200" cy="300" r="12" fill="#FFD21F"/></g>
+<text x="52" y="168" fill="#8F98BB" font-size="13" font-family="Figtree,sans-serif">Sala</text><text x="120" y="168" fill="#8F98BB" font-size="13" font-family="Figtree,sans-serif">Cocina</text><text x="188" y="168" fill="#8F98BB" font-size="13" font-family="Figtree,sans-serif">Baño</text><text x="256" y="168" fill="#8F98BB" font-size="13" font-family="Figtree,sans-serif">Patio</text>
+</svg>
+</div></section>
+
+<div class="wrap"><div class="steps">
+<div class="step"><b>1</b><p><strong>Llena el formulario</strong> con tu dirección y el problema.</p></div>
+<div class="step"><b>2</b><p><strong>Recibe a tu electricista</strong> con nombre, calificación y reseñas.</p></div>
+<div class="step"><b>3</b><p><strong>Él ve tu trabajo</strong> en su página y te atiende.</p></div>
+</div></div>
+
+<main><div class="wrap">
+
+<section class="view" id="v-solicitar" aria-labelledby="t1">
+<div class="grid">
+<div id="formulario">
+<h2 id="t1">Pide tu electricista</h2>
+<p class="lead">Tarda menos de un minuto. Te asignamos a alguien especializado en lo que necesitas.</p>
+<form id="f" novalidate>
+<div class="row">
+<div class="f"><label for="nm">Tu nombre</label><input id="nm" type="text" required autocomplete="name" placeholder="Ej. Alejandro Ruiz"></div>
+<div class="f"><label for="tel">Teléfono (10 dígitos)</label><input id="tel" type="tel" required inputmode="numeric" pattern="[0-9]{10}" placeholder="4921234567"></div>
+</div>
+<div class="f"><label for="dir">Dirección del servicio</label><input id="dir" type="text" required autocomplete="street-address" placeholder="Calle, número y colonia"></div>
+<div class="f"><span class="lbl">¿Qué necesitas?</span>
+<div class="chips" role="radiogroup" id="svc"></div></div>
+<div class="row">
+<div class="f"><label for="urg">Urgencia</label><select id="urg"><option value="Urgente (hoy)">Urgente, hoy mismo</option><option value="Esta semana" selected>Esta semana</option><option value="Fecha programada">Fecha programada</option></select></div>
+<div class="f"><label for="fec">Fecha preferida</label><input id="fec" type="date"></div>
+</div>
+<div class="f"><label for="des">Cuéntanos el problema</label><textarea id="des" rows="4" required placeholder="Ej. Se botó la pastilla de la cocina y huele a quemado en un contacto."></textarea></div>
+<p class="err" id="err" role="alert"></p>
+<button class="btn" type="submit">Asignarme un electricista</button>
+</form>
+</div>
+<aside class="side">
+<div id="out"><div class="card"><h3>Seguridad primero</h3>
+<ul class="tips">
+<li><span>⚡</span>Si huele a quemado o hay chispas, baja la pastilla general antes de que llegue.</li>
+<li><span>✓</span>Todos nuestros electricistas están verificados y tienen reseñas reales.</li>
+<li><span>★</span>Después del servicio puedes calificarlo y dejar tu reseña.</li>
+</ul></div></div>
+</aside>
+</div>
+</section>
+
+<section class="view" id="v-electricista" hidden aria-labelledby="t2">
+<div id="login" class="login">
+<h2 id="t2">Portal del electricista</h2>
+<p class="lead">Ingresa tu código para ver tus calificaciones, reseñas y los trabajos que te llegan.</p>
+<form id="lf" class="card" novalidate>
+<label for="cod">Código de electricista</label>
+<input id="cod" type="text" autocomplete="off" placeholder="EL101" maxlength="5">
+<p class="err" id="lerr" role="alert"></p>
+<button class="btn" type="submit">Entrar a mi página</button>
+<p class="lbl" style="margin-top:20px">Códigos de demostración</p>
+<div class="demo" id="demo"></div>
+</form>
+</div>
+<div id="portal" hidden></div>
+</section>
+
+</div></main>
+<footer>Voltio Hogar · Servicio eléctrico residencial · Demo: los datos se guardan solo en este navegador</footer>
+<div class="toast" id="toast" role="status"></div>
+
 <script>
-const pros=[
- {n:"Carlos Ramírez",r:4.9,t:12,e:"12 años de experiencia"},
- {n:"Luis Hernández",r:4.7,t:8,e:"8 años de experiencia"},
- {n:"Miguel Ángel Soto",r:4.8,t:15,e:"15 años de experiencia"},
- {n:"Javier Morales",r:4.6,t:6,e:"6 años de experiencia"},
- {n:"Roberto Villalobos",r:5.0,t:20,e:"20 años de experiencia"},
- {n:"Fernando Gutiérrez",r:4.5,t:5,e:"5 años de experiencia"}
+var E=[
+{id:'EL101',n:'Marco Antonio Reyes',e:'Tableros e instalaciones',y:12,b:4.9,c:64,col:'#FFD21F',s:['Tablero / pastillas','Revisión general'],rv:[['Carolina M.',5,'Cambió mi tablero en una mañana y dejó todo etiquetado.'],['Julián P.',5,'Puntual, limpio y explicó cada paso.']]},
+{id:'EL102',n:'Daniela Ortiz Salas',e:'Diagnóstico de cortos',y:9,b:4.8,c:51,col:'#8FD3FF',s:['Corto circuito','Revisión general'],rv:[['Beto G.',5,'Encontró el corto que nadie veía. Muy profesional.'],['Rosa L.',4,'Llegó rápido, el precio fue justo.']]},
+{id:'EL103',n:'Rubén Camacho',e:'Iluminación y ventiladores',y:7,b:4.7,c:38,col:'#FFB27A',s:['Iluminación','Ventilador / minisplit'],rv:[['Ana Paula V.',5,'Dejó la sala con luz led increíble.'],['Memo S.',4,'Instaló 3 ventiladores sin problemas.']]},
+{id:'EL104',n:'Itzel Fernández',e:'Contactos y cableado',y:10,b:4.9,c:72,col:'#C9B6FF',s:['Instalar contactos','Corto circuito'],rv:[['Familia Torres',5,'Cableado nuevo en toda la cocina, impecable.'],['Luis H.',5,'Muy amable y ordenada.']]},
+{id:'EL105',n:'Josué Barrón',e:'Reguladores y minisplit',y:6,b:4.6,c:29,col:'#9BE8B8',s:['Ventilador / minisplit','Iluminación'],rv:[['Pedro A.',5,'Conectó mi minisplit con línea dedicada.'],['Karla D.',4,'Buen trabajo, llegó un poco tarde.']]},
+{id:'EL106',n:'Lupita Villalobos',e:'Mantenimiento general',y:14,b:4.8,c:85,col:'#FFD1E3',s:['Revisión general','Tablero / pastillas','Instalar contactos'],rv:[['Don Chuy',5,'Revisó toda la casa y me ahorró un susto.'],['Mary C.',5,'La mejor, la recomiendo siempre.']]}
 ];
-const $=id=>document.getElementById(id);
-$("fecha").min=new Date().toISOString().split("T")[0];
-function stars(r){const f=Math.round(r);return "★".repeat(f)+"☆".repeat(5-f)+" "+r.toFixed(1)}
-$("f").addEventListener("submit",e=>{
-  e.preventDefault();
-  const v=id=>$(id).value.trim();
-  if(!v("nombre")||!v("tel")||!v("dir")||!v("tipo")){$("err").textContent="Completa nombre, teléfono, dirección y tipo de servicio.";return}
-  if(v("tel").replace(/\D/g,"").length<10){$("err").textContent="Ingresa un teléfono válido de 10 dígitos.";return}
-  $("err").textContent="";
-  const p=pros[Math.floor(Math.random()*pros.length)];
-  $("folio").textContent="EL-"+Math.floor(10000+Math.random()*90000);
-  $("av").textContent=p.n.split(" ").map(w=>w[0]).slice(0,2).join("");
-  $("pn").textContent=p.n;$("ps").textContent=stars(p.r);$("pm").textContent=p.e;
-  const rows=[["Cliente",v("nombre")],["Servicio",v("tipo")],["Urgencia",$("urg").value],["Dirección",v("dir")],["Cuándo",(v("fecha")||"Lo antes posible")+" · "+$("hora").value]];
-  $("sum").innerHTML="";
-  rows.forEach(([a,b])=>{const d=document.createElement("div");const s1=document.createElement("span");s1.textContent=a;const s2=document.createElement("span");s2.textContent=b;d.append(s1,s2);$("sum").append(d)});
-  $("formCard").style.display="none";$("res").classList.add("show");scrollTo({top:0,behavior:"smooth"});
-});
-$("nuevo").onclick=()=>{$("f").reset();$("res").classList.remove("show");$("formCard").style.display="block"};
+var SV=['Corto circuito','Instalar contactos','Iluminación','Tablero / pastillas','Ventilador / minisplit','Revisión general'];
+var mem={jobs:[],revs:{}};
+function load(){try{var s=localStorage.getItem('voltio_v1');if(s)return JSON.parse(s)}catch(e){}return mem}
+function save(d){mem=d;try{localStorage.setItem('voltio_v1',JSON.stringify(d))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function ini(n){return n.split(' ').slice(0,2).map(function(w){return w[0]}).join('')}
+function rating(p,d){var r=(d.revs[p.id]||[]),t=r.reduce(function(a,x){return a+x[1]},0);return{v:(p.b*p.c+t)/(p.c+r.length),n:p.c+r.length}}
+function stars(v){var f=Math.round(v);return '<span class="stars" aria-label="'+v.toFixed(1)+' de 5">'+'★'.repeat(f)+'☆'.repeat(5-f)+'</span> <b>'+v.toFixed(1)+'</b>'}
+function toast(t){var x=$('toast');x.textContent=t;x.className='toast show';setTimeout(function(){x.className='toast'},2600)}
+
+$('svc').innerHTML=SV.map(function(s,i){return '<input type="radio" name="sv" id="s'+i+'" value="'+s+'"'+(i==0?' checked':'')+'><label for="s'+i+'">'+s+'</label>'}).join('');
+$('demo').innerHTML=E.map(function(p){return '<button type="button" data-c="'+p.id+'">'+p.id+' · '+p.n.split(' ')[0]+'</button>'}).join('');
+$('demo').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){$('cod').value=c;$('cod').focus()}};
+
+/* Vistas */
+function go(v){location.hash=v}
+function route(){var h=location.hash.replace('#','');var v=h==='electricista'?'electricista':'solicitar';
+$('v-solicitar').hidden=v!=='solicitar';$('v-electricista').hidden=v!=='electricista';
+$('n1').removeAttribute('aria-current');$('n2').removeAttribute('aria-current');$(v=='solicitar'?'n1':'n2').setAttribute('aria-current','page');}
+window.addEventListener('hashchange',route);route();
+$('fec').min=new Date().toISOString().slice(0,10);
+
+/* Solicitud */
+$('f').onsubmit=function(ev){ev.preventDefault();var er=$('err');er.textContent='';
+var nm=$('nm').value.trim(),tel=$('tel').value.trim(),dir=$('dir').value.trim(),des=$('des').value.trim();
+if(!nm||!dir||!des){er.textContent='Completa tu nombre, dirección y la descripción del problema.';return}
+if(!/^[0-9]{10}$/.test(tel)){er.textContent='Escribe tu teléfono con 10 dígitos, sin espacios.';$('tel').focus();return}
+var sv=document.querySelector('input[name=sv]:checked').value,urg=$('urg').value;
+var pool=E.filter(function(p){return p.s.indexOf(sv)>-1});if(!pool.length)pool=E;
+var p=pool[Math.floor(Math.random()*pool.length)];
+var d=load();var job={id:'SE-'+(1000+Math.floor(Math.random()*9000)),eid:p.id,nm:nm,tel:tel,dir:dir,sv:sv,urg:urg,fec:$('fec').value,des:des,st:'nuevo',t:Date.now()};
+d.jobs.push(job);save(d);showTicket(job,p);toast('Electricista asignado: '+p.n);
+if(innerWidth<820)$('out').scrollIntoView({behavior:'smooth'});};
+
+function eta(j){return j.urg.indexOf('Urgente')==0?'Llega en unos 45 minutos':j.fec?'Visita el '+j.fec.split('-').reverse().join('/'):j.urg=='Esta semana'?'Te contacta hoy para agendar':'Te contacta para fijar fecha'}
+function showTicket(j,p){var d=load(),r=rating(p,d);
+$('out').innerHTML='<div class="ticket"><span class="tag cu">Folio '+j.id+'</span><div class="pro"><div class="av" style="background:'+p.col+'">'+ini(p.n)+'</div><div><h3>'+p.n+'</h3><div>'+stars(r.v)+' <span style="color:var(--mut)">('+r.n+' reseñas)</span></div><span class="tag">'+p.e+'</span></div></div>'+
+'<dl class="kv"><dt>Servicio</dt><dd>'+esc(j.sv)+'</dd><dt>Dirección</dt><dd>'+esc(j.dir)+'</dd><dt>Atención</dt><dd>'+eta(j)+'</dd><dt>Experiencia</dt><dd>'+p.y+' años</dd></dl>'+
+'<p class="lbl">Últimas reseñas</p>'+p.rv.map(function(x){return '<p style="margin:0 0 8px;font-size:.93rem"><span class="stars">'+'★'.repeat(x[1])+'</span> <b>'+x[0]+'</b>: '+x[2]+'</p>'}).join('')+
+'<div id="rw" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line)"><p class="lbl">¿Ya te atendió? Déjale tu calificación</p><div class="rate" id="rate">'+[1,2,3,4,5].map(function(i){return '<label data-v="'+i+'" tabindex="0" role="button" aria-label="'+i+' estrellas">★</label>'}).join('')+'</div><textarea id="rt" rows="2" placeholder="Tu reseña (opcional)"></textarea><div class="acts"><button class="sm" id="rb" type="button">Enviar reseña</button></div></div></div>';
+var val=0;function paint(){[].forEach.call($('rate').children,function(l){l.className=l.getAttribute('data-v')<=val?'on':''})}
+$('rate').onclick=function(e){var v=e.target.getAttribute('data-v');if(v){val=+v;paint()}};
+$('rate').onkeydown=function(e){if(e.key=='Enter'||e.key==' '){var v=e.target.getAttribute('data-v');if(v){e.preventDefault();val=+v;paint()}}};
+$('rb').onclick=function(){if(!val){toast('Elige de 1 a 5 estrellas');return}var d=load();(d.revs[p.id]=d.revs[p.id]||[]).unshift([j.nm.split(' ')[0],val,$('rt').value.trim()||'Sin comentario.']);save(d);
+$('rw').innerHTML='<span class="tag ok">¡Gracias! Tu reseña ya aparece en la página de '+p.n.split(' ')[0]+'.</span>';toast('Reseña enviada')}}
+
+/* Portal */
+var cur=null,tab='jobs';
+$('lf').onsubmit=function(ev){ev.preventDefault();var c=$('cod').value.trim().toUpperCase();var p=E.filter(function(x){return x.id==c})[0];
+if(!p){$('lerr').textContent='No encontramos ese código. Prueba con uno de los de demostración.';return}
+$('lerr').textContent='';cur=p;$('login').hidden=true;$('portal').hidden=false;renderPortal()};
+function renderPortal(){var d=load(),p=cur,r=rating(p,d);var js=d.jobs.filter(function(j){return j.eid==p.id}).sort(function(a,b){return b.t-a.t});
+var nw=js.filter(function(j){return j.st=='nuevo'}).length,dn=js.filter(function(j){return j.st=='hecho'}).length;
+var h='<div class="pf"><div class="av" style="background:'+p.col+'">'+ini(p.n)+'</div><div><h2>'+p.n+'</h2><div class="m">'+p.e+' · '+p.y+' años · '+p.id+'</div><div>'+stars(r.v)+'</div></div><div style="margin-left:auto"><button class="btn ghost" id="out2" style="color:#fff">Salir</button></div></div>'+
+'<div class="stats"><div class="stat"><b>'+r.v.toFixed(1)+'</b><span>Calificación promedio</span></div><div class="stat"><b>'+nw+'</b><span>Trabajos nuevos</span></div><div class="stat"><b>'+(p.c+dn)+'</b><span>Servicios completados</span></div></div>'+
+'<div class="tabs" role="tablist"><button role="tab" data-t="jobs" aria-selected="'+(tab=='jobs')+'">Mis trabajos ('+js.length+')</button><button role="tab" data-t="rev" aria-selected="'+(tab=='rev')+'">Reseñas ('+r.n+')</button></div>';
+if(tab=='jobs'){h+=js.length?js.map(function(j){var cls=j.st=='hecho'?'done':j.urg.indexOf('Urgente')==0?'urg':'';
+return '<div class="item '+cls+'"><h3>'+esc(j.sv)+' <span class="tag '+(j.st=='hecho'?'ok':j.st=='acept'?'':'cu')+'">'+(j.st=='hecho'?'Completado':j.st=='acept'?'Aceptado':'Nuevo')+'</span>'+(j.urg.indexOf('Urgente')==0?'<span class="tag cu">Urgente</span>':'')+'</h3><p><b>'+esc(j.nm)+'</b> · '+esc(j.tel)+'<br>'+esc(j.dir)+'</p><p>“'+esc(j.des)+'”</p><p style="font-size:.85rem">Folio '+j.id+' · '+eta(j)+'</p>'+
+(j.st=='nuevo'?'<div class="acts"><button class="sm" data-a="acept" data-j="'+j.id+'">Aceptar trabajo</button></div>':j.st=='acept'?'<div class="acts"><button class="sm o" data-a="hecho" data-j="'+j.id+'">Marcar como completado</button></div>':'')+'</div>'}).join(''):
+'<div class="empty"><b>Aún no tienes trabajos.</b><br>Cuando un cliente te sea asignado, aparecerá aquí al instante. Prueba pidiendo un servicio en la pestaña “Pedir electricista”.</div>'}
+else{var all=(d.revs[p.id]||[]).concat(p.rv);h+=all.map(function(x){return '<div class="item"><span class="stars">'+'★'.repeat(x[1])+'☆'.repeat(5-x[1])+'</span> <b>'+esc(x[0])+'</b><p>'+esc(x[2])+'</p></div>'}).join('')}
+$('portal').innerHTML=h;
+$('out2').onclick=function(){cur=null;$('portal').hidden=true;$('login').hidden=false;$('cod').value=''};
+[].forEach.call($('portal').querySelectorAll('[data-t]'),function(b){b.onclick=function(){tab=b.getAttribute('data-t');renderPortal()}});
+[].forEach.call($('portal').querySelectorAll('[data-a]'),function(b){b.onclick=function(){var d=load();d.jobs.forEach(function(j){if(j.id==b.getAttribute('data-j'))j.st=b.getAttribute('data-a')});save(d);renderPortal();toast(b.getAttribute('data-a')=='hecho'?'Trabajo completado':'Trabajo aceptado')}})}
+window.addEventListener('storage',function(){if(cur)renderPortal()});
 </script>
 </body>
 </html>

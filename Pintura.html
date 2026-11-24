@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brocha Viva · Pintura de hogares</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fff8ef;--surf:#ffffff;--ink:#2a2233;--mut:#6d6577;--line:#eadfd0;--acc:#ff5d73;--acc2:#ffb703;--acc3:#2ec4b6;--acc4:#6c5ce7;--shadow:0 10px 30px rgba(80,40,20,.12);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17131d;--surf:#221c2c;--ink:#f6efe6;--mut:#aaa0b8;--line:#3a3148;--shadow:0 10px 30px rgba(0,0,0,.45);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17131d;--surf:#221c2c;--ink:#f6efe6;--mut:#aaa0b8;--line:#3a3148;--shadow:0 10px 30px rgba(0,0,0,.45);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:1.5rem;text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo i{width:28px;height:28px;border-radius:50% 50% 50% 8px;background:conic-gradient(var(--acc),var(--acc2),var(--acc3),var(--acc4),var(--acc));display:inline-block;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.links{display:flex;gap:8px;align-items:center}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:700;padding:12px 22px;border-radius:999px;background:var(--acc);color:#fff;text-decoration:none;display:inline-block;box-shadow:0 6px 0 rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.hero{position:relative;padding:40px 0 90px;text-align:center}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;max-width:14ch;margin:0 auto 16px}
+.hero h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2),var(--acc3),var(--acc4));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);max-width:52ch;margin:0 auto 26px;font-size:1.1rem}
+.blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.45;z-index:-1;animation:float 9s ease-in-out infinite}
+.b1{width:260px;height:260px;background:var(--acc);left:-60px;top:20px}
+.b2{width:220px;height:220px;background:var(--acc3);right:-40px;top:120px;animation-delay:-3s}
+.b3{width:180px;height:180px;background:var(--acc2);left:40%;bottom:-20px;animation-delay:-6s}
+@keyframes float{50%{transform:translateY(-26px) scale(1.08)}}
+.drips{position:absolute;left:0;right:0;bottom:0;height:60px;display:flex;justify-content:space-around;pointer-events:none}
+.drips s{width:16px;border-radius:0 0 12px 12px;background:var(--c);height:var(--h);animation:drip 3s ease-in-out infinite alternate;animation-delay:var(--d)}
+@keyframes drip{from{transform:scaleY(.4);transform-origin:top}to{transform:scaleY(1);transform-origin:top}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:-40px 0 50px}
+.stat{background:var(--surf);border-radius:20px;padding:18px;text-align:center;box-shadow:var(--shadow);border:1px solid var(--line)}
+.stat b{font-family:'Fraunces',Georgia,serif;font-size:2rem;display:block}
+.stat span{color:var(--mut);font-size:.9rem}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:26px;padding:clamp(18px,4vw,34px);box-shadow:var(--shadow)}
+.sec{margin:0 0 56px}
+.sec>h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:6px}
+.sec>p{color:var(--mut);margin:0 0 22px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.step{background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:20px;transition:transform .2s}
+.step:hover{transform:translateY(-6px) rotate(-1deg)}
+.step em{font-style:normal;font-size:2rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.links .hide{display:none}}
+label{font-weight:700;font-size:.9rem;display:block;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:12px 14px;transition:border .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--acc4);box-shadow:0 0 0 4px rgba(108,92,231,.18)}
+.full{grid-column:1/-1}
+.sw{display:flex;flex-wrap:wrap;gap:10px}
+.sw input{position:absolute;opacity:0;width:0}
+.sw label{width:54px;height:54px;border-radius:16px;background:var(--c);margin:0;cursor:pointer;display:grid;place-items:center;border:3px solid transparent;transition:transform .15s;font-size:0;box-shadow:inset 0 -6px 0 rgba(0,0,0,.15)}
+.sw label:hover{transform:scale(1.1) rotate(-4deg)}
+.sw input:checked+label{border-color:var(--ink);transform:scale(1.14);font-size:1.3rem;color:#fff}
+.cname{font-size:.9rem;color:var(--mut);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;width:0}
+.chips label{margin:0;padding:10px 16px;border-radius:999px;border:2px solid var(--line);cursor:pointer;font-weight:500}
+.chips input:checked+label{background:var(--acc4);border-color:var(--acc4);color:#fff}
+.est{background:linear-gradient(120deg,var(--acc4),var(--acc));color:#fff;border-radius:18px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.est b{font-family:'Fraunces',Georgia,serif;font-size:1.8rem}
+.stars{color:var(--acc2);letter-spacing:2px;white-space:nowrap}
+.pcard{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ava{width:84px;height:84px;border-radius:26px;display:grid;place-items:center;font-size:2.4rem;background:var(--c);box-shadow:inset 0 -8px 0 rgba(0,0,0,.18);flex:none}
+.pop{animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}}
+.tag{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.82rem;margin:2px 4px 2px 0}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.mini{background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:18px;text-align:center}
+.mini .ava{margin:0 auto 10px}
+.bar{display:grid;grid-template-columns:34px 1fr 34px;gap:10px;align-items:center;font-size:.9rem;margin:6px 0}
+.bar div{height:12px;background:var(--bg);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:9px;transition:width 1s}
+.rev{border-left:5px solid var(--c);background:var(--bg);border-radius:6px 18px 18px 6px;padding:14px 16px;margin:12px 0}
+.rev small{color:var(--mut)}
+.big{font-family:'Fraunces',Georgia,serif;font-size:4rem;font-weight:800;line-height:1}
+.two{display:grid;grid-template-columns:1fr 2fr;gap:18px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.req{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px dashed var(--line)}
+.err{color:var(--acc);font-weight:700;min-height:1.4em}
+footer{text-align:center;color:var(--mut);padding:30px 0 40px;font-size:.9rem}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+ <a class="logo" href="#"><i></i>Brocha Viva</a>
+ <div class="links"><a class="btn ghost hide" href="#equipo">Equipo</a><a class="btn ghost" href="#portal">Soy pintor</a><button class="btn ghost" id="theme" aria-label="Cambiar tema">🌓</button></div>
+</nav>
+<main id="app"></main>
+<footer>© 2026 Brocha Viva · Colores que dan vida a tu hogar 🎨</footer>
+</div>
+<script>
+const COLORS=[['#ff5d73','Coral atardecer'],['#ffb703','Mostaza solar'],['#2ec4b6','Menta fresca'],['#6c5ce7','Violeta noche'],['#4cc9f0','Cielo claro'],['#f4a261','Terracota suave'],['#e9ecef','Blanco nube'],['#2d6a4f','Verde bosque']];
+const P=[
+{id:'mateo',name:'Mateo Ruiz',code:'PT101',spec:'Interiores y acabados finos',rating:4.9,jobs:212,years:12,e:'🧑‍🎨',c:'#ff5d73',types:['Interior','Muebles'],dist:[168,34,7,2,1],rev:[['Laura G.',5,'Dejó la sala impecable, ni una gota en el piso. Los bordes quedaron perfectos.','12 nov 2026'],['Carlos M.',5,'Muy puntual y me ayudó a elegir el tono ideal para la recámara.','28 oct 2026'],['Sofía R.',4,'Excelente trabajo, solo tardó un día más de lo previsto.','15 oct 2026']]},
+{id:'valeria',name:'Valeria Soto',code:'PT102',spec:'Fachadas y exteriores',rating:4.8,jobs:178,years:9,e:'👩‍🎨',c:'#ffb703',types:['Exterior','Impermeabilizante'],dist:[133,36,6,2,1],rev:[['Ernesto P.',5,'La fachada se ve como nueva y resistió muy bien las lluvias.','20 nov 2026'],['Marisol D.',5,'Súper profesional, cubrió todo el jardín antes de empezar.','03 nov 2026'],['Jorge L.',4,'Buen acabado y precio justo. La recomiendo.','19 oct 2026']]},
+{id:'diego',name:'Diego Herrera',code:'PT103',spec:'Texturas y acabados decorativos',rating:4.7,jobs:134,years:7,e:'🧔',c:'#2ec4b6',types:['Interior','Texturas'],dist:[96,29,6,2,1],rev:[['Andrea V.',5,'La pared con textura de estuco quedó espectacular, toda una obra de arte.','17 nov 2026'],['Luis T.',5,'Creativo y limpio. Superó lo que imaginaba.','30 oct 2026'],['Paty C.',4,'Muy buen resultado, aunque el olor tardó en irse.','09 oct 2026']]},
+{id:'camila',name:'Camila Vargas',code:'PT104',spec:'Renovación completa de casa',rating:4.9,jobs:251,years:14,e:'👩‍🔧',c:'#6c5ce7',types:['Interior','Exterior','Muebles'],dist:[205,36,8,1,1],rev:[['Familia Núñez',5,'Pintó toda la casa en cuatro días. Un equipo increíble y ordenado.','21 nov 2026'],['Raúl A.',5,'Cumplió el presupuesto al centavo y el resultado es hermoso.','05 nov 2026'],['Elena B.',5,'La mejor experiencia que he tenido con un pintor, 100% recomendada.','22 oct 2026']]},
+{id:'tomas',name:'Tomás Delgado',code:'PT105',spec:'Muebles, puertas y herrería',rating:4.6,jobs:98,years:5,e:'👨‍🎨',c:'#4cc9f0',types:['Muebles','Impermeabilizante'],dist:[64,24,7,2,1],rev:[['Gabriela S.',5,'Restauró mi comedor de madera y quedó como de catálogo.','14 nov 2026'],['Iván F.',4,'Buen trabajo en las puertas, muy detallista.','01 nov 2026'],['Rosa M.',4,'Atento y amable, el acabado brillante quedó muy bien.','11 oct 2026']]}
+];
+let unlocked=null;
+const $=s=>document.querySelector(s);
+const st=n=>'★'.repeat(Math.round(n))+'☆'.repeat(5-Math.round(n));
+function load(){try{return JSON.parse(localStorage.getItem('bv_reqs')||'[]')}catch(e){return[]}}
+function save(a){try{localStorage.setItem('bv_reqs',JSON.stringify(a))}catch(e){}}
+let mem=load();
+const drips=()=>'<div class="drips">'+COLORS.concat(COLORS).slice(0,12).map((c,i)=>`<s style="--c:${c[0]};--h:${20+(i*13)%38}px;--d:${-i*.4}s"></s>`).join('')+'</div>';
+
+function home(){return `
+<section class="hero">
+ <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+ <h1>Tu hogar, <span>pintado con alegría</span></h1>
+ <p>Cuéntanos qué quieres pintar y te asignamos al pintor ideal con su calificación, reseñas y experiencia comprobada.</p>
+ <a class="btn" href="#solicitud" onclick="document.getElementById('solicitud').scrollIntoView()">Solicitar pintor</a>
+ ${drips()}
+</section>
+<div class="stats"><div class="stat"><b>870+</b><span>Casas pintadas</span></div><div class="stat"><b>4.8★</b><span>Calificación media</span></div><div class="stat"><b>5</b><span>Pintores expertos</span></div><div class="stat"><b>48 h</b><span>Respuesta máxima</span></div></div>
+<section class="sec"><h2>Así de fácil</h2><p>Tres pasos y tu casa estrena color.</p>
+<div class="steps"><div class="step"><em>📝</em><h3>1. Llena el formulario</h3><p>Elige espacio, color y acabado.</p></div><div class="step"><em>🎯</em><h3>2. Te asignamos pintor</h3><p>Según tu servicio y su calificación.</p></div><div class="step"><em>🏡</em><h3>3. ¡Disfruta el color!</h3><p>Tu pintor te contacta y agenda.</p></div></div></section>
+<section class="sec" id="solicitud"><h2>Solicita tu pintor</h2><p>Completa los datos y recibe a tu profesional al instante.</p>
+<form class="card" id="f" novalidate><div class="grid">
+<div><label for="n">Nombre completo</label><input id="n" placeholder="Ej. Ana López"></div>
+<div><label for="t">Teléfono</label><input id="t" type="tel" placeholder="10 dígitos"></div>
+<div><label for="m">Correo electrónico</label><input id="m" type="email" placeholder="tucorreo@ejemplo.com"></div>
+<div><label for="d">Dirección</label><input id="d" placeholder="Calle, número y colonia"></div>
+<div class="full"><label>¿Qué quieres pintar?</label><div class="chips" id="ty">
+${['Interior','Exterior','Muebles','Texturas','Impermeabilizante'].map((x,i)=>`<span><input type="radio" name="ty" id="ty${i}" value="${x}" ${i?'':'checked'}><label for="ty${i}">${['🛋️ ','🏠 ','🪑 ','🧱 ','💧 '][i]}${x}</label></span>`).join('')}</div></div>
+<div><label for="a">Superficie aproximada (m²)</label><input id="a" type="number" min="5" max="1000" value="40"></div>
+<div><label for="fi">Acabado</label><select id="fi"><option value="1">Mate</option><option value="1.1">Satinado</option><option value="1.25">Brillante</option></select></div>
+<div class="full"><label>Elige tu color favorito</label><div class="sw">${COLORS.map((c,i)=>`<span><input type="radio" name="co" id="co${i}" value="${c[1]}" ${i?'':'checked'}><label for="co${i}" style="--c:${c[0]}">✓</label></span>`).join('')}</div><div class="cname" id="cn">Coral atardecer</div></div>
+<div><label for="dt">Fecha deseada</label><input id="dt" type="date"></div>
+<div><label for="u">Urgencia</label><select id="u"><option>Sin prisa</option><option>Esta semana</option><option>Lo antes posible</option></select></div>
+<div class="full"><label for="nt">Notas para el pintor</label><textarea id="nt" rows="3" placeholder="Muebles que mover, humedad, detalles especiales..."></textarea></div>
+<div class="full est"><span>Estimado aproximado<br><small>Mano de obra y pintura incluidas</small></span><b id="es">$0</b></div>
+<div class="full err" id="er"></div>
+<div class="full"><button class="btn" type="submit" style="width:100%;font-size:1.1rem">Asignarme un pintor 🎨</button></div>
+</div></form>
+<div id="res" class="card hidden" style="margin-top:22px"></div></section>
+<section class="sec" id="equipo"><h2>Conoce al equipo</h2><p>Todos verificados, con reseñas reales de clientes.</p>
+<div class="pgrid">${P.map(p=>`<div class="mini"><div class="ava" style="--c:${p.c}">${p.e}</div><h3>${p.name}</h3><div class="stars">${st(p.rating)}</div><b>${p.rating}</b> · ${p.jobs} trabajos<p style="color:var(--mut);font-size:.9rem">${p.spec}</p></div>`).join('')}</div></section>`}
+
+function est(){const a=+$('#a').value||0,f=+$('#fi').value,ty=document.querySelector('[name=ty]:checked').value;const base={Interior:85,Exterior:110,Muebles:150,Texturas:170,Impermeabilizante:95}[ty];const v=Math.round(a*base*f);$('#es').textContent='$'+v.toLocaleString('es-MX')+' MXN';return v}
+function bindHome(){
+ const dt=$('#dt');const t=new Date();t.setDate(t.getDate()+2);dt.min=dt.value=t.toISOString().slice(0,10);
+ ['a','fi'].forEach(i=>$('#'+i).addEventListener('input',est));
+ document.querySelectorAll('[name=ty]').forEach(r=>r.addEventListener('change',est));
+ document.querySelectorAll('[name=co]').forEach(r=>r.addEventListener('change',()=>$('#cn').textContent=r.value));
+ est();
+ $('#f').addEventListener('submit',e=>{e.preventDefault();
+  const n=$('#n').value.trim(),tel=$('#t').value.replace(/\D/g,''),m=$('#m').value.trim(),d=$('#d').value.trim();
+  const er=$('#er');
+  if(!n||!d)return er.textContent='Escribe tu nombre y dirección.';
+  if(tel.length<10)return er.textContent='El teléfono debe tener 10 dígitos.';
+  if(!/^\S+@\S+\.\S+$/.test(m))return er.textContent='Escribe un correo válido.';
+  er.textContent='';
+  const ty=document.querySelector('[name=ty]:checked').value,co=document.querySelector('[name=co]:checked').value;
+  const pool=P.filter(p=>p.types.includes(ty));const p=pool[Math.floor(Math.random()*pool.length)];
+  const r={pid:p.id,n,d,ty,co,a:$('#a').value,dt:$('#dt').value,u:$('#u').value,nt:$('#nt').value,cost:est(),fi:$('#fi').selectedOptions[0].text};
+  mem.push(r);save(mem);
+  const box=$('#res');box.classList.remove('hidden');
+  box.innerHTML=`<h2 style="margin-bottom:14px">🎉 ¡Listo, ${n.split(' ')[0]}! Ya tienes pintor</h2><div class="pcard pop"><div class="ava" style="--c:${p.c}">${p.e}</div><div style="flex:1;min-width:200px"><h3 style="font-size:1.8rem">${p.name}</h3><div class="stars">${st(p.rating)} <b style="color:var(--ink)">${p.rating}</b></div><div>${p.types.map(x=>`<span class="tag">${x}</span>`).join('')}<span class="tag">${p.years} años de experiencia</span></div><p style="color:var(--mut);margin:8px 0 0">${p.spec}. Te contactará pronto para confirmar el ${r.dt} en ${d}.</p></div></div><p style="margin:18px 0 0">Servicio: <b>${ty}</b> · ${r.a} m² · ${r.fi} · Color: <b>${co}</b> · Estimado: <b>${r.cost.toLocaleString('es-MX')} MXN</b></p>`;
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+ });
+}
+
+function portal(msg){return `<section class="sec" style="max-width:520px;margin:30px auto"><div class="card" style="text-align:center"><div style="font-size:3rem">🖌️</div><h2>Portal de pintores</h2><p style="color:var(--mut)">Ingresa tu código para ver tus calificaciones, reseñas y solicitudes.</p>
+<form id="pf"><input id="cd" placeholder="Código (Ej. PT101)" style="text-align:center;text-transform:uppercase;font-weight:700;letter-spacing:2px"><div class="err" style="margin:8px 0">${msg||''}</div><button class="btn" style="width:100%">Entrar</button></form>
+<p style="color:var(--mut);font-size:.85rem;margin-top:16px">Códigos de prueba: ${P.map(p=>p.code).join(', ')}</p></div></section>`}
+
+function dash(p){
+ const tot=p.dist.reduce((a,b)=>a+b,0);const mine=mem.filter(r=>r.pid===p.id);
+ return `<section class="sec" style="margin-top:20px"><div class="card pcard" style="background:linear-gradient(120deg,${p.c}33,transparent)"><div class="ava" style="--c:${p.c}">${p.e}</div><div style="flex:1;min-width:200px"><h2>Hola, ${p.name.split(' ')[0]} 👋</h2><p style="margin:4px 0;color:var(--mut)">${p.spec} · ${p.years} años de experiencia</p><div>${p.types.map(x=>`<span class="tag">${x}</span>`).join('')}</div></div><a class="btn ghost" href="#portal" onclick="unlocked=null">Salir</a></div>
+ <div class="two" style="margin-top:18px"><div class="card" style="text-align:center"><div class="big">${p.rating}</div><div class="stars" style="font-size:1.4rem">${st(p.rating)}</div><p style="color:var(--mut)">${tot} calificaciones · ${p.jobs} trabajos</p>
+ ${[5,4,3,2,1].map((s,i)=>`<div class="bar"><span>${s}★</span><div><i style="width:${p.dist[i]/tot*100}%"></i></div><span>${p.dist[i]}</span></div>`).join('')}</div>
+ <div class="card"><h3 style="margin-bottom:6px">Reseñas de clientes 💬</h3>${p.rev.map(r=>`<div class="rev" style="--c:${p.c}"><b>${r[0]}</b> <span class="stars">${st(r[1])}</span><p style="margin:4px 0">${r[2]}</p><small>${r[3]}</small></div>`).join('')}</div></div>
+ <div class="card" style="margin-top:18px"><h3>Mis solicitudes asignadas 📋</h3>${mine.length?mine.map(r=>`<div class="req"><div><b>${r.n}</b><br><small style="color:var(--mut)">${r.d}</small></div><div>${r.ty} · ${r.a} m² · ${r.co}</div><div><b>${r.cost.toLocaleString('es-MX')} MXN</b><br><small>${r.dt}</small></div></div>`).join(''):'<p style="color:var(--mut)">Aún no tienes solicitudes. Cuando un cliente llene el formulario y se te asigne, aparecerá aquí.</p>'}</div></section>`}
+
+function route(){
+ const h=location.hash.slice(1),a=$('#app');
+ if(h.startsWith('p-')){const p=P.find(x=>'p-'+x.id===h);if(p&&unlocked===p.id){a.innerHTML=dash(p);scrollTo(0,0);return}location.hash='portal';return}
+ if(h==='portal'){a.innerHTML=portal();bind();return}
+ a.innerHTML=home();bindHome();
+ if(h==='equipo'||h==='solicitud')setTimeout(()=>document.getElementById(h).scrollIntoView(),50);else scrollTo(0,0);
+}
+function bind(){$('#pf').addEventListener('submit',e=>{e.preventDefault();const c=$('#cd').value.trim().toUpperCase();const p=P.find(x=>x.code===c);if(!p){$('#app').innerHTML=portal('Código incorrecto, intenta de nuevo.');bind();return}unlocked=p.id;location.hash='p-'+p.id})}
+window.addEventListener('hashchange',route);route();
+$('#theme').onclick=()=>{const r=document.documentElement;const d=getComputedStyle(r).colorScheme==='dark';r.dataset.theme=d?'light':'dark'};
+</script>
+</body>
+</html>
